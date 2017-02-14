@@ -1,34 +1,28 @@
-{% extends "layout.html" %}
+{% extends "layout.html" %} {% block content %}
 
-{% block content %}
+<div id="licitacoes" class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-	<div id="licitacoes" class="row">
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			
-			<h1>PUBLICAÇÕES</h1>
-			<p>Documentos e informações sobre licitações, portarias, contratos e outros.</p>
-			<hr />
+        <h1>LICITAÇÕES</h1>
+        <p>Documentos e informações sobre licitações, portarias, contratos e outros.</p>
+        <hr /> {% if licitacoes | length > 0 %}
 
-			{% if licitacoes | length > 0 %}
+        <div class="row">
+            {% for licitacao in licitacoes %}
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <a href="/licitacao/{{ gerarSlug(licitacao.getTitulo()) ~" / "~ licitacao.getId() }}">{{ licitacao.getTitulo() | upper }}</a>
+                <p>Início: {{ licitacao.getDataInicio() | date("d/m/Y H:i") }} | Término: {{ licitacao.getDataTermino() | date("d/m/Y H:i") }}</p>
+                <br />
+            </div>
+            {% endfor %}
+        </div>
 
-				<div class="row">
-					{% for licitacao in licitacoes %}
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-							<a href="/licitacao/{{ gerarSlug(licitacao.getTitulo()) ~"/"~ licitacao.getId() }}">{{ licitacao.getTitulo() | upper }}</a>
-							<p>Início: {{ licitacao.getDataInicio() | date("d/m/Y H:i") }} | Término: {{ licitacao.getDataTermino() | date("d/m/Y H:i") }}</p>
-							<br />
-						</div>
-					{% endfor %}
-				</div>
+        <p id="registros">Registros: {{ pagination.getTotalObjects() }}</p>
+        {{ pagination.getLinks() | raw }} {% else %}
+        <p>Nenhuma licitação disponível!</p>
+        {% endif %}
 
-				<p id="registros">Registros: {{ pagination.getTotalObjects() }}</p>
-				{{ pagination.getLinks() | raw }}
-
-			{% else %}
-				<p>Nenhuma licitação disponível!</p>
-			{% endif %}
-
-		</div>
-	</div>
+    </div>
+</div>
 
 {% endblock %}
