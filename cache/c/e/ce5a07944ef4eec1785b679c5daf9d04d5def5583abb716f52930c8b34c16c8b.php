@@ -22,96 +22,103 @@ class __TwigTemplate_ce5a07944ef4eec1785b679c5daf9d04d5def5583abb716f52930c8b34c
         // line 1
         echo "<!DOCTYPE html>
 <html lang=\"pt-br\">
+
 <head>
-\t<meta charset=\"UTF-8\">
-\t<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">
+    <meta charset=\"UTF-8\">
+    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
 
     <title>";
-        // line 8
+        // line 9
         $this->displayBlock('title', $context, $blocks);
         echo "Prefeitura Municipal de Coqueiral MG</title>
 
     <link rel=\"shortcut icon\" type=\"image/ico\" href=\"";
-        // line 10
+        // line 11
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('siteUrl')->getCallable(), array()), "html", null, true);
         echo "/public/img/favicon.png\" />
 
-\t<!-- [css] optionals css -->
-\t";
-        // line 13
-        $this->displayBlock('css', $context, $blocks);
+    <!-- [css] optionals css -->
+    ";
         // line 14
+        $this->displayBlock('css', $context, $blocks);
+        // line 15
         echo "
-\t<!-- [css] grid bootstrap, camera slider e personalizacao -->
-\t<link rel=\"stylesheet\" type=\"text/css\" href=\"";
-        // line 16
-        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('siteUrl')->getCallable(), array()), "html", null, true);
-        echo "/public/css/bootstrap/bootstrap.min.css\">
-\t<link rel=\"stylesheet\" type=\"text/css\" href=\"";
+    <!-- [css] grid bootstrap, camera slider e personalizacao -->
+    <link rel=\"stylesheet\" type=\"text/css\" href=\"";
         // line 17
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('siteUrl')->getCallable(), array()), "html", null, true);
-        echo "/public/css/bootstrap/bootstrap-theme.min.css\">
-\t<link rel=\"stylesheet\" type=\"text/css\" href=\"";
+        echo "/public/css/bootstrap/bootstrap.min.css\">
+    <link rel=\"stylesheet\" type=\"text/css\" href=\"";
         // line 18
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('siteUrl')->getCallable(), array()), "html", null, true);
-        echo "/public/js/plugins/camera/css/camera.css\">
-\t<link rel=\"stylesheet\" type=\"text/css\" href=\"";
+        echo "/public/css/bootstrap/bootstrap-theme.min.css\">
+    <link rel=\"stylesheet\" type=\"text/css\" href=\"";
         // line 19
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('siteUrl')->getCallable(), array()), "html", null, true);
-        echo "/public/js/plugins/SlickNav/dist/slicknav.min.css\">
-\t<link rel=\"stylesheet\" type=\"text/css\" href=\"";
+        echo "/public/js/plugins/camera/css/camera.css\">
+    <link rel=\"stylesheet\" type=\"text/css\" href=\"";
         // line 20
+        echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('siteUrl')->getCallable(), array()), "html", null, true);
+        echo "/public/js/plugins/SlickNav/dist/slicknav.min.css\">
+    <link rel=\"stylesheet\" type=\"text/css\" href=\"";
+        // line 21
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('siteUrl')->getCallable(), array()), "html", null, true);
         echo "/public/css/style.css\">
 
-\t<div id=\"fb-root\"></div>
-\t<script>(function(d, s, id) {
-\t  var js, fjs = d.getElementsByTagName(s)[0];
-\t  if (d.getElementById(id)) return;
-\t  js = d.createElement(s); js.id = id;
-\t  js.src = \"//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3\";
-\t  fjs.parentNode.insertBefore(js, fjs);
-\t}(document, 'script', 'facebook-jssdk'));</script>
+    <div id=\"fb-root\"></div>
+    <script>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = \"//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3\";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
 
 </head>
+
 <body>
 
-\t<!-- navbar -->
-\t<header id=\"top\">
-\t\t<div class=\"container visible-sm-block visible-md-block visible-lg-block\" id=\"faixa-branca\">
-\t\t\t<div class=\"container\">
-\t\t\t\t<a href=\"/\" class=\"pull-left first\" style=\"color: #009900\">WWW.COQUEIRAL.MG.GOV.BR</a>
-\t\t\t\t<span class=\"pull-right\">ADMINISTRAÇÃO 2017 | 2020</span>
-\t\t\t</div>
-\t\t</div>
-\t\t<div class=\"container\">
-\t\t\t<div class=\"row visible-sm-block visible-md-block visible-lg-block\">
-\t\t\t\t<div class=\"col-xs-12 col-sm-4 col-md-4 col-lg-4 pull-right\">
-\t\t\t\t\t<div class=\"fb-page\" data-href=\"https://www.facebook.com/prefeituradecoqueiral\" data-width=\"390\" data-small-header=\"true\" data-adapt-container-width=\"true\" data-hide-cover=\"false\" data-show-facepile=\"false\"><blockquote cite=\"https://www.facebook.com/prefeituradecoqueiral\" class=\"fb-xfbml-parse-ignore\"><a href=\"https://www.facebook.com/prefeituradecoqueiral\">Prefeitura Municipal de Coqueiral</a></blockquote></div>
-\t\t\t\t</div>
-\t\t\t</div>
-\t\t\t<div class=\"row\">
-\t\t\t\t<div class=\"clearfix  visible-xs-block\" style=\"margin-bottom: 60px !important;\"></div>
-\t\t\t\t<div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\">
-\t\t\t\t\t<div id=\"logo\" class=\"text-center\">
-\t\t\t\t\t\t<a href=\"/\">
-\t\t\t\t\t\t\t<div class=\"visible-xs-block\">
-\t\t\t\t\t\t\t\t<img style=\"margin: 0 auto;\" class=\"img-responsive\" src=\"";
-        // line 54
+    <!-- navbar -->
+    <header id=\"top\">
+        <div class=\"container visible-sm-block visible-md-block visible-lg-block\" id=\"faixa-branca\">
+            <div class=\"container\">
+                <a href=\"/\" class=\"pull-left first\" style=\"color: #009900\">WWW.COQUEIRAL.MG.GOV.BR</a>
+                <span class=\"pull-right\">ADMINISTRAÇÃO 2017 | 2020</span>
+            </div>
+        </div>
+        <div class=\"container\">
+            <div class=\"row visible-sm-block visible-md-block visible-lg-block\">
+                <div class=\"col-xs-12 col-sm-4 col-md-4 col-lg-4 pull-right\">
+                    <div class=\"fb-page\" data-href=\"https://www.facebook.com/prefeituradecoqueiral\" data-width=\"390\" data-small-header=\"true\" data-adapt-container-width=\"true\" data-hide-cover=\"false\" data-show-facepile=\"false\">
+                        <blockquote cite=\"https://www.facebook.com/prefeituradecoqueiral\" class=\"fb-xfbml-parse-ignore\"><a href=\"https://www.facebook.com/prefeituradecoqueiral\">Prefeitura Municipal de Coqueiral</a></blockquote>
+                    </div>
+                </div>
+            </div>
+            <div class=\"row\">
+                <div class=\"clearfix  visible-xs-block\" style=\"margin-bottom: 60px !important;\"></div>
+                <div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\">
+                    <div id=\"logo\" class=\"text-center\">
+                        <a href=\"/\">
+                            <div class=\"visible-xs-block\">
+                                <img style=\"margin: 0 auto;\" class=\"img-responsive\" src=\"";
+        // line 61
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('siteUrl')->getCallable(), array()), "html", null, true);
         echo "/public/img/logo.png\" alt=\"Prefeitura Municipal de Coqueiral MG\" title=\"Prefeitura Municipal de Coqueiral MG\">
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t<div class=\"visible-sm-block visible-md-block visible-lg-block\">
-\t\t\t\t\t\t\t\t<img class=\"img-responsive\" src=\"";
-        // line 57
+                            </div>
+                            <div class=\"visible-sm-block visible-md-block visible-lg-block\">
+                                <img class=\"img-responsive\" src=\"";
+        // line 64
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('siteUrl')->getCallable(), array()), "html", null, true);
         echo "/public/img/logo.png\" alt=\"Prefeitura Municipal de Coqueiral MG\" title=\"Prefeitura Municipal de Coqueiral MG\">
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t</a>
-\t\t\t\t\t</div>
-\t\t\t\t</div>
-\t\t\t\t<!--
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!--
 \t\t\t\t<div class=\"col-xs-12 col-sm-9 col-md-9 col-lg-9\" id=\"faixa\">
 \t\t\t\t\t<div class=\"row\">
 \t\t\t\t\t\t<div class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12\">
@@ -119,101 +126,101 @@ class __TwigTemplate_ce5a07944ef4eec1785b679c5daf9d04d5def5583abb716f52930c8b34c
 \t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
 \t\t\t\t\t<img class=\"img-responsive visible-sm-block visible-md-block visible-lg-block\" src=\"";
-        // line 69
+        // line 76
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('siteUrl')->getCallable(), array()), "html", null, true);
         echo "/public/img/faixa.png\" alt=\"Prefeitura Municipal de Coqueiral MG\" title=\"Prefeitura Municipal de Coqueiral MG\"></a>
 \t\t\t\t</div>
 \t\t\t\t-->
-\t\t\t\t<!--<div class=\"col-xs-12 col-sm-5 col-md-4 col-ls-4\">
+                <!--<div class=\"col-xs-12 col-sm-5 col-md-4 col-ls-4\">
 \t\t\t\t\t<div id=\"logo\"><a href=\"/\"><img class=\"img-responsive\" src=\"";
-        // line 73
+        // line 80
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('siteUrl')->getCallable(), array()), "html", null, true);
         echo "/public/img/logo.png\" alt=\"Prefeitura Municipal de Coqueiral MG\" title=\"Prefeitura Municipal de Coqueiral MG\"></a></div>
 \t\t\t\t</div>
 \t\t\t\t<div class=\"col-xs-12 col-sm-7 col-md-8 col-ls-8 visible-sm visible-md visible-lg\">
 \t\t\t\t\t<div id=\"texto\"><h1 class=\"pull-left\">DIA A DIA POR VOCÊ</h1><img class=\"pull-right\" src=\"";
-        // line 76
+        // line 83
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('siteUrl')->getCallable(), array()), "html", null, true);
         echo "/public/img/arrow-top.png\" alt=\"Seta - Prefeitura Municipal de Coqueiral MG\"></div>
 \t\t\t\t</div>-->
-\t\t\t</div>
-\t\t</div>
-\t\t<nav id=\"menu\" class=\"navbar\">
-\t\t\t<div class=\"container\">
-\t\t\t\t<div class=\"row\">
-\t\t\t\t\t<div class=\"col-xs-12 col-sm-12 col-md-12 col-ls-12\">
-\t\t\t\t\t\t<ul>
-\t\t\t\t\t\t\t<li><a href=\"/secretarias\">A PREFEITURA</a></li>
-\t\t\t\t\t\t\t<li><a href=\"#\">SALA DE IMPRENSA</a>
-\t\t\t\t\t\t\t\t<ul>
-\t\t\t\t\t\t\t\t\t<li><a href=\"/jornal\">JORNAL</a></li>
-\t\t\t\t\t\t\t\t\t<li><a href=\"/noticias\">NOTÍCIAS</a></li>
-\t\t\t\t\t\t\t\t\t<li><a href=\"/videos\">VÍDEOS</a></li>
-\t\t\t\t\t\t\t\t</ul>
-\t\t\t\t\t\t\t</li>
-\t\t\t\t\t\t\t<li>
-\t\t\t\t\t\t\t\t<form action=\"/busca\" method=\"post\">
-\t\t\t\t\t\t\t\t\t<input type=\"text\" required minlength=\"3\" name=\"busca\" placeholder=\"Pesquise aqui\" />
-\t\t\t\t\t\t\t\t\t<button type=\"submit\" name=\"buscar\"></button>
-\t\t\t\t\t\t\t\t</form>
-\t\t\t\t\t\t\t</li>
-\t\t\t\t\t\t</ul>
-\t\t\t\t\t</div>
-\t\t\t\t</div>
-\t\t\t</div>
-\t\t</nav>
-\t\t<nav id=\"sub-menu\" class=\"navbar\">
-\t\t\t<div class=\"container\">
-\t\t\t\t<div class=\"row\">
-\t\t\t\t\t<div class=\"col-xs-12 col-sm-12 col-md-12 col-ls-12\">
-\t\t\t\t\t\t<ul>
-\t\t\t\t\t\t\t<li><a href=\"/\">Página Inicial</a></li>
-\t\t\t\t\t\t\t<li><a href=\"http://www.transparencia.mg.gov.br/municipios/coqueiral\" target=\"_blank\">Transparência</a></li>
-\t\t\t\t\t\t\t<li><a href=\"/legislacao\">Legislação</a></li>
-\t\t\t\t\t\t\t<li><a href=\"/licitacoes\">Publicações</a></li>
-\t\t\t\t\t\t\t<li><a href=\"/fale-conosco\">Fale com a Prefeitura</a></li>
-\t\t\t\t\t\t</ul>
-\t\t\t\t\t</div>
-\t\t\t\t</div>
-\t\t\t</div>
-\t\t</nav>
-\t\t<ul class=\"slick-nav\">
-\t\t\t<li><a href=\"/prefeitura\">A PREFEITURA</a></li>
-\t\t\t<li><a href=\"/secretarias\">SECRETARIAS</a></li>
-\t\t\t<li><a href=\"/noticias\">NOTÍCIAS</a></li>
-\t\t\t<li><a href=\"/sala-de-imprensa\">SALA DE IMPRENSA</a></li>
-\t\t\t<li>
-\t\t\t\t<form action=\"/busca\" method=\"post\">
-\t\t\t\t\t<input type=\"text\" required minlength=\"3\" name=\"busca\" placeholder=\"Pesquise aqui\" />
-\t\t\t\t\t<button type=\"submit\" name=\"buscar\"></button>
-\t\t\t\t</form>
-\t\t\t</li>
-\t\t\t<li><a href=\"/\">Página Inicial</a></li>
-\t\t\t<li><a href=\"/transparencia\">Transparência</a></li>
-\t\t\t<li><a href=\"/legislacao\">Legislação</a></li>
-\t\t\t<li><a href=\"/licitacoes\">Publicações</a></li>
-\t\t\t<li><a href=\"/fale-conosco\">Fale com a Prefeitura</a></li>
-\t\t</ul>
+            </div>
+        </div>
+        <nav id=\"menu\" class=\"navbar\">
+            <div class=\"container\">
+                <div class=\"row\">
+                    <div class=\"col-xs-12 col-sm-12 col-md-12 col-ls-12\">
+                        <ul>
+                            <li><a href=\"/secretarias\">A PREFEITURA</a></li>
+                            <li><a href=\"#\">SALA DE IMPRENSA</a>
+                                <ul>
+                                    <li><a href=\"/jornal\">JORNAL</a></li>
+                                    <li><a href=\"/noticias\">NOTÍCIAS</a></li>
+                                    <li><a href=\"/videos\">VÍDEOS</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <form action=\"/busca\" method=\"post\">
+                                    <input type=\"text\" required minlength=\"3\" name=\"busca\" placeholder=\"Pesquise aqui\" />
+                                    <button type=\"submit\" name=\"buscar\"></button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <nav id=\"sub-menu\" class=\"navbar\">
+            <div class=\"container\">
+                <div class=\"row\">
+                    <div class=\"col-xs-12 col-sm-12 col-md-12 col-ls-12\">
+                        <ul>
+                            <li><a href=\"/\">Página Inicial</a></li>
+                            <li><a href=\"http://www.transparencia.mg.gov.br/municipios/coqueiral\" target=\"_blank\">Transparência</a></li>
+                            <li><a href=\"/legislacao\">Legislação</a></li>
+                            <li><a href=\"/publicacoes\">Publicações</a></li>
+                            <li><a href=\"/fale-conosco\">Fale com a Prefeitura</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <ul class=\"slick-nav\">
+            <li><a href=\"/prefeitura\">A PREFEITURA</a></li>
+            <li><a href=\"/secretarias\">SECRETARIAS</a></li>
+            <li><a href=\"/noticias\">NOTÍCIAS</a></li>
+            <li><a href=\"/sala-de-imprensa\">SALA DE IMPRENSA</a></li>
+            <li>
+                <form action=\"/busca\" method=\"post\">
+                    <input type=\"text\" required minlength=\"3\" name=\"busca\" placeholder=\"Pesquise aqui\" />
+                    <button type=\"submit\" name=\"buscar\"></button>
+                </form>
+            </li>
+            <li><a href=\"/\">Página Inicial</a></li>
+            <li><a href=\"/transparencia\">Transparência</a></li>
+            <li><a href=\"/legislacao\">Legislação</a></li>
+            <li><a href=\"/publicacoes\">Publicações</a></li>
+            <li><a href=\"/fale-conosco\">Fale com a Prefeitura</a></li>
+        </ul>
     </header>
 
-\t<!-- content -->
-\t<div id=\"container\" class=\"container\">
-\t\t";
-        // line 140
+    <!-- content -->
+    <div id=\"container\" class=\"container\">
+        ";
+        // line 147
         $this->displayBlock('content', $context, $blocks);
-        // line 141
-        echo "\t</div>
+        // line 148
+        echo "    </div>
 
-\t<!-- footer -->
-\t<footer class=\"footer\">
+    <!-- footer -->
+    <footer class=\"footer\">
 
-\t\t<!--<section id=\"secretarias\">
+        <!--<section id=\"secretarias\">
 \t\t\t<div class=\"container\">
 
 \t\t\t\t<div class=\"row\">
 \t\t\t\t\t<div id=\"fale-com-secretaria\" class=\"col-xs-12 col-sm-4 col-md-4 col-lg-4\">
 \t\t\t\t\t\t<div><img src=\"";
-        // line 151
+        // line 158
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('siteUrl')->getCallable(), array()), "html", null, true);
         echo "/public/img/arrow-light-blue.png\"><span>FALE COM AS SECRETARIAS</span></div>
 \t\t\t\t\t</div>
@@ -225,16 +232,16 @@ class __TwigTemplate_ce5a07944ef4eec1785b679c5daf9d04d5def5583abb716f52930c8b34c
 \t\t\t\t<div class=\"row\">
 \t\t\t\t\t<div id=\"lista-secretarias\" class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12\">
 \t\t\t\t\t\t";
-        // line 160
+        // line 167
         if ((twig_length_filter($this->env, (isset($context["secretarias"]) ? $context["secretarias"] : null)) > 0)) {
-            // line 161
+            // line 168
             echo "\t\t\t\t\t\t\t<ul>
 \t\t\t\t\t\t\t\t";
-            // line 162
+            // line 169
             $context['_parent'] = (array) $context;
             $context['_seq'] = twig_ensure_traversable((isset($context["secretarias"]) ? $context["secretarias"] : null));
             foreach ($context['_seq'] as $context["_key"] => $context["secretaria"]) {
-                // line 163
+                // line 170
                 echo "\t\t\t\t\t\t\t\t\t<li><a href=\"/fale-com-secretaria/";
                 echo twig_escape_filter($this->env, ((call_user_func_array($this->env->getFunction('gerarSlug')->getCallable(), array($this->getAttribute($context["secretaria"], "getNome", array(), "method"))) . "/") . $this->getAttribute($context["secretaria"], "getId", array(), "method")), "html", null, true);
                 echo "\"><span>";
@@ -253,149 +260,150 @@ class __TwigTemplate_ce5a07944ef4eec1785b679c5daf9d04d5def5583abb716f52930c8b34c
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['secretaria'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 165
+            // line 172
             echo "\t\t\t\t\t\t\t</ul>
 \t\t\t\t\t\t";
         } else {
-            // line 167
+            // line 174
             echo "\t\t\t\t\t\t\t<h3 class=\"color-white\">Nenhuma secretaria disponível no momento!</h3>
 \t\t\t\t\t\t";
         }
-        // line 169
+        // line 176
         echo "\t\t\t\t\t</div>
 \t\t\t\t</div>
 
 \t\t\t</div>
 \t\t</section>-->
 
-\t\t<section id=\"bottom\">
-\t\t\t<div class=\"container\">
-\t\t\t\t<div class=\"row\">
-\t\t\t\t\t<div id=\"logo\" class=\"col-xs-12 col-sm-4 col-md-3 col-lg-3\">
-\t\t\t\t\t\t<a id=\"logo-footer\" href=\"/\"><img src=\"";
-        // line 179
+        <section id=\"bottom\">
+            <div class=\"container\">
+                <div class=\"row\">
+                    <div id=\"logo\" class=\"col-xs-12 col-sm-4 col-md-3 col-lg-3\">
+                        <a id=\"logo-footer\" href=\"/\"><img src=\"";
+        // line 186
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('siteUrl')->getCallable(), array()), "html", null, true);
         echo "/public/img/logo-footer.png\" alt=\"Prefeitura Municipal de Coqueiral MG\" title=\"Prefeitura Municipal de Coqueiral MG\" /></a>
-\t\t\t\t\t</div>
+                    </div>
 
-\t\t\t\t\t<div id=\"secretarias\" class=\"col-xs-4 col-sm-4 col-md-3 col-lg-3 visible-sm visible-md visible-lg\">
-\t\t\t\t\t\t<h2>SECRETARIAS</h2>
+                    <div id=\"secretarias\" class=\"col-xs-4 col-sm-4 col-md-3 col-lg-3 visible-sm visible-md visible-lg\">
+                        <h2>SECRETARIAS</h2>
 
-\t\t\t\t\t\t<ul>
-\t\t\t\t\t\t\t";
-        // line 186
+                        <ul>
+                            ";
+        // line 193
         if ((twig_length_filter($this->env, (isset($context["secretarias"]) ? $context["secretarias"] : null)) > 0)) {
-            // line 187
-            echo "\t\t\t\t\t\t\t\t<ul>
-\t\t\t\t\t\t\t\t\t";
-            // line 188
+            // line 194
+            echo "                            <ul>
+                                ";
+            // line 195
             $context['_parent'] = (array) $context;
             $context['_seq'] = twig_ensure_traversable((isset($context["secretarias"]) ? $context["secretarias"] : null));
             foreach ($context['_seq'] as $context["_key"] => $context["secretaria"]) {
-                // line 189
-                echo "\t\t\t\t\t\t\t\t\t\t<li><a href=\"/fale-com-secretaria/";
-                echo twig_escape_filter($this->env, ((call_user_func_array($this->env->getFunction('gerarSlug')->getCallable(), array($this->getAttribute($context["secretaria"], "getNome", array(), "method"))) . "/") . $this->getAttribute($context["secretaria"], "getId", array(), "method")), "html", null, true);
+                // line 196
+                echo "                                <li><a href=\"/fale-com-secretaria/";
+                echo twig_escape_filter($this->env, ((call_user_func_array($this->env->getFunction('gerarSlug')->getCallable(), array($this->getAttribute($context["secretaria"], "getNome", array(), "method"))) . " / ") . $this->getAttribute($context["secretaria"], "getId", array(), "method")), "html", null, true);
                 echo "\">";
                 echo twig_escape_filter($this->env, $this->getAttribute($context["secretaria"], "getNome", array(), "method"), "html", null, true);
                 echo "</a></li>
-\t\t\t\t\t\t\t\t\t";
+                                ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['secretaria'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 191
-            echo "\t\t\t\t\t\t\t\t</ul>
-\t\t\t\t\t\t\t";
+            // line 198
+            echo "                            </ul>
+                            ";
         } else {
-            // line 193
-            echo "\t\t\t\t\t\t\t\t<p class=\"color-white\">Nenhuma secretaria disponível!</p>
-\t\t\t\t\t\t\t";
+            // line 200
+            echo "                            <p class=\"color-white\">Nenhuma secretaria disponível!</p>
+                            ";
         }
-        // line 195
-        echo "\t\t\t\t\t\t</ul>
+        // line 202
+        echo "                        </ul>
 
-\t\t\t\t\t</div>
+                    </div>
 
-\t\t\t\t\t<div id=\"developer\" class=\"col-xs-6 col-sm-2 col-md-2 col-lg-2 col-md-offset-4 col-lg-offset-4 visible-sm visible-md visible-lg\">
-\t\t\t\t\t\t<p>Desenvolvido por</p>
-\t\t\t\t\t\t<a href=\"http://www.flymedia.com.br\" target=\"_blank\"><img src=\"";
-        // line 201
+                    <div id=\"developer\" class=\"col-xs-6 col-sm-2 col-md-2 col-lg-2 col-md-offset-4 col-lg-offset-4 visible-sm visible-md visible-lg\">
+                        <p>Desenvolvido por</p>
+                        <a href=\"http://www.flymedia.com.br\" target=\"_blank\"><img src=\"";
+        // line 208
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('siteUrl')->getCallable(), array()), "html", null, true);
         echo "/public/img/logo-flymedia.png\" alt=\"FlyMedia\"></a>
-\t\t\t\t\t</div>
+                    </div>
 
-\t\t\t\t</div>
+                </div>
 
-\t\t\t</div>
-\t\t</section>
+            </div>
+        </section>
 
     </footer>
 
     <!-- [js] jquery e camera slider -->
     <script type=\"text/javascript\" src=\"";
-        // line 212
+        // line 219
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('siteUrl')->getCallable(), array()), "html", null, true);
         echo "/public/js/jquery/jquery-1.7.1.min.js\"></script>
     <script type=\"text/javascript\" src=\"";
-        // line 213
+        // line 220
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('siteUrl')->getCallable(), array()), "html", null, true);
         echo "/public/js/plugins/camera/js/jquery.mobile.customized.min.js\"></script>
     <script type=\"text/javascript\" src=\"";
-        // line 214
+        // line 221
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('siteUrl')->getCallable(), array()), "html", null, true);
         echo "/public/js/plugins/camera/js/jquery.easing.1.3.js\"></script>
     <script type=\"text/javascript\" src=\"";
-        // line 215
+        // line 222
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('siteUrl')->getCallable(), array()), "html", null, true);
         echo "/public/js/plugins/camera/js/camera.min.js\"></script>
     <script type=\"text/javascript\" src=\"";
-        // line 216
+        // line 223
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('siteUrl')->getCallable(), array()), "html", null, true);
         echo "/public/js/script/camera-config.js\"></script>
     <script type=\"text/javascript\" src=\"";
-        // line 217
+        // line 224
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('siteUrl')->getCallable(), array()), "html", null, true);
         echo "/public/js/plugins/SlickNav/dist/jquery.slicknav.min.js\"></script>
     <script type=\"text/javascript\" src=\"";
-        // line 218
+        // line 225
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('siteUrl')->getCallable(), array()), "html", null, true);
         echo "/public/js/script/slick-nav-config.js\"></script>
     <script type=\"text/javascript\" src=\"";
-        // line 219
+        // line 226
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('siteUrl')->getCallable(), array()), "html", null, true);
         echo "/public/js/script/config.js\"></script>
     <script type=\"text/javascript\" src=\"";
-        // line 220
+        // line 227
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('siteUrl')->getCallable(), array()), "html", null, true);
         echo "/public/js/script/email.js\"></script>
 
     <!-- [js] optionals js's -->
-\t";
-        // line 223
+    ";
+        // line 230
         $this->displayBlock('js', $context, $blocks);
-        // line 224
-        echo "\t
+        // line 231
+        echo "
 </body>
+
 </html>";
     }
 
-    // line 8
+    // line 9
     public function block_title($context, array $blocks = array())
     {
         echo twig_escape_filter($this->env, (isset($context["title"]) ? $context["title"] : null), "html", null, true);
     }
 
-    // line 13
+    // line 14
     public function block_css($context, array $blocks = array())
     {
     }
 
-    // line 140
+    // line 147
     public function block_content($context, array $blocks = array())
     {
     }
 
-    // line 223
+    // line 230
     public function block_js($context, array $blocks = array())
     {
     }
@@ -412,6 +420,6 @@ class __TwigTemplate_ce5a07944ef4eec1785b679c5daf9d04d5def5583abb716f52930c8b34c
 
     public function getDebugInfo()
     {
-        return array (  399 => 223,  394 => 140,  389 => 13,  383 => 8,  377 => 224,  375 => 223,  369 => 220,  365 => 219,  361 => 218,  357 => 217,  353 => 216,  349 => 215,  345 => 214,  341 => 213,  337 => 212,  323 => 201,  315 => 195,  311 => 193,  307 => 191,  296 => 189,  292 => 188,  289 => 187,  287 => 186,  277 => 179,  265 => 169,  261 => 167,  257 => 165,  238 => 163,  234 => 162,  231 => 161,  229 => 160,  217 => 151,  205 => 141,  203 => 140,  136 => 76,  130 => 73,  123 => 69,  108 => 57,  102 => 54,  65 => 20,  61 => 19,  57 => 18,  53 => 17,  49 => 16,  45 => 14,  43 => 13,  37 => 10,  32 => 8,  23 => 1,);
+        return array (  407 => 230,  402 => 147,  397 => 14,  391 => 9,  384 => 231,  382 => 230,  376 => 227,  372 => 226,  368 => 225,  364 => 224,  360 => 223,  356 => 222,  352 => 221,  348 => 220,  344 => 219,  330 => 208,  322 => 202,  318 => 200,  314 => 198,  303 => 196,  299 => 195,  296 => 194,  294 => 193,  284 => 186,  272 => 176,  268 => 174,  264 => 172,  245 => 170,  241 => 169,  238 => 168,  236 => 167,  224 => 158,  212 => 148,  210 => 147,  143 => 83,  137 => 80,  130 => 76,  115 => 64,  109 => 61,  66 => 21,  62 => 20,  58 => 19,  54 => 18,  50 => 17,  46 => 15,  44 => 14,  38 => 11,  33 => 9,  23 => 1,);
     }
 }
