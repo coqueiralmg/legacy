@@ -1,0 +1,68 @@
+{% extends "./admin/layout.html" %}
+
+{% block content %}
+
+	<h1>Vídeos</h1>
+
+	{% if videos | length > 0 %}
+		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 pull-right">
+			<div id="limitar-registros" data-url="admin/painel/video">
+				<div class="form-group">
+			    <label for="exampleInputEmail1">Mostrar:</label>
+			    {{ pagination.getSelect() | raw }}
+			  </div>
+			</div>
+		</div>
+	{% endif %}
+
+	<a href="/admin/painel/video/novo" class="btn btn-primary"><i class="glyphicon glyphicon-file"></i> Novo</a>
+
+	<div id="saida">
+		<div class="saida" id="saida-js-video" role="alert"></div>
+		{% if mensagem is defined %}
+			<div class="alert alert-success" role="alert">{{mensagem}}</div>
+		{% elseif erro is defined %}
+			<div class="alert alert-danger" role="alert">{{erro}}</div>
+		{% endif %}
+	</div>
+
+	<table class="table table-striped table-hover">
+		<thead>
+			<tr>
+				<th>Título</th>
+				<th>Postagem</th>
+				<th>Alteração</th>
+				<th>Visto</th>
+				<th>Destaque</th>
+				<th>Ativo</th>
+				<th>Alterar</th>
+				<th>Excluir</th>
+			</tr>
+		</thead>
+		<tbody data-location="listar">
+			{% if pagination.getObjects() | length > 0 %}
+				{% for video in videos %}
+					<tr>
+						<td>{{ cortarTexto(video.getPost().getTitulo(), 80, true) }}</td>
+						<td>{{ video.getPost().getDataPostagem() | date("d/m/Y") }}</td>
+						<td>{{ (video.getPost().getDataAlteracao() is null) ? "-" : video.getPost().getDataAlteracao() | date("d/m/Y") }}</td>
+						<td>{{ video.getPost().getVisualizacoes() }} vezes</td>
+						<td>{{ (video.getPost().getDestaque() == 1) ? "Sim" : "Não" }}</td>
+						<td>{{ (video.getPost().getAtivo() == 1) ? "Sim" : "Não" }}</td>
+						<td><a href="/admin/painel/video/alterar/{{ video.getId() }}" class="glyphicon glyphicon-pencil"></a></td>
+						<td><a href="/admin/painel/video/deletar/{{ video.getId() }}" class="glyphicon glyphicon-remove" id="btn-deletar" data-reference="video" data-element="#saida-js-video"></a></td>
+					</tr>
+				{% endfor %}
+			{% else %}
+				<tr><td colspan="7" align="center">Nenhum vídeo cadastrado!</td></tr>
+			{% endif %}
+		</tbody>
+	</table>
+
+	{% if videos | length > 0 %}
+		<p id="registros" class="text-center">Registros: {{ pagination.getTotalObjects() }}</p>
+		{{ pagination.getLinks() | raw }}
+	{% endif %}
+	
+
+{% endblock %}

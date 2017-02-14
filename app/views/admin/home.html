@@ -1,0 +1,243 @@
+{% extends "./admin/layout.html" %}
+
+{% block content %}
+
+	<p class="text-right">{{ ultimoAcesso.getData() != null ? "Seu último acesso foi em: " ~ ultimoAcesso.getData() | date("d/m/Y") ~ " as " ~ ultimoAcesso.getData() | date("H:i") ~ "h" : "Este é seu primeiro acesso ao sistema" }}</p>
+
+	<h1>Página inicial</h1>
+
+	{% if usuarioNivel == 2 %}
+		
+		<div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				<h2>Usuários</h2>
+				<a href="/admin/painel/usuario/novo" class="btn btn-primary"><i class="glyphicon glyphicon-file"></i> Novo</a>
+				<div id="saida">
+					<div class="saida" id="saida-js-usuario" role="alert"></div>
+				</div>
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th>Nome</th>
+							<th>Usuário</th>
+							<th>Email</th>
+							<th>Ativo</th>
+							<th>Nível</th>
+							<th><i class="glyphicon glyphicon-pencil"></i></th>
+							<th><i class="glyphicon glyphicon-remove"></i></th>
+						</tr>
+					</thead>
+					<tbody>
+						{% if usuarios | length > 0 %}
+							{% for usuario in usuarios %}
+								<tr>
+									<td>{{ usuario.getPessoa().getNome() }}</td>
+									<td>{{ usuario.getUsuario() }}</td>
+									<td>{{ usuario.getEmail() }}</td>
+									<td>{{ (usuario.getAtivo() == 1) ? "Sim" : "Não" }}</td>
+									<td>{{ (usuario.getNivel() == 1) ? "Normal" : "Admin" }}</td>
+									<td><a href="/admin/painel/usuario/alterar/{{ usuario.getId() }}" class="glyphicon glyphicon-pencil"></a></td>
+									<td><a href="/admin/painel/usuario/deletar/{{ usuario.getId() }}" class="glyphicon glyphicon-remove" id="btn-deletar" data-reference="usuario" data-element="#saida-js-usuario"></a></td>
+								</tr>
+							{% endfor %}
+							<tr><td id="ver-todos" colspan="7" align="center"><a href="/admin/painel/usuario">Ver todos</a></td></tr>
+						{% else %}
+							<tr><td colspan="7" align="center">Nenhum usuário cadastrado!</td></tr>
+						{% endif %}
+					</tbody>
+				</table>
+			</div>
+
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				<h2>Secretarias</h2>
+				<a href="/admin/painel/secretaria/novo" class="btn btn-primary"><i class="glyphicon glyphicon-file"></i> Novo</a>
+				<div id="saida">
+					<div class="saida" id="saida-js-secretaria" role="alert"></div>
+				</div>
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th>Nome</th>
+							<th>Telefone</th>
+							<th>Responsável</th>
+							<th>Ativo</th>
+							<th><i class="glyphicon glyphicon-pencil"></i></th>
+							<th><i class="glyphicon glyphicon-remove"></i></th>
+						</tr>
+					</thead>
+					<tbody>
+						{% if secretarias | length > 0 %}
+							{% for secretaria in secretarias %}
+								<tr>
+									<td>{{ secretaria.getNome() }}</td>
+									<td>{{ secretaria.getTelefone() }}</td>
+									<td>{{ secretaria.getSecretario() }}</td>
+									<td>{{ (secretaria.getAtivo() == 1) ? "Sim" : "Não" }}</td>
+									<td><a href="/admin/painel/secretaria/alterar/{{ secretaria.getId() }}" class="glyphicon glyphicon-pencil"></a></td>
+									<td><a href="/admin/painel/secretaria/deletar/{{ secretaria.getId() }}" class="glyphicon glyphicon-remove" id="btn-deletar" data-reference="secretaria" data-element="#saida-js-secretaria"></a></td>
+								</tr>
+							{% endfor %}
+							<tr><td id="ver-todos" colspan="6" align="center"><a href="/admin/painel/secretaria">Ver todos</a></td></tr>
+						{% else %}
+							<tr><td colspan="6" align="center">Nenhuma secretaria cadastrada!</td></tr>
+						{% endif %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				<h2>Banners</h2>
+				<a href="/admin/painel/banner/novo" class="btn btn-primary"><i class="glyphicon glyphicon-file"></i> Novo</a>
+				<div id="saida">
+					<div class="saida" id="saida-js-banner" role="alert"></div>
+				</div>
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th>Título</th>
+							<th>Ativo</th>
+							<th><i class="glyphicon glyphicon-pencil"></i></th>
+							<th><i class="glyphicon glyphicon-remove"></i></th>
+						</tr>
+					</thead>
+					<tbody>
+						{% if banners | length > 0 %}
+							{% for banner in banners %}
+								<tr>
+									<td>{{ banner.getTitulo() }}</td>
+									<td>{{ (banner.getAtivo() == 1) ? "Sim" : "Não" }}</td>
+									<td><a href="/admin/painel/banner/alterar/{{ banner.getId() }}" class="glyphicon glyphicon-pencil"></a></td>
+									<td><a href="/admin/painel/banner/deletar/{{ banner.getId() }}" class="glyphicon glyphicon-remove" id="btn-deletar" data-reference="banner" data-element="#saida-js-banner"></a></td>
+								</tr>
+							{% endfor %}
+							<tr><td id="ver-todos" colspan="4" align="center"><a href="/admin/painel/banner">Ver todos</a></td></tr>
+						{% else %}
+							<tr><td colspan="4" align="center">Nenhum banner cadastrado!</td></tr>
+						{% endif %}
+					</tbody>
+				</table>
+			</div>
+
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				<h2>Licitações</h2>
+				<a href="/admin/painel/licitacao/novo" class="btn btn-primary"><i class="glyphicon glyphicon-file"></i> Novo</a>
+				<div id="saida">
+					<div class="saida" id="saida-js-licitacao" role="alert"></div>
+				</div>
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th>Título</th>
+							<th>Início</th>
+							<th>Término</th>
+							<th>Ativo</th>
+							<th><i class="glyphicon glyphicon-pencil"></i></th>
+							<th><i class="glyphicon glyphicon-remove"></i></th>
+						</tr>
+					</thead>
+					<tbody>
+						{% if licitacoes | length > 0 %}
+							{% for licitacao in licitacoes %}
+								<tr>
+									<td>{{ licitacao.getTitulo() }}</td>
+									<td>{{ licitacao.getDataInicio() | date("d/m/Y") }}</td>
+									<td>{{ licitacao.getDataTermino() | date("d/m/Y") }}</td>
+									<td>{{ (licitacao.getAtivo() == 1) ? "Sim" : "Não" }}</td>
+									<td><a href="/admin/painel/licitacao/alterar/{{ licitacao.getId() }}" class="glyphicon glyphicon-pencil"></a></td>
+									<td><a href="/admin/painel/licitacao/deletar/{{ licitacao.getId() }}" class="glyphicon glyphicon-remove" id="btn-deletar" data-reference="licitacao" data-element="#saida-js-licitacao"></a></td>
+								</tr>
+							{% endfor %}
+							<tr><td id="ver-todos" colspan="6" align="center"><a href="/admin/painel/licitacao">Ver todos</a></td></tr>
+						{% else %}
+							<tr><td colspan="6" align="center">Nenhuma licitação cadastrada!</td></tr>
+						{% endif %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	{% endif %}
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				<h2>Notícias</h2>
+				<a href="/admin/painel/noticia/novo" class="btn btn-primary"><i class="glyphicon glyphicon-file"></i> Novo</a>
+				<div id="saida">
+					<div class="saida" id="saida-js-noticia" role="alert"></div>
+				</div>
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th>Título</th>
+							<th>Postagem</th>
+							<th>Alteração</th>
+							<th>Visto</th>
+							<th>Ativo</th>
+							<th><i class="glyphicon glyphicon-pencil"></i></th>
+							<th><i class="glyphicon glyphicon-remove"></i></th>
+						</tr>
+					</thead>
+					<tbody>
+						{% if noticias | length > 0 %}
+							{% for noticia in noticias %}
+								<tr>
+									<td>{{ cortarTexto(noticia.getPost().getTitulo(), 25, true) }}</td>
+									<td>{{ noticia.getPost().getDataPostagem | date("d/m/Y") }}</td>
+									<td>{{ (noticia.getPost().getDataAlteracao() is null) ? "-" : noticia.getPost().getDataAlteracao() | date("d/m/Y") }}</td>
+									<td>{{ (noticia.getPost().getVisualizacoes() is null) ? "0" : noticia.getPost().getVisualizacoes() }} vezes</td>
+									<td>{{ (noticia.getPost().getAtivo() == 1) ? "Sim" : "Não" }}</td>
+									<td><a href="/admin/painel/noticia/alterar/{{ noticia.getId() }}" class="glyphicon glyphicon-pencil"></a></td>
+									<td><a href="/admin/painel/noticia/deletar/{{ noticia.getId() }}" class="glyphicon glyphicon-remove" id="btn-deletar" data-reference="noticia" data-element="#saida-js-noticia"></a></td>
+								</tr>
+							{% endfor %}
+							<tr><td id="ver-todos" colspan="7" align="center"><a href="/admin/painel/noticia">Ver todos</a></td></tr>
+						{% else %}
+							<tr><td colspan="7" align="center">Nenhuma notícia cadastrada!</td></tr>
+						{% endif %}
+					</tbody>
+				</table>
+			</div>
+
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				<h2>Vídeos</h2>
+				<a href="/admin/painel/video/novo" class="btn btn-primary"><i class="glyphicon glyphicon-file"></i> Novo</a>
+				<div id="saida">
+					<div class="saida" id="saida-js-video" role="alert"></div>
+				</div>
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th>Título</th>
+							<th>Postagem</th>
+							<th>Alteração</th>
+							<th>Visto</th>
+							<th>Ativo</th>
+							<th><i class="glyphicon glyphicon-pencil"></i></th>
+							<th><i class="glyphicon glyphicon-remove"></i></th>
+						</tr>
+					</thead>
+					<tbody>
+						{% if videos | length > 0 %}
+							{% for video in videos %}
+								<tr>
+									<td>{{ cortarTexto(video.getPost().getTitulo(), 25, true) }}</td>
+									<td>{{ video.getPost().getDataPostagem | date("d/m/Y") }}</td>
+									<td>{{ (video.getPost().getDataAlteracao() is null) ? "-" : video.getPost().getDataAlteracao() | date("d/m/Y") }}</td>
+									<td>{{ (video.getPost().getVisualizacoes() is null) ? "0" : video.getPost().getVisualizacoes() }} vezes</td>
+									<td>{{ (video.getPost().getAtivo() == 1) ? "Sim" : "Não" }}</td>
+									<td><a href="/admin/painel/video/alterar/{{ video.getId() }}" class="glyphicon glyphicon-pencil"></a></td>
+									<td><a href="/admin/painel/video/deletar/{{ video.getId() }}" class="glyphicon glyphicon-remove" id="btn-deletar" data-reference="video" data-element="#saida-js-video"></a></td>
+								</tr>
+							{% endfor %}
+							<tr><td id="ver-todos" colspan="7" align="center"><a href="/admin/painel/video">Ver todos</a></td></tr>
+						{% else %}
+							<tr><td colspan="7" align="center">Nenhum vídeo cadastrado!</td></tr>
+						{% endif %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+{% endblock %}

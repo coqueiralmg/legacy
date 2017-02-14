@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+	<div id="fale-secretaria" class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			
+			<h1>FALE COM A PREFEITURA</h1>
+			<p>Entre em contato conosco.</p>
+			<hr />
+
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="headline">
+				<h3>PREENCHA CORRETAMENTE TODOS OS CAMPOS PARA FACILITAR O RETORNO E VALIDAR O SEU CONTATO.</h3>
+			</div>				
+
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="formulario">
+
+				<form method="post" action="/fale-prefeitura/enviar" id="fale-camara">
+
+				  <div class="row">
+				  	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				  		<label for="exampleInputEmail1">Nome</label>
+				    	<input type="text" required name="nome" class="form-control" id="exampleInputEmail1" placeholder="Digite seu nome">
+				  	</div>
+				  	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				  		<label for="exampleInputEmail1">Seu e-mail</label>
+				    	<input type="email" required name="email" class="form-control" id="exampleInputEmail1" placeholder="Digite seu email">
+				  	</div>
+				  </div>
+
+				  <div class="row">
+				  	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				  		<label for="exampleInputEmail1">Telefone</label>
+				    	<input type="text" required name="telefone" class="form-control" id="exampleInputEmail1" placeholder="Ex: (35) 0000-0000 ou (16) 9-0000-0000">
+				  	</div>
+				  	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				  		<label for="exampleInputEmail1">Assunto</label>
+				    	<input type="text" required name="assunto" class="form-control" id="exampleInputEmail1" placeholder="Digite o assunto">
+				  	</div>
+				  </div>
+
+				  <div class="row">
+				  	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				  		<label for="exampleInputEmail1">Mensagem</label>
+				  		<textarea name="mensagem" required cols="30" rows="6" placeholder="Digite sua mensagem aqui"></textarea>
+				  	</div>
+				  </div>
+				  
+				  <div class="row">
+				  	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 pull-right">
+				  		<button data-form="#fale-camara" data-msg="Em breve responderemos!" id="btn-enviar" class="btn-enviar" type="submit">ENVIAR MENSAGEM</button>
+				  	</div>
+				  	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 pull-left">
+				  		<div id="mensagem-form" data-element="mensagem-form"></div>
+				  	</div>
+				  </div>
+				</form>
+
+			</div>
+
+		</div>
+	</div>
+
+{% endblock %}

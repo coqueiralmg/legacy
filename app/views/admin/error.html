@@ -1,0 +1,16 @@
+{% extends "./admin/layout.html" %}
+
+{% block title %}Erro inesperado | Câmara Municipal de Pirapora MG{% endblock %}
+
+{% block content %}
+	
+	<div id="erro-geral" class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<h1>Ocorreu um erro inesperado, tente novamente!</h1>
+			<p>Mensagem: {{ message }}</p>
+			<p>Arquivo: {{ file }}</p>
+			<p>Linha: {{ line }}</p>
+		</div>
+	</div>
+	
+{% endblock %}

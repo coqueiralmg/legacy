@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+	<div id="videos" class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			
+			<h1>TV PREFEITURA</h1>
+			<p>Vídeos das reuniões plenárias, matérias e de utilidade pública. </p>
+			<hr />
+
+			{% if videos | length > 0 %}
+
+				<div class="row">
+					{% for video in videos %}
+						<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+							<a href="/video/{{ gerarSlug(video.getPost().getTitulo()) ~"/"~ video.getId() }}" title="{{ video.getPost().getTitulo() }}">
+								<img class="img" src="http://img.youtube.com/vi/{{ videoEmbedYoutube(video.getVideo()) }}/0.jpg" alt="{{ video.getPost().getTitulo() }}" title="{{ video.getPost().getTitulo() }}">
+								<h3>{{ video.getPost().getTitulo() }}</h3>
+								<p>{{ video.getPost().getVisualizacoes() }} visualizações | {{ video.getPost().getDataPostagem() | date("d/m/Y") }}</p>
+							</a>
+						</div>
+					{% endfor %}
+				</div>
+
+				<p id="registros">Registros: {{ pagination.getTotalObjects() }}</p>
+				{{ pagination.getLinks() | raw }}
+
+			{% else %}
+				<p>Nenhum vídeo disponível!</p>
+			{% endif %}
+
+		</div>
+	</div>
+
+{% endblock %}

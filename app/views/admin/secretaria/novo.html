@@ -1,0 +1,73 @@
+{% extends "./admin/layout.html" %}
+
+{% block content %}
+
+	<h1>Nova Secretaria</h1>
+
+
+	<form method="post" action="/admin/painel/secretaria/novo" enctype="multipart/form-data">
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+				<div class="form-group">
+					<label for="exampleInputEmail1">Nome</label>
+					<input type="text" name="secretaria-nome" value="{{ dados is defined ? dados["secretaria-nome"] : "" }}" class="form-control" id="exampleInputEmail1" placeholder="Ex: Secretaria de Educação">
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+				<div class="form-group">
+					<label for="exampleInputEmail1">Foto</label>
+					<input type="file" name="secretaria-foto" id="exampleInputFile">
+					<p class="help-block">Imagem .jpg ou .png. (187 x 187 ou maior)</p>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+				<div class="form-group">
+					<label for="exampleInputEmail1">Email</label>
+					<input type="email" name="secretaria-email" value="{{ dados is defined ? dados["secretaria-email"] : "" }}" class="form-control" id="exampleInputEmail1" placeholder="Insira o email">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+				<div class="form-group">
+					<label for="exampleInputEmail1">Telefone</label>
+					<input type="text" name="secretaria-telefone" value="{{ dados is defined ? dados["secretaria-telefone"] : "" }}" class="form-control" id="exampleInputEmail1" placeholder="Ex: (00) 0000-0000">
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+				<div class="form-group">
+					<label for="exampleInputEmail1">Secretário Responsável</label>
+					<input type="text" name="secretaria-secretario" value="{{ dados is defined ? dados["secretaria-secretario"] : "" }}" class="form-control" id="exampleInputEmail1" placeholder="Responsável pela secretaria">
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+				<div class="form-group">
+					<label for="exampleInputEmail1">Ativo</label>
+					<select name="secretaria-ativo" class="form-control">
+						<option value="0" {{ (dados is defined and dados["secretaria-ativo"] == 0) ? "selected" : "" }}>Não</option>
+						<option value="1" {{ (dados is defined and dados["secretaria-ativo"] == 1) ? "selected" : "" }}>Sim</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+				<div class="form-group">
+					<label for="exampleInputEmail1">Descrição</label>
+					<textarea name="secretaria-descricao" class="form-control" placeholder="Sobre a secretaria" cols="30" rows="5">{{ dados is defined ? dados["secretaria-descricao"] : "" }}</textarea>
+				</div>
+			</div>
+		</div>
+
+
+		<button type="submit" class="btn btn-primary">Cadastrar</button>
+		<a href="/admin/painel/secretaria" class="btn btn-default" id="btn-cancelar">Cancelar</a>
+	</form>
+
+	{% if erro is defined %}
+		<br />
+		<div class="alert alert-danger" role="alert">{{ erro | raw }}</div>
+	{% endif %}
+
+{% endblock %}

@@ -1,0 +1,12 @@
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]
+
+# Habilitar o PHP 5.5 LOCAWEB
+AddHandler php55-script .php
+suPHP_ConfigPath /camaradepiraporamg/
+
+# bloquear listagem dos arquivos nos diretórios
+Options -Indexes

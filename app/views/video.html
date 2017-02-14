@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+	<div id="video" class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+			{% if video != null %}
+
+				<h1>{{ video.getPost().getTitulo() }}</h1>
+				<p>Autor: {{ video.getPost().getAutor().getPessoa().getNome() ~" | Postado: "~ video.getPost().getDataPostagem() | date("d/m/Y H:i") }} {{ (video.getPost().getDataAlteracao() != null) ? " | Atualizado: " ~ video.getPost().getDataAlteracao() | date("d/m/Y H:i") : "" }}</p>
+				<div class="fb-like" data-href="{{ siteUrl() ~"/noticia/"~ gerarSlug(noticia.getPost().getTitulo()) ~"/"~ noticia.getId() }}" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+				<hr />
+
+				<div class="row" id="video">
+					<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+						<div class="video-container">
+							<iframe width="560" height="315" src="https://www.youtube.com/embed/{{ videoEmbedYoutube(video.getVideo()) }}" frameborder="0" allowfullscreen></iframe>
+						</div>
+					</div>
+				</div>
+
+				<h3>Mais vídeos:</h3>
+				<hr />
+
+				<div class="row" id="videos">
+					{% if videos | length > 0 %}
+						{% for videoB in videos %}
+							<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">
+							<a href="/video/{{ gerarSlug(videoB.getPost().getTitulo()) ~"/"~ videoB.getId() }}" title="{{ videoB.getPost().getTitulo() }}">
+								<img class="img" src="http://img.youtube.com/vi/{{ videoEmbedYoutube(videoB.getVideo()) }}/0.jpg" alt="{{ videoB.getPost().getTitulo() }}" title="{{ videoB.getPost().getTitulo() }}">
+								<h3>{{ videoB.getPost().getTitulo() }}</h3>
+								<p>{{ videoB.getPost().getVisualizacoes() }} visualizações | {{ videoB.getPost().getDataPostagem() | date("d/m/Y") }}</p>
+							</a>
+						</div>
+						{% endfor %}
+					{% else %}
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<p>Sem sugestões de vídeos no momento!</p>
+						</div>
+					{% endif %}
+				</div>
+
+				<br />
+				<div class="fb-comments" data-href="{{ siteUrl() ~"/noticia/"~ gerarSlug(noticia.getPost().getTitulo()) ~"/"~ noticia.getId() }}" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
+
+			{% else %}
+				<p>Vídeo não encontrado!</p>
+			{% endif %}
+
+			
+
+		</div>
+	</div>
+
+{% endblock %}

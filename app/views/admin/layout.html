@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>{% block title %}{{ title }}{% endblock %}Painel Prefeitura Municipal de Coqueiral MG</title>
+
+	<!-- [css] bootstrap -->
+	<link rel="stylesheet" type="text/css" href="{{ siteUrl() }}/vendor/twitter/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="{{ siteUrl() }}/vendor/twitter/bootstrap/dist/css/bootstrap-theme.min.css" />
+	<!-- [css] personalizado -->
+	<link rel="stylesheet" type="text/css" href="{{ siteUrl() }}/public/css/style-admin.css" />
+
+</head>
+<body>
+
+	<nav class="navbar navbar-default navbar-fixed-top">
+	  <div class="container">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="/admin/painel">Prefeitura de Coqueiral</a>
+	    </div>
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav">
+	        <!--<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+	        <li><a href="#">Link</a></li>-->
+	        <li class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="glyphicon glyphicon-file"></i> Novo <span class="caret"></span></a>
+	          <ul class="dropdown-menu" role="menu">
+
+				{% if usuarioNivel == 2 %}
+					<li><a href="/admin/painel/usuario/novo">Usuário</a></li>
+					<li><a href="/admin/painel/secretaria/novo">Secretaria</a></li>
+					<li><a href="/admin/painel/banner/novo">Banner</a></li>
+					<li><a href="/admin/painel/licitacao/novo">Licitação</a></li>
+					<li><a href="/admin/painel/legislacao/novo">Legislação</a></li>
+				{% endif %}
+
+				<li><a href="/admin/painel/video/novo">Vídeo</a></li>
+				<li><a href="/admin/painel/noticia/novo">Notícia</a></li>
+				<li><a href="/admin/painel/destaque/novo">Destaque</a></li>
+
+				<!--<li class="dropdown-submenu"><a tabindex="-1" href="/admin/painel/secretaria">Secretaria</a>
+					<ul class="dropdown-menu">
+	                  <li><a tabindex="-1" href="/admin/painel/secretaria/novo">Novo</a></li>
+	                  <li><a tabindex="-1" href="/admin/painel/secretaria">Ver todos</a></li>
+	              	</ul>
+	            </li>-->
+
+	          </ul>
+	        </li>
+
+	        <li class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="glyphicon glyphicon-list"></i> Ver <span class="caret"></span></a>
+	          <ul class="dropdown-menu" role="menu">
+
+				{% if usuarioNivel == 2 %}
+					<li><a href="/admin/painel/usuario">Usuários</a></li>
+					<li><a href="/admin/painel/secretaria">Secretarias</a></li>
+					<li><a href="/admin/painel/banner">Banners</a></li>
+					<li><a href="/admin/painel/licitacao">Licitações</a></li>
+					<li><a href="/admin/painel/legislacao">Legislações</a></li>
+				{% endif %}
+
+				<li><a href="/admin/painel/video">Vídeos</a></li>
+				<li><a href="/admin/painel/noticia">Notícias</a></li>
+				<li><a href="/admin/painel/destaque">Destaques</a></li>
+
+				<!--<li class="dropdown-submenu"><a tabindex="-1" href="/admin/painel/secretaria">Secretaria</a>
+					<ul class="dropdown-menu">
+	                  <li><a tabindex="-1" href="/admin/painel/secretaria/novo">Novo</a></li>
+	                  <li><a tabindex="-1" href="/admin/painel/secretaria">Ver todos</a></li>
+	              	</ul>
+	            </li>-->
+
+	          </ul>
+	        </li>
+
+	      </ul>
+	      <form class="navbar-form navbar-left" role="search">
+	        <div class="form-group">
+	          <input type="text" class="form-control" placeholder="Pesquisar">
+	        </div>
+	        <button type="submit" class="btn btn-default">Ok</button>
+	      </form>
+	      <ul class="nav navbar-nav navbar-right">
+	      	<li><a href="#" id="clock-system"><img src="{{ siteUrl() }}/public/img/ajax-loader.gif"> Aguarde...</a></li>
+	        <!--<li class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+	          <ul class="dropdown-menu" role="menu">
+	            <li><a href="#">Action</a></li>
+	            <li><a href="#">Another action</a></li>
+	            <li><a href="#">Something else here</a></li>
+	            <li class="divider"></li>
+	            <li><a href="#">Separated link</a></li>
+	          </ul>
+	        </li>-->
+	     	<li><a href="#">{{ usuarioNome }}</a></li>
+	        <li><a href="/admin/painel/sair" title="Sair do sistema"><i class="glyphicon glyphicon-off"></i></a></li>
+	      </ul>
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				{% block content %}{% endblock %}
+			</div>
+		</div>
+	</div>
+
+	<footer class="footer">
+		<div class="container">
+			<p class="text-muted">{{ "now"|date("Y") }} Prefeitura Municipal de Coqueiral MG</p>
+		</div>
+    </footer>
+
+	<!-- [js] jquery e bootstrap -->
+	<script type="text/javascript" src="{{ siteUrl() }}/public/js/jquery/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="{{ siteUrl() }}/vendor/twitter/bootstrap/dist/js/bootstrap.min.js"></script>
+
+	<!-- [js] plugins -->
+	<script type="text/javascript" src="{{ siteUrl() }}/public/js/plugins/jquery.maskedinput/jquery.maskedinput.min.js"></script>
+	<script type="text/javascript" src="{{ siteUrl() }}/public/js/plugins/tinymce/tinymce.min.js"></script>
+	<script type="text/javascript" src="{{ siteUrl() }}/public/js/script/admin/tinyMCE.init.js"></script>
+
+	<!-- [js] geral -->
+	<script type="text/javascript" src="{{ siteUrl() }}/public/js/script/config.js"></script>
+	<script type="text/javascript" src="{{ siteUrl() }}/public/js/script/admin/configAdmin.js"></script>
+	<script type="text/javascript" src="{{ siteUrl() }}/public/js/script/admin/clock.js"></script>
+
+</body>
+</html>

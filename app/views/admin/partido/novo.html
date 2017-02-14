@@ -1,0 +1,40 @@
+{% extends "./admin/layout.html" %}
+
+{% block content %}
+
+	<h1>Novo Partido</h1>
+
+	<form method="post" action="/admin/painel/partido/novo" enctype="multipart/form-data">
+
+	  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+		  <div class="form-group">
+		    <label for="exampleInputEmail1">Nome</label>
+		    <input type="text" name="partido-nome" maxlength="50" value="{{ dados is defined ? dados["partido-nome"] : "" }}" class="form-control" id="exampleInputEmail1" placeholder="Digite o nome do partido">
+		  </div>
+	  </div>
+
+	  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+		  <div class="form-group">
+		    <label for="exampleInputPassword1">Sigla</label>
+		    <input type="text" name="partido-sigla" maxlength="10" value="{{ dados is defined ? dados["partido-sigla"] : "" }}" class="form-control" id="exampleInputPassword1" placeholder="Digite a sigla do partido">
+		  </div>
+	  </div>
+
+	  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+		  <div class="form-group">
+		    <label for="exampleInputFile">Logotipo</label>
+		    <input type="file" name="partido-logo" id="exampleInputFile">
+		    <p class="help-block">Imagem .jpg ou .png. (150 x 150 ou maior)</p>
+		  </div>
+	  </div>
+	  
+	  <button type="submit" class="btn btn-primary">Cadastrar</button>
+	  <a href="/admin/painel/partido" class="btn btn-default" id="btn-cancelar">Cancelar</a>
+	</form>
+
+	{% if erro is defined %}
+		<br />
+		<div class="alert alert-danger" role="alert">{{ erro | raw }}</div>
+	{% endif %}
+
+{% endblock %}

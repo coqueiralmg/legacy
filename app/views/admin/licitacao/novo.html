@@ -1,0 +1,63 @@
+{% extends "./admin/layout.html" %}
+
+{% block content %}
+
+	<h1>Nova Licitação</h1>
+
+
+	<form method="post" action="/admin/painel/licitacao/novo" enctype="multipart/form-data">
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+				<div class="form-group">
+					<label for="exampleInputEmail1">Título</label>
+					<input type="text" name="licitacao-titulo" maxlength="100" value="{{ dados is defined ? dados["licitacao-titulo"] : "" }}" class="form-control" id="exampleInputEmail1" placeholder="Insira o título">
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+				<div class="form-group">
+					<label for="exampleInputEmail1">Data de Início</label>
+					<input type="text" name="licitacao-data-inicio" value="{{ dados is defined ? dados["licitacao-data-inicio"] : "" }}" class="form-control date-hour" id="exampleInputEmail1" placeholder="Insira a data de início">
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+				<div class="form-group">
+					<label for="exampleInputEmail1">Data de Término</label>
+					<input type="text" name="licitacao-data-termino" value="{{ dados is defined ? dados["licitacao-data-termino"] : "" }}" class="form-control date-hour" id="exampleInputEmail1" placeholder="Insira a data de término">
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<div class="form-group">
+					<label for="exampleInputEmail1">Descrição</label>
+					<!-- tinyMCE mapeia o class editor-texto para gerar o editor e atribui um input hidden com name igual ao id do div (licitacao-descricao) -->
+					<div id="licitacao-descricao" class="editor-texto">{{ dados is defined ? dados["licitacao-descricao"] | raw : "" }}</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+				<div class="form-group">
+					<label for="exampleInputEmail1">Edital</label>
+					<input type="file" name="licitacao-edital" id="exampleInputFile">
+					<p class="help-block">Arquivos .pdf, .doc ou .docx</p>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+				<div class="form-group">
+					<label for="exampleInputEmail1">Ativo</label>
+					<select name="licitacao-ativo" class="form-control">
+						<option value="0" {{ (dados is defined and dados["licitacao-ativo"] == 0) ? "selected" : "" }}>Não</option>
+						<option value="1" {{ (dados is defined and dados["licitacao-ativo"] == 1) ? "selected" : "" }}>Sim</option>
+					</select>
+				</div>
+			</div>
+		</div>
+
+		<button type="submit" class="btn btn-primary">Cadastrar</button>
+		<a href="/admin/painel/licitacao" class="btn btn-default" id="btn-cancelar">Cancelar</a>
+	</form>
+
+	{% if erro is defined %}
+		<br />
+		<div class="alert alert-danger" role="alert">{{ erro | raw }}</div>
+	{% endif %}
+
+{% endblock %}

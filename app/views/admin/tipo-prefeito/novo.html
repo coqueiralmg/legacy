@@ -1,0 +1,21 @@
+{% extends "./admin/layout.html" %}
+
+{% block content %}
+
+	<h1>Novo Tipo de Prefeito</h1>
+
+	<form method="post" action="/admin/painel/tipo-prefeito/novo">
+	  <div class="form-group">
+	    <label for="exampleInputEmail1">Descrição</label>
+	    <input type="text" name="tipo-descricao" maxlength="45" class="form-control" id="exampleInputEmail1" placeholder="Digite a descrição">
+	  </div>
+	  <button type="submit" class="btn btn-primary">Cadastrar</button>
+	  <a href="/admin/painel/tipo-prefeito" class="btn btn-default" id="btn-cancelar">Cancelar</a>
+	</form>
+
+	{% if erro is defined %}
+		<br />
+		<div class="alert alert-danger" role="alert">{{ erro | raw }}</div>
+	{% endif %}
+
+{% endblock %}

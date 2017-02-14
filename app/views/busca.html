@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+	<div id="busca" class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+			<h1>Pesquisar</h1>
+			<p>Sua pesquisa: {{ busca }}</p>
+			<p>Registros: {{ registros }}</p>
+			<hr />
+
+			{% if registros > 0 %}
+	
+				{% if secretariasBusca | length > 0 %}
+					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						<h3>Secretarias</h3>
+						{% for secretaria in secretariasBusca %}
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<a href="fale-com-secretaria/{{ gerarSlug(secretaria.getNome()) ~"/"~secretaria.getId() }}">{{ secretaria.getNome() }} ({{ secretaria.getSecretario() }})</a>
+							</div>
+						{% endfor %}
+					</div>
+				{% endif %}
+
+				{% if licitacoes | length > 0 %}
+					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						<h3>Licitações</h3>
+						{% for licitacao in licitacoes %}
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<a href="licitacao/{{ gerarSlug(licitacao.getTitulo()) ~"/"~ licitacao.getId() }}">{{ licitacao.getTitulo() }}</a>
+							</div>
+						{% endfor %}
+					</div>
+				{% endif %}
+
+				{% if legislacoes | length > 0 %}
+					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						<h3>Legislações</h3>
+						{% for legislacao in legislacoes %}
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<a href="legislacao/{{ gerarSlug(legislacao.getTitulo()) ~"/"~ legislacao.getId() }}">{{ legislacao.getTitulo() }}</a>
+							</div>
+						{% endfor %}
+					</div>
+				{% endif %}
+
+				{% if noticias | length > 0 %}
+					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						<h3>Notícias</h3>
+						{% for noticia in noticias %}
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<a href="noticia/{{ gerarSlug(noticia.getPost().getTitulo()) ~"/"~ noticia.getId() }}">{{ noticia.getPost().getTitulo() }}</a>
+							</div>
+						{% endfor %}
+					</div>
+				{% endif %}
+
+				{% if videos | length > 0 %}
+					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						<h3>Vídeos</h3>
+						{% for video in videos %}
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<a href="video/{{ gerarSlug(video.getPost().getTitulo()) ~"/"~ video.getId() }}">{{ video.getPost().getTitulo() }}</a>
+							</div>
+						{% endfor %}
+					</div>
+				{% endif %}
+
+			{% else %}
+				<p>Sua pesquisa não retornou nenhum resultado.</p>
+			{% endif %}
+
+		</div>
+	</div>
+
+{% endblock %}

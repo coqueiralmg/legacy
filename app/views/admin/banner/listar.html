@@ -1,0 +1,62 @@
+{% extends "./admin/layout.html" %}
+
+{% block content %}
+
+	<h1>Banners</h1>
+
+	{% if banners | length > 0 %}
+		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 pull-right">
+			<div id="limitar-registros" data-url="admin/painel/banner">
+				<div class="form-group">
+			    <label for="exampleInputEmail1">Mostrar:</label>
+			    {{ pagination.getSelect() | raw }}
+			  </div>
+			</div>
+		</div>
+	{% endif %}
+
+	<a href="/admin/painel/banner/novo" class="btn btn-primary"><i class="glyphicon glyphicon-file"></i> Novo</a>
+
+	<div id="saida">
+		<div class="saida" id="saida-js-banner" role="alert"></div>
+		{% if mensagem is defined %}
+			<div class="alert alert-success" role="alert">{{mensagem}}</div>
+		{% elseif erro is defined %}
+			<div class="alert alert-danger" role="alert">{{erro}}</div>
+		{% endif %}
+	</div>
+
+	<table class="table table-striped table-hover">
+		<thead>
+			<tr>
+				<th>Título</th>
+				<th>Descrição</th>
+				<th>Ativo</th>
+				<th>Alterar</th>
+				<th>Excluir</th>
+			</tr>
+		</thead>
+		<tbody data-location="listar">
+			{% if pagination.getObjects() | length > 0 %}
+				{% for banner in banners %}
+					<tr>
+						<td>{{ banner.getTitulo() }}</td>
+						<td>{{ banner.getDescricao() }}</td>
+						<td>{{ (banner.getAtivo() == 1) ? "Sim" : "Não" }}</td>
+						<td><a href="/admin/painel/banner/alterar/{{ banner.getId() }}" class="glyphicon glyphicon-pencil"></a></td>
+						<td><a href="/admin/painel/banner/deletar/{{ banner.getId() }}" class="glyphicon glyphicon-remove" id="btn-deletar" data-reference="banner" data-element="#saida-js-banner"></a></td>
+					</tr>
+				{% endfor %}
+			{% else %}
+				<tr><td colspan="7" align="center">Nenhum banner cadastrado!</td></tr>
+			{% endif %}
+		</tbody>
+	</table>
+
+	{% if banners | length > 0 %}
+		<p id="registros" class="text-center">Registros: {{ pagination.getTotalObjects() }}</p>
+		{{ pagination.getLinks() | raw }}
+	{% endif %}
+	
+
+{% endblock %}

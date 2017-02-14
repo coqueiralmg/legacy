@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+	<div id="noticias" class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			
+			<h1>NOTÍCIAS</h1>
+			<p>Notícias do legislativo, matérias e de utilidade pública.</p>
+			<hr />
+
+			{% if noticias | length > 0 %}
+
+				<div class="row">
+					{% for noticia in noticias %}
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<a href="/noticia/{{ gerarSlug(noticia.getPost().getTitulo()) ~"/"~ noticia.getId() }}">
+								<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+									<img class="img-responsive float-left" src="{{ siteUrl() ~"/"~ noticia.getFoto() | replace({"large": "small"}) }}" alt="{{ noticia.getPost().getTitulo() }}" title="{{ noticia.getPost().getTitulo() }}">
+								</div>
+								<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+									<h1>{{ noticia.getPost().getTitulo() | upper }}</h1>
+									<p class="data">Autor: {{ noticia.getPost().getAutor().getPessoa().getNome() }} | Postado: {{ noticia.getPost().getDataPostagem() | date("d/m/Y H:i") }} {{ (noticia.getPost().getDataAlteracao() != null) ? " | Atualizado: " ~ noticia.getPost().getDataAlteracao() | date("d/m/Y H:i") : "" }} | {{ noticia.getPost().getVisualizacoes() }} visualizações</p>
+									<p>{{ cortarTexto(noticia.getTexto(), 450, true, true) | raw }}</p>
+								</div>
+							</a>
+							<hr />
+						</div>
+					{% endfor %}
+				</div>
+
+				<p id="registros">Registros: {{ pagination.getTotalObjects() }}</p>
+				{{ pagination.getLinks() | raw }}
+
+			{% else %}
+				<p>Nenhuma notícia disponível!</p>
+			{% endif %}
+
+		</div>
+	</div>
+
+{% endblock %}

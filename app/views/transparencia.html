@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{# libs necessárias a esta página #}
+{% block css %}
+	<link rel="stylesheet" type="text/css" href="{{ siteUrl() }}/public/js/plugins/fancybox/source/jquery.fancybox.css">
+{% endblock %}
+{% block js %}
+	<script type="text/javascript" src="{{ siteUrl() }}/public/js/plugins/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+	<script type="text/javascript" src="{{ siteUrl() }}/public/js/plugins/fancybox/source/jquery.fancybox.js"></script>
+	<script type="text/javascript" src="{{ siteUrl() }}/public/js/script/fancybox-config.js"></script>
+{% endblock %}
+
+
+{% block content %}
+
+	<div id="transparencia" class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			
+			<h1>TRANSPARÊNCIA</h1>
+			<p>Veja aqui o funcionamento da prefeitura, endereço e fotos da sala de reuniões.</p>
+			<hr />
+
+			<p><strong>Telefone:</strong> (00) 0000-0000</p>
+			<p><strong>Endereço:</strong> Av. Dezenove de Junho, 2015 | Coqueiral - MG | CEP 00000-000</p>
+			<p class="line"><strong>Horário de atendimento ao público:</strong> das 8h às 18h, de segunda a sexta.</p>
+			<p class="line"><strong>Reuniões ordinárias:</strong> Todas as terças-feiras às 9h</p>
+
+			<h3>GALERIA DE FOTOS:</h3>
+			<hr />
+			<div class="row">
+				<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+					<a class="fancybox" href="{{ siteUrl() }}/public/js/plugins/fancybox/demo/1_b.jpg" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="{{ siteUrl() }}/public/js/plugins/fancybox/demo/1_s.jpg" alt="" /></a>
+				</div>
+				<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+					<a class="fancybox" href="{{ siteUrl() }}/public/js/plugins/fancybox/demo/1_b.jpg" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="{{ siteUrl() }}/public/js/plugins/fancybox/demo/1_s.jpg" alt="" /></a>
+				</div>
+				<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+					<a class="fancybox" href="{{ siteUrl() }}/public/js/plugins/fancybox/demo/1_b.jpg" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="{{ siteUrl() }}/public/js/plugins/fancybox/demo/1_s.jpg" alt="" /></a>
+				</div>
+				<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+					<a class="fancybox" href="{{ siteUrl() }}/public/js/plugins/fancybox/demo/1_b.jpg" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="{{ siteUrl() }}/public/js/plugins/fancybox/demo/1_s.jpg" alt="" /></a>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+{% endblock %}

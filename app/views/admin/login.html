@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>Login | Prefeitura Municipal de Coqueiral MG</title>
+
+	<!-- [css] bootstrap -->
+	<link rel="stylesheet" type="text/css" href="{{ siteUrl() }}/vendor/twitter/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="{{ siteUrl() }}/vendor/twitter/bootstrap/dist/css/bootstrap-theme.min.css" />
+	<link rel="stylesheet" type="text/css" href="{{ siteUrl() }}/public/css/login.css" />
+</head>
+<body>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">		
+				
+				<form class="form-signin" role="form" action="/admin/logar" method="post">
+		            <h2 class="form-signin-heading">Painel de Controle</h2>
+		            <h4 class="form-signin-heading">Prefeitura de Coqueiral MG</h4>
+		            <input type="text" name="login" class="form-control" id="login" placeholder="Login ou email" required autofocus />
+		            <input type="password" name="senha" class="form-control" id="senha" placeholder="Senha" required />
+		            <!--<label class="checkbox">
+		                <input type="checkbox" name="lembrar" value="1"> Lembrar-me
+		            </label>-->
+		            <button id="btn-entrar" class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+		            <div id="mensagem"></div>
+		        </form>
+
+		    </div>
+		</div>
+	</div>
+
+	<!-- [js] jquery e boostrap -->
+	<script type="text/javascript" src="{{ siteUrl() }}/public/js/jquery/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="{{ siteUrl() }}/vendor/twitter/bootstrap/dist/js/bootstrap.min.js"></script>
+
+	<!-- [js] geral -->
+	<script type="text/javascript" src="{{ siteUrl() }}/public/js/script/config.js"></script>
+	<script type="text/javascript" src="{{ siteUrl() }}/public/js/script/login.js"></script>
+
+</body>
+</html>

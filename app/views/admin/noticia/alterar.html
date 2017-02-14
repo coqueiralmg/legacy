@@ -1,0 +1,106 @@
+{% extends "./admin/layout.html" %}
+
+{% block content %}
+
+	<h1>Alterar Notícia</h1>
+
+
+	<form method="post" action="/admin/painel/noticia/alterar" enctype="multipart/form-data">
+
+		<input type="hidden" name="_METHOD" value="PUT"/>
+		<input type="hidden" name="post-id" value="{{ noticia.getPost().getId() }}" />
+	  	<input type="hidden" name="noticia-id" value="{{ noticia.getId() }}" />
+
+		<div role="tabpanel">
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs" role="tablist">
+				<li role="presentation" class="active"><a href="#post" aria-controls="post" role="tab" data-toggle="tab">Dados do Post</a></li>
+				<li role="presentation"><a href="#noticia" aria-controls="noticia" role="tab" data-toggle="tab">Dados da Notícia</a></li>
+			</ul>
+
+			<!-- Tab panes -->
+			<div class="tab-content">
+
+				<div role="tabpanel" class="tab-pane active" id="post">
+					
+					<br />
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<div class="form-group">
+								<label for="exampleInputEmail1">Título</label>
+								<input type="text" name="post-titulo" maxlength="100" value="{{ dados is defined ? dados["post-titulo"] : noticia.getPost().getTitulo() }}" class="form-control" id="exampleInputEmail1" placeholder="Insira o título">
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+							<div class="form-group">
+								<label for="exampleInputEmail1">Destaque</label>
+								<select name="post-destaque" class="form-control">
+									{% if dados is defined %}
+										<option value="0" {{ (dados["post-destaque"] == 0) ? "selected" : "" }}>Não</option>
+										<option value="1" {{ (dados["post-destaque"] == 1) ? "selected" : "" }}>Sim</option>
+									{% else %}
+										<option value="0" {{ (noticia.getPost().getDestaque() == 0) ? "selected" : "" }}>Não</option>
+										<option value="1" {{ (noticia.getPost().getDestaque() == 1) ? "selected" : "" }}>Sim</option>
+									{% endif %}
+								</select>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+							<div class="form-group">
+								<label for="exampleInputEmail1">Ativo</label>
+								<select name="post-ativo" class="form-control">
+									{% if dados is defined %}
+										<option value="0" {{ (dados["post-ativo"] == 0) ? "selected" : "" }}>Não</option>
+										<option value="1" {{ (dados["post-ativo"] == 1) ? "selected" : "" }}>Sim</option>
+									{% else %}
+										<option value="0" {{ (noticia.getPost().getAtivo() == 0) ? "selected" : "" }}>Não</option>
+										<option value="1" {{ (noticia.getPost().getAtivo() == 1) ? "selected" : "" }}>Sim</option>
+									{% endif %}
+								</select>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div role="tabpanel" class="tab-pane" id="noticia">
+					
+					<br />
+					<div class="row">
+						<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+							<img class="img-thumbnail" src="{{ siteUrl() ~ "/" ~ noticia.getFoto() }}" alt="{{ noticia.getPost().getTitulo() }}" title="{{ noticia.getPost().getTitulo() }}" >
+							<br /><br />
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+							<div class="form-group">
+								<label for="exampleInputEmail1">Foto Destaque</label>
+								<input type="file" name="noticia-foto" id="exampleInputFile">
+	    						<p class="help-block">Imagem .jpg ou .png</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<div class="form-group">
+								<label for="exampleInputEmail1">Texto</label>
+								<!-- tinyMCE mapeia o class editor-texto para gerar o editor e atribui um input hidden com name igual ao id do div (noticia-texto) -->
+								<div id="noticia-texto" class="editor-texto" data-input="#input-noticia-texto">{{ dados is defined ? dados["noticia-texto"] | raw : noticia.getTexto() | raw }}</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+
+		<button type="submit" class="btn btn-primary">Alterar</button>
+		<a href="/admin/painel/noticia" class="btn btn-default" id="btn-cancelar">Cancelar</a>
+	</form>
+
+	{% if erro is defined %}
+		<br />
+		<div class="alert alert-danger" role="alert">{{ erro | raw }}</div>
+	{% endif %}
+
+{% endblock %}

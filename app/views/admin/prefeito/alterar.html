@@ -1,0 +1,185 @@
+{% extends "./admin/layout.html" %}
+
+{% block content %}
+
+	<h1>Alterar Prefeito</h1>
+
+	<form method="post" action="/admin/painel/prefeito/alterar" enctype="multipart/form-data">
+
+	<input type="hidden" name="_METHOD" value="PUT"/>
+	<input type="hidden" name="prefeito-id" value="{{ prefeito.getId() }}" />
+	<input type="hidden" name="usuario-id" value="{{ prefeito.getUsuario().getId() }}" />
+	<input type="hidden" name="pessoa-id" value="{{ prefeito.getUsuario().getPessoa().getId() }}" />
+
+	<div role="tabpanel">
+		<!-- Nav tabs -->
+		<ul class="nav nav-tabs" role="tablist">
+			<li role="presentation" class="active"><a href="#prefeito" aria-controls="prefeito" role="tab" data-toggle="tab">Dados Prefeito</a></li>
+			<li role="presentation"><a href="#usuario" aria-controls="usuario" role="tab" data-toggle="tab">Dados de Usuário</a></li>
+			<li role="presentation"><a href="#pessoa" aria-controls="pessoa" role="tab" data-toggle="tab">Dados Pessoais</a></li>
+		</ul>
+
+		<!-- Tab panes -->
+		<div class="tab-content">
+
+			<div role="tabpanel" class="tab-pane active" id="prefeito">
+				
+				<br />
+				<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+					<img class="img-thumbnail" src="{{ siteUrl() ~ "/" ~ prefeito.getFoto() }}" alt="{{ prefeito.getUsuario().getPessoa().getNome() }}" title="{{ prefeito.getUsuario().getPessoa().getNome() }}" >
+				</div>
+				<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+					<div class="row">
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+							<div class="form-group">
+								<label for="exampleInputEmail1">Partido</label>
+								<select name="prefeito-partido" class="form-control">
+									{% if partidos | length > 0 %}
+										{% for partido in partidos %}
+											{% set selected = "" %}
+											{% if dados is defined and dados["prefeito-partido"] == partido.getId() or prefeito.getPartido().getId() == partido.getId() %}
+												{% set selected = "selected" %}
+											{% endif %}
+											<option {{ selected }} value="{{ partido.getId() }}">{{ partido.getSigla() }} - {{ partido.getNome() }}</option>
+										{% endfor %}
+									{% else %}
+										<option value="">Cadastre um partido</option>
+									{% endif %}
+								</select>							
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+							<div class="form-group">
+								<label for="exampleInputEmail1">Tipo</label>
+								<select name="prefeito-tipo" class="form-control">
+									{% if tiposPrefeito | length > 0 %}
+										{% for tipoPrefeito in tiposPrefeito %}
+											{% set selected = "" %}
+											{% if dados is defined and dados["prefeito-tipo"] == tipoPrefeito.getId() or prefeito.getTipo().getId() == tipoPrefeito.getId() %}
+												{% set selected = "selected" %}
+											{% endif %}
+											<option {{ selected }} value="{{ tipoPrefeito.getId() }}">{{ tipoPrefeito.getDescricao() }}</option>
+										{% endfor %}
+									{% else %}
+										<option value="">Cadastre um tipo de prefeito</option>
+									{% endif %}
+								</select>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+							<div class="form-group">
+								<label for="exampleInputEmail1">Foto</label>
+								<input type="file" name="prefeito-foto" id="exampleInputFile">
+	    						<p class="help-block">Imagem .jpg ou .png. (187 x 187 ou maior)</p>
+							</div>						    
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+							<div class="form-group">
+								<label for="exampleInputEmail1">Sobre</label>
+								<textarea name="prefeito-sobre" class="form-control" placeholder="Sobre o prefeito" cols="30" rows="5">{{ dados is defined ? dados["prefeito-sobre"] : prefeito.getSobre() }}</textarea>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+							<div class="form-group">
+								<label for="exampleInputEmail1">Falecimento</label>
+								<input type="text" name="prefeito-falecimento" value="{{ dados is defined ? dados["prefeito-falecimento"] : (prefeito.getFalecimento() != null) ? prefeito.getFalecimento() | date("d/m/Y") : "" }}" class="form-control date" id="exampleInputEmail1" placeholder="Entre com a data de falecimento se for o caso">
+							</div>
+						</div>
+					</div>
+					<br />
+				</div>
+
+			</div>
+
+			<div role="tabpanel" class="tab-pane" id="usuario">
+				
+				<br />
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+						<div class="form-group">
+							<label for="exampleInputEmail1">Usuário</label>
+							<input type="text" name="usuario-usuario" maxlength="30" value="{{ dados is defined ? dados["usuario-usuario"] : prefeito.getUsuario().getUsuario() }}" class="form-control" id="exampleInputEmail1" placeholder="Insira um nickname, ex:(fulanotal)">
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+						<div class="form-group">
+							<label for="exampleInputEmail1">Email</label>
+							<input type="email" name="usuario-email" maxlength="50" value="{{ dados is defined ? dados["usuario-email"] : prefeito.getUsuario().getEmail() }}" class="form-control" id="exampleInputEmail1" placeholder="Insira o email">
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+						<div class="form-group">
+							<label for="exampleInputEmail1">Senha</label>
+							<input type="password" name="usuario-senha" maxlength="50" value="{{ dados is defined ? dados["usuario-senha"] : prefeito.getUsuario().getSenha() }}" class="form-control" id="exampleInputEmail1" placeholder="Insira a senha">
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+							<div class="form-group">
+								<label for="exampleInputEmail1">Ativo</label>
+								<select name="usuario-ativo" class="form-control">
+									{% if dados is defined %}
+										<option value="0" {{ (dados["usuario-ativo"] == 0) ? "selected" : "" }}>Não</option>
+										<option value="1" {{ (dados["usuario-ativo"] == 1) ? "selected" : "" }}>Sim</option>
+									{% else %}
+										<option value="0" {{ (prefeito.getUsuario().getAtivo() == 0) ? "selected" : "" }}>Não</option>
+										<option value="1" {{ (prefeito.getUsuario().getAtivo() == 1) ? "selected" : "" }}>Sim</option>
+									{% endif %}
+								</select>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+							<div class="form-group">
+								<label for="exampleInputEmail1">Nível de acesso</label>
+								<select name="usuario-nivel" class="form-control">
+									{% if dados is defined %}
+										<option value="1" {{ (dados["usuario-nivel"] == 1) ? "selected" : "" }}>Normal</option>
+										<option value="2" {{ (dados["usuario-nivel"] == 2) ? "selected" : "" }}>Administrador</option>
+									{% else %}
+										<option value="1" {{ (prefeito.getUsuario().getNivel() == 1) ? "selected" : "" }}>Normal</option>
+										<option value="2" {{ (prefeito.getUsuario().getNivel() == 2) ? "selected" : "" }}>Administrador</option>
+									{% endif %}
+								</select>
+							</div>
+						</div>
+				</div>
+
+			</div>
+			<div role="tabpanel" class="tab-pane" id="pessoa">
+				
+				<br />
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+						<div class="form-group">
+							<label for="exampleInputEmail1">Nome</label>
+							<input type="text" name="pessoa-nome" maxlength="60" value="{{ dados is defined ? dados["pessoa-nome"] : prefeito.getUsuario().getPessoa().getNome() }}" class="form-control" id="exampleInputEmail1" placeholder="Insira o nome">
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+						<div class="form-group">
+							<label for="exampleInputEmail1">Apelido</label>
+							<input type="text" name="pessoa-apelido" maxlength="45" value="{{ dados is defined ? dados["pessoa-apelido"] : prefeito.getUsuario().getPessoa().getApelido() }}" class="form-control" id="exampleInputEmail1" placeholder="Insira o apelido se for o caso">
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+						<div class="form-group">
+							<label for="exampleInputEmail1">Data de nascimento</label>
+							<input type="text" name="pessoa-data-nascimento" value="{{ dados is defined ? dados["pessoa-data-nascimento"] : prefeito.getUsuario().getPessoa().getDatanascimento() | date("d/m/Y") }}" class="form-control date" id="exampleInputEmail1" placeholder="Insira a data de nascimento">
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+		<button type="submit" class="btn btn-primary">Alterar</button>
+		<a href="/admin/painel/prefeito" class="btn btn-default" id="btn-cancelar">Cancelar</a>
+	</form>
+
+	{% if erro is defined %}
+		<br />
+		<div class="alert alert-danger" role="alert">{{ erro | raw }}</div>
+	{% endif %}
+
+{% endblock %}

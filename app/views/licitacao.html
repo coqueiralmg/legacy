@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+	<div id="licitacao" class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+			{% if licitacao != null %}
+			
+				<h1>{{ licitacao.getTitulo() }}</h1>
+				<p>Início: {{ licitacao.getDataInicio() | date("d/m/Y H:i") }} | Término: {{ licitacao.getDataTermino() | date("d/m/Y H:i") }}</p>
+				<div class="fb-like" data-href="{{ siteUrl() ~"/licitacao/"~ gerarSlug(licitacao.getTitulo()) ~"/"~ licitacao.getId() }}" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+				<hr />
+
+				<a href="{{ siteUrl() ~"/"~ licitacao.getEdital() }}" style="color: #009900" target="_blank">ARQUIVO (BAIXAR)</a>
+				
+				{{ licitacao.getDescricao() | raw }}
+
+			{% else %}
+				<p>Publicação não encontrada!</p>
+			{% endif %}
+
+		</div>
+	</div>
+
+{% endblock %}

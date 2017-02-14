@@ -1,0 +1,77 @@
+{% extends "./admin/layout.html" %}
+
+{% block content %}
+
+	<h1>Alterar Legislação</h1>
+
+
+	<form method="post" action="/admin/painel/legislacao/alterar" enctype="multipart/form-data">
+
+		<input type="hidden" name="_METHOD" value="PUT"/>
+	  	<input type="hidden" name="legislacao-id" value="{{ legislacao.getId() }}" />
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+				<div class="form-group">
+					<label for="exampleInputEmail1">Título</label>
+					<input type="text" name="legislacao-titulo" maxlength="100" value="{{ dados is defined ? dados["legislacao-titulo"] : legislacao.getTitulo() }}" class="form-control" id="exampleInputEmail1" placeholder="Insira o título">
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+				<div class="form-group">
+					<label for="exampleInputEmail1">Data</label>
+					<input type="text" name="legislacao-data" value="{{ dados is defined ? dados["legislacao-data"] : legislacao.getData() | date("d/m/Y H:i:s") }}" class="form-control date-hour" id="exampleInputEmail1" placeholder="Insira a data">
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+				<div class="form-group">
+					<label for="exampleInputEmail1">Arquivo</label>
+					<input type="file" name="legislacao-arquivo" id="exampleInputFile">
+					<p class="help-block">Arquivos .pdf, .doc ou .docx</p>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<div class="form-group">
+					<label for="exampleInputEmail1">Descrição</label>
+					<!-- tinyMCE mapeia o class editor-texto para gerar o editor e atribui um input hidden com name igual ao id do div (legislacao-descricao) -->
+					<div id="legislacao-descricao" class="editor-texto">{{ dados is defined ? dados["legislacao-descricao"] | raw : legislacao.getDescricao() | raw }}</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+				<div class="form-group">
+					<label for="exampleInputEmail1">Número do Arquivo</label>
+					<input type="text" name="legislacao-numero" value="{{ dados is defined ? dados["legislacao-numero"] : legislacao.getNumero() }}" class="form-control" id="exampleInputEmail1" placeholder="Insira o número do arquivo">
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+				<div class="form-group">
+					<label for="exampleInputEmail1">Ativo</label>
+					<select name="legislacao-ativo" class="form-control">
+						{% if dados is defined %}
+							<option value="0" {{ (dados["legislacao-ativo"] == 0) ? "selected" : "" }}>Não</option>
+							<option value="1" {{ (dados["legislacao-ativo"] == 1) ? "selected" : "" }}>Sim</option>
+						{% else %}
+							<option value="0" {{ (legislacao.getAtivo() == 0) ? "selected" : "" }}>Não</option>
+							<option value="1" {{ (legislacao.getAtivo() == 1) ? "selected" : "" }}>Sim</option>
+						{% endif %}
+					</select>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+				<h5>Arquivo atual: <a href="{{ siteUrl() ~ "/" ~ legislacao.getArquivo() }}" target="_blank" title="{{ legislacao.getTitulo() }}"><i class="glyphicon glyphicon-paperclip"></i> {{ legislacao.getTitulo() }}</a></h5>
+			</div>
+		</div>
+
+		<button type="submit" class="btn btn-primary">Alterar</button>
+		<a href="/admin/painel/legislacao" class="btn btn-default" id="btn-cancelar">Cancelar</a>
+	</form>
+
+	{% if erro is defined %}
+		<br />
+		<div class="alert alert-danger" role="alert">{{ erro | raw }}</div>
+	{% endif %}
+
+{% endblock %}

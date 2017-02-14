@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+	<div id="noticia" class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+			{% if noticia != null %}
+
+				<h1>{{ noticia.getPost().getTitulo() }}</h1>
+				<p>Autor: {{ noticia.getPost().getAutor().getPessoa().getNome() ~" | Postado: "~ noticia.getPost().getDataPostagem() | date("d/m/Y H:i") }} {{ (noticia.getPost().getDataAlteracao() != null) ? " | Atualizado: " ~ noticia.getPost().getDataAlteracao() | date("d/m/Y H:i") : "" }}</p>
+				<div class="fb-like" data-href="{{ siteUrl() ~"/noticia/"~ gerarSlug(noticia.getPost().getTitulo()) ~"/"~ noticia.getId() }}" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+				<hr />
+
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<img class="float-right img margin-10" src="{{ siteUrl() ~"/"~ noticia.getFoto() }}" alt="{{ noticia.getPost().getTitulo() }}" title="{{ noticia.getPost().getTitulo() }}">
+						{{ noticia.getTexto() | raw }}
+					</div>
+				</div>
+
+				<br />
+				<div class="fb-comments" data-href="{{ siteUrl() ~"/noticia/"~ gerarSlug(noticia.getPost().getTitulo()) ~"/"~ noticia.getId() }}" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
+
+			{% else %}
+				<p>Notícia não encontrada!</p>
+			{% endif %}
+
+		</div>
+	</div>
+
+{% endblock %}

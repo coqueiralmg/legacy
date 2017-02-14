@@ -1,0 +1,91 @@
+{% extends "./admin/layout.html" %}
+
+{% block content %}
+
+	<h1>Alterar Vídeo</h1>
+
+
+	<form method="post" action="/admin/painel/video/alterar">
+
+		<input type="hidden" name="_METHOD" value="PUT"/>
+		<input type="hidden" name="post-id" value="{{ video.getPost().getId() }}" />
+	  	<input type="hidden" name="video-id" value="{{ video.getId() }}" />
+
+		<div role="tabpanel">
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs" role="tablist">
+				<li role="presentation" class="active"><a href="#post" aria-controls="post" role="tab" data-toggle="tab">Dados do Post</a></li>
+				<li role="presentation"><a href="#video" aria-controls="video" role="tab" data-toggle="tab">Dados do Vídeo</a></li>
+			</ul>
+
+			<!-- Tab panes -->
+			<div class="tab-content">
+
+				<div role="tabpanel" class="tab-pane active" id="post">
+					
+					<br />
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<div class="form-group">
+								<label for="exampleInputEmail1">Título</label>
+								<input type="text" name="post-titulo" maxlength="100" value="{{ dados is defined ? dados["post-titulo"] : video.getPost().getTitulo() }}" class="form-control" id="exampleInputEmail1" placeholder="Insira o título">
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+							<div class="form-group">
+								<label for="exampleInputEmail1">Destaque</label>
+								<select name="post-destaque" class="form-control">
+									{% if dados is defined %}
+										<option value="0" {{ (dados["post-destaque"] == 0) ? "selected" : "" }}>Não</option>
+										<option value="1" {{ (dados["post-destaque"] == 1) ? "selected" : "" }}>Sim</option>
+									{% else %}
+										<option value="0" {{ (video.getPost().getDestaque() == 0) ? "selected" : "" }}>Não</option>
+										<option value="1" {{ (video.getPost().getDestaque() == 1) ? "selected" : "" }}>Sim</option>
+									{% endif %}
+								</select>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+							<div class="form-group">
+								<label for="exampleInputEmail1">Ativo</label>
+								<select name="post-ativo" class="form-control">
+									{% if dados is defined %}
+										<option value="0" {{ (dados["post-ativo"] == 0) ? "selected" : "" }}>Não</option>
+										<option value="1" {{ (dados["post-ativo"] == 1) ? "selected" : "" }}>Sim</option>
+									{% else %}
+										<option value="0" {{ (video.getPost().getAtivo() == 0) ? "selected" : "" }}>Não</option>
+										<option value="1" {{ (video.getPost().getAtivo() == 1) ? "selected" : "" }}>Sim</option>
+									{% endif %}
+								</select>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div role="tabpanel" class="tab-pane" id="video">
+					
+					<br />
+					<div class="row">
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+							<div class="form-group">
+								<label for="exampleInputEmail1">Vídeo (Url)</label>
+								<input type="text" name="video-video" maxlength="100" value="{{ dados is defined ? dados["video-video"] : video.getVideo() }}" class="form-control" id="exampleInputEmail1" placeholder="Insira a url do vídeo">
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+
+		<button type="submit" class="btn btn-primary">Alterar</button>
+		<a href="/admin/painel/video" class="btn btn-default" id="btn-cancelar">Cancelar</a>
+	</form>
+
+	{% if erro is defined %}
+		<br />
+		<div class="alert alert-danger" role="alert">{{ erro | raw }}</div>
+	{% endif %}
+
+{% endblock %}

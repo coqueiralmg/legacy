@@ -1,0 +1,94 @@
+{% extends "./admin/layout.html" %}
+
+{% block content %}
+
+	<h1>Nova Notícia</h1>
+
+
+	<form method="post" action="/admin/painel/noticia/novo" enctype="multipart/form-data">
+
+	<div role="tabpanel">
+		<!-- Nav tabs -->
+		<ul class="nav nav-tabs" role="tablist">
+			<li role="presentation" class="active"><a href="#post" aria-controls="post" role="tab" data-toggle="tab">Dados do Post</a></li>
+			<li role="presentation"><a href="#noticia" aria-controls="noticia" role="tab" data-toggle="tab">Dados da Notícia</a></li>
+		</ul>
+
+		<!-- Tab panes -->
+		<div class="tab-content">
+
+			<div role="tabpanel" class="tab-pane active" id="post">
+				
+				<br />
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<div class="form-group">
+							<label for="exampleInputEmail1">Título</label>
+							<input type="text" name="post-titulo" maxlength="100" value="{{ dados is defined ? dados["post-titulo"] : "" }}" class="form-control" id="exampleInputEmail1" placeholder="Insira o título">
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+						<div class="form-group">
+							<label for="exampleInputEmail1">Data Postagem</label>
+							<input type="text" name="post-data-postagem" value="{{ dados is defined ? dados["post-data-postagem"] : "" }}" class="form-control date-hour" id="exampleInputEmail1" placeholder="Insira a data, deixar em branco para preencher automaticamente">
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+						<div class="form-group">
+							<label for="exampleInputEmail1">Destaque</label>
+							<select name="post-destaque" class="form-control">
+								<option value="0" {{ (dados is defined and dados["post-destaque"] == 0) ? "selected" : "" }}>Não</option>
+								<option value="1" {{ (dados is defined and dados["post-destaque"] == 1) ? "selected" : "" }}>Sim</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+						<div class="form-group">
+							<label for="exampleInputEmail1">Ativo</label>
+							<select name="post-ativo" class="form-control">
+								<option value="0" {{ (dados is defined and dados["post-ativo"] == 0) ? "selected" : "" }}>Não</option>
+								<option value="1" {{ (dados is defined and dados["post-ativo"] == 1) ? "selected" : "" }}>Sim</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div role="tabpanel" class="tab-pane" id="noticia">
+				
+				<br />
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+						<div class="form-group">
+							<label for="exampleInputEmail1">Foto Destaque</label>
+							<input type="file" name="noticia-foto" id="exampleInputFile">
+    						<p class="help-block">Imagem .jpg ou .png</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<div class="form-group">
+							<label for="exampleInputEmail1">Texto</label>
+							<!-- tinyMCE mapeia o class editor-texto para gerar o editor e atribui um input hidden com name igual ao id do div (noticia-texto) -->
+							<div id="noticia-texto" class="editor-texto" data-input="#input-noticia-texto">{{ dados is defined ? dados["noticia-texto"] | raw : "" }}</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+		<button type="submit" class="btn btn-primary">Cadastrar</button>
+		<a href="/admin/painel/noticia" class="btn btn-default" id="btn-cancelar">Cancelar</a>
+	</form>
+
+	{% if erro is defined %}
+		<br />
+		<div class="alert alert-danger" role="alert">{{ erro | raw }}</div>
+	{% endif %}
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{
+	"name": "Câmara Municipal de Pirapora",
+	"description": "Site e sistema da Câmara Municipal de Pirapora",
+	"require": {
+		"slim/slim": "2.*",
+		"twig/twig": "1.*@dev",
+		"twitter/bootstrap": "3.3.4",
+		"phpmailer/phpmailer": "dev-master",
+		"smottt/wideimage": "dev-master"
+	},
+	"autoload": {
+		"psr-4":{
+			"app\\classes\\": "app/classes",
+			"app\\interfaces\\": "app/interfaces",
+			"app\\models\\": "app/models"
+		}
+	}
+}

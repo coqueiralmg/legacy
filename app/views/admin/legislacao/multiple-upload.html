@@ -1,0 +1,28 @@
+{% extends "./admin/layout.html" %}
+
+{% block content %}
+
+	<h1>Upload Múltiplo de Legislações</h1>
+
+
+	<form method="post" action="/admin/painel/legislacao/multiple-upload" enctype="multipart/form-data">
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+				<div class="form-group">
+					<label for="exampleInputEmail1">Selecione todos os arquivos de uma vez:</label>
+					<input type="file" required multiple name="legislacao-arquivos[]" />
+				</div>
+			</div>
+		</div>
+
+		<button type="submit" class="btn btn-primary">Subir Arquivos</button>
+		<a href="/admin/painel/legislacao" class="btn btn-default" id="btn-cancelar">Cancelar</a>
+	</form>
+
+	{% if mensagem is defined %}
+		<br />
+		<div class="alert alert-info" role="alert">{{ mensagem | raw }}</div>
+	{% endif %}
+
+{% endblock %}

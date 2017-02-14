@@ -1,0 +1,174 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+	<div id="home" class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+
+			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+				
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<div class="visible-xs-block"><br /></div>
+						<div class="fb-page" data-href="https://www.facebook.com/prefeituradecoqueiral" data-tabs="timeline" data-height="800" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/prefeituradecoqueiral" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/prefeituradecoqueiral">Prefeitura Municipal de Coqueiral</a></blockquote></div>
+					</div>
+				</div>
+
+			</div>
+
+
+			<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+
+				<div id="banner" class="row row-banner">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<div class="visible-xs-block"><br /></div>
+						<div class="camera_wrap" id="camera-wrap">
+						    {% if banners | length > 0 %}
+						     	{% for banner in banners %}
+						     		<div data-src="{{ siteUrl() ~ "/" ~ banner.getBanner() }}">
+						     			<div class="camera_caption fadeIn">{{ banner.getTitulo() }}</div>
+						     		</div>
+						     	{% endfor %}
+						     {% else %}
+						     	<div data-src="{{ siteUrl() }}/public/img/banner-demo.jpg">
+						     		<div class="camera_caption fadeFromBottom">
+					                    Você faz a <em>Câmara...</em>
+					                </div>
+						     	</div>
+						     	<div data-src="{{ siteUrl() }}/public/img/banner-demo.jpg">
+						     		<div class="camera_caption fadeFromBottom">
+					                    Você faz a <em>Câmara...</em>
+					                </div>
+						     	</div>
+						     {% endif %}
+						</div>
+					</div>
+				</div>
+
+				<div id="destaques" class="row">
+					
+					<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+						<div class="row">
+
+							<!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<div class="head visible-sm visible-md visible-lg">
+									<div class="arrow-left"></div>
+									<div class="center center-middle-3">
+										<h1>DESTAQUE</h1>
+									</div>
+									<div class="arrow-right"></div>
+								</div>
+								<div class="head-xs seta-direita visible-xs">
+									<h1>DESTAQUE</h1>
+								</div>
+							</div>-->
+
+							<div id="frame" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+								<div id="thumbs" class="row">
+
+									{% if destaques | length > 0 %}	
+										{% for destaque in destaques %}								
+						
+											<div id="thumb-destaque" class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+												<a href="{{ destaque.getLink() }}" target="_blank">
+													<div><img src="{{ siteUrl() ~"/"~ destaque.getFoto() }}" alt="{{ destaque.getTitulo() }}"></div>
+													<h4>{{ cortarTexto(destaque.getTitulo(), 18, true) }}</h4>
+												</a>
+											</div>
+
+										{% endfor  %}
+									{% else %}
+										<p>Nenhum destaque no momento!</p>
+									{% endif %}
+
+								</div>
+								
+							</div>
+
+						</div>
+					</div>
+
+					<div id="clima" class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+						<div class="row">
+
+							<!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<div class="head visible-sm visible-md visible-lg">
+									<div class="arrow-left"></div>
+									<div class="center center-middle-2">
+										<h1>CLIMA TEMPO</h1>
+									</div>
+									<div class="arrow-right"></div>
+								</div>
+								<div class="head-xs seta-direita visible-xs">
+									<h1>CLIMA TEMPO</h1>
+								</div>
+							</div>-->
+
+							<div id="frame" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+								<div class="row">
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+										<div id="left">
+											<div class="top"></div>
+											<div class="sub-top"></div>
+											<div class="body"></div>
+											<div class="footer"></div>
+										</div>
+										<iframe class="center-block" src="http://selos.climatempo.com.br/selos/MostraSelo.php?CODCIDADE=3680&SKIN=azul" marginheight="0" marginwidth="0" scrolling="no" frameborder="0" height="170" width="150"></iframe>
+										<div id="right">
+											<div class="top"></div>
+											<div class="sub-top"></div>
+											<div class="body"></div>
+											<div class="footer"></div>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+
+				<div id="noticias" class="row">
+					
+					<!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<div class="head visible-sm visible-md visible-lg">
+							<div class="arrow-left"></div>
+							<div class="center center-middle">
+								<h1>NOTÍCIAS</h1>
+							</div>
+							<div class="arrow-right"></div>
+						</div>
+						<div class="head-xs seta-direita visible-xs">
+							<h1>NOTÍCIAS</h1>
+						</div>
+					</div>-->
+
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<div class="noticia-container">
+							{% if noticia != null %}
+								<div class="noticia">
+									<img class="img-responsive" src="{{ siteUrl() ~"/"~ noticia.getFoto() | replace({"large": "small"}) }}" alt="{{ noticia.getPost().getTitulo() }}" title="{{ noticia.getPost().getTitulo() }}">
+									<h2>{{ noticia.getPost().getTitulo() | upper }}</h2>
+									{{ cortarTexto(noticia.getTexto(), 650, true, true) |  raw }}
+								</div>
+								<a class="pull-right" href="/noticia/{{ gerarSlug(noticia.getPost().getTitulo()) ~"/"~ noticia.getId() }}">Leia mais</a>
+							{% else %}
+								<p>Nenhuma notícia disponível no momento!</p>
+							{% endif %}
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+{% endblock %}

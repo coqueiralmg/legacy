@@ -1,0 +1,65 @@
+{% extends "./admin/layout.html" %}
+
+{% block content %}
+
+	<h1>Alterar Destaque</h1>
+
+
+	<form method="post" action="/admin/painel/destaque/alterar" enctype="multipart/form-data">
+
+		<input type="hidden" name="_METHOD" value="PUT"/>
+		<input type="hidden" name="destaque-id" value="{{ destaque.getId() }}" />
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+				<div class="form-group">
+					<label for="exampleInputEmail1">Título</label>
+					<input type="text" name="destaque-titulo" maxlength="100" value="{{ dados is defined ? dados["destaque-titulo"] : destaque.getTitulo() }}" class="form-control" id="exampleInputEmail1" placeholder="Insira o título">
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+				<div class="form-group">
+					<label for="exampleInputEmail1">Link</label>
+					<input type="text" name="destaque-link" maxlength="200" value="{{ dados is defined ? dados["destaque-link"] : destaque.getLink() }}" class="form-control" id="exampleInputEmail1" placeholder="Cole ou digite o link">
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+				<div class="form-group">
+					<label for="exampleInputEmail1">Ativo</label>
+					<select name="destaque-ativo" class="form-control">
+						{% if dados is defined %}
+							<option value="0" {{ (dados["destaque-ativo"] == 0) ? "selected" : "" }}>Não</option>
+							<option value="1" {{ (dados["destaque-ativo"] == 1) ? "selected" : "" }}>Sim</option>
+						{% else %}
+							<option value="0" {{ (destaque.getAtivo() == 0) ? "selected" : "" }}>Não</option>
+							<option value="1" {{ (destaque.getAtivo() == 1) ? "selected" : "" }}>Sim</option>
+						{% endif %}
+					</select>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+				<img class="img-thumbnail" src="{{ siteUrl() ~ "/" ~ destaque.getFoto() }}" alt="{{ destaque.getTitulo() }}" title="{{ destaque.getTitulo() }}" >
+				<br /><br />
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+				<div class="form-group">
+					<label for="exampleInputEmail1">Foto Destaque</label>
+					<input type="file" name="destaque-foto" id="exampleInputFile">
+					<p class="help-block">Imagem .jpg ou .png</p>
+				</div>
+			</div>
+		</div>
+
+		<button type="submit" class="btn btn-primary">Alterar</button>
+		<a href="/admin/painel/destaque" class="btn btn-default" id="btn-cancelar">Cancelar</a>
+	</form>
+
+	{% if erro is defined %}
+		<br />
+		<div class="alert alert-danger" role="alert">{{ erro | raw }}</div>
+	{% endif %}
+
+{% endblock %}
