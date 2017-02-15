@@ -36,6 +36,12 @@ $instanceOf = new \Twig_SimpleFunction("instanceOf", function($object, $class){
 });
 $twig->addFunction($instanceOf);
 
+$formataData = new \Twig_SimpleFunction("formataData", function($data){
+    return date('d/m/Y', strtotime($data));
+});
+
+$twig->addFunction($formataData);
+
 function siteUrl(){
 	return "http://" . $_SERVER["SERVER_NAME"];
 }
