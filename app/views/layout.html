@@ -3,8 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
     <title>{% block title %}{{ title }}{% endblock %}Prefeitura Municipal de Coqueiral MG</title>
 
@@ -13,12 +14,16 @@
     <!-- [css] optionals css -->
     {% block css %}{% endblock %}
 
-    <!-- [css] grid bootstrap, camera slider e personalizacao -->
-    <link rel="stylesheet" type="text/css" href="{{ siteUrl() }}/public/css/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ siteUrl() }}/public/css/bootstrap/bootstrap-theme.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ siteUrl() }}/public/js/plugins/camera/css/camera.css">
-    <link rel="stylesheet" type="text/css" href="{{ siteUrl() }}/public/js/plugins/SlickNav/dist/slicknav.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ siteUrl() }}/public/css/style.css">
+    <link href="{{ siteUrl() }}/public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ siteUrl() }}/public/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{ siteUrl() }}/public/css/animate.min.css" rel="stylesheet">
+    <link href="{{ siteUrl() }}/public/css/prettyPhoto.css" rel="stylesheet">
+    <link href="{{ siteUrl() }}/public/css/main.css" rel="stylesheet">
+    <link href="{{ siteUrl() }}/public/css/responsive.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
 
     <div id="fb-root"></div>
     <script>
@@ -34,160 +39,101 @@
 
 </head>
 
-<body>
+<body class="homepage">
 
     <!-- navbar -->
-    <header id="top">
-        <div class="container visible-sm-block visible-md-block visible-lg-block" id="faixa-branca">
-            <div class="container">
-                <a href="/" class="pull-left first" style="color: #009900">WWW.COQUEIRAL.MG.GOV.BR</a>
-                <span class="pull-right">ADMINISTRAÇÃO 2017 | 2020</span>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row visible-sm-block visible-md-block visible-lg-block">
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 pull-right">
-                    <div class="fb-page" data-href="https://www.facebook.com/prefeituradecoqueiral" data-width="390" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false">
-                        <blockquote cite="https://www.facebook.com/prefeituradecoqueiral" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/prefeituradecoqueiral">Prefeitura Municipal de Coqueiral</a></blockquote>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="clearfix  visible-xs-block" style="margin-bottom: 60px !important;"></div>
-                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-                    <div id="logo" class="text-center">
-                        <a href="/">
-                            <div class="visible-xs-block">
-                                <img style="margin: 0 auto;" class="img-responsive" src="{{ siteUrl() }}/public/img/logo.png" alt="Prefeitura Municipal de Coqueiral MG" title="Prefeitura Municipal de Coqueiral MG">
-                            </div>
-                            <div class="visible-sm-block visible-md-block visible-lg-block">
-                                <img class="img-responsive" src="{{ siteUrl() }}/public/img/logo.png" alt="Prefeitura Municipal de Coqueiral MG" title="Prefeitura Municipal de Coqueiral MG">
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <!--
-				<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9" id="faixa">
-					<div class="row">
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-							<h1>Prefeitura Municipal de <span>COQUEIRAL MG</span></h1>
-						</div>
-					</div>
-					<img class="img-responsive visible-sm-block visible-md-block visible-lg-block" src="{{ siteUrl() }}/public/img/faixa.png" alt="Prefeitura Municipal de Coqueiral MG" title="Prefeitura Municipal de Coqueiral MG"></a>
-				</div>
-				-->
-                <!--<div class="col-xs-12 col-sm-5 col-md-4 col-ls-4">
-					<div id="logo"><a href="/"><img class="img-responsive" src="{{ siteUrl() }}/public/img/logo.png" alt="Prefeitura Municipal de Coqueiral MG" title="Prefeitura Municipal de Coqueiral MG"></a></div>
-				</div>
-				<div class="col-xs-12 col-sm-7 col-md-8 col-ls-8 visible-sm visible-md visible-lg">
-					<div id="texto"><h1 class="pull-left">DIA A DIA POR VOCÊ</h1><img class="pull-right" src="{{ siteUrl() }}/public/img/arrow-top.png" alt="Seta - Prefeitura Municipal de Coqueiral MG"></div>
-				</div>-->
-            </div>
-        </div>
-        <nav id="menu" class="navbar">
+    <header id="header">
+        <div class="top-bar">
             <div class="container">
                 <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-ls-12">
-                        <ul>
-                            <li><a href="/secretarias">A PREFEITURA</a></li>
-                            <li><a href="#">SALA DE IMPRENSA</a>
-                                <ul>
-                                    <li><a href="/jornal">JORNAL</a></li>
-                                    <li><a href="/noticias">NOTÍCIAS</a></li>
-                                    <li><a href="/videos">VÍDEOS</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <form action="/busca" method="post">
-                                    <input type="text" required minlength="3" name="busca" placeholder="Pesquise aqui" />
-                                    <button type="submit" name="buscar"></button>
+                    <div class="col-sm-6 col-xs-4">
+                        <div class="top-number">
+                            <p><i class="fa fa-phone-square"></i> (35) 3855-1162</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xs-8">
+                        <div class="social">
+                            <ul class="social-share">
+                                <li><a href="https://www.facebook.com/prefeituradecoqueiral" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
+                            <div class="search">
+                                <form role="form">
+                                    <input type="text" class="search-form" autocomplete="off" placeholder="Buscar">
+                                    <i class="fa fa-search"></i>
                                 </form>
-                            </li>
-                        </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </nav>
-        <nav id="sub-menu" class="navbar">
+            <!--/.container-->
+        </div>
+        <!--/.top-bar-->
+
+        <nav class="navbar navbar-inverse" role="banner">
             <div class="container">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-ls-12">
-                        <ul>
-                            <li><a href="/">Página Inicial</a></li>
-                            <li><a href="http://www.transparencia.mg.gov.br/municipios/coqueiral" target="_blank">Transparência</a></li>
-                            <li><a href="/legislacao">Legislação</a></li>
-                            <li><a href="/licitacoes">Licitações</a></li>
-                            <li><a href="/fale-conosco">Fale com a Prefeitura</a></li>
-                        </ul>
-                    </div>
+                <div class="navbar-header">
+                    <button type="button" title="Clique neste botão para acessar o menu" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Clique neste botão para acessar o menu</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/"><img class="img-responsive" src="{{ siteUrl() }}/public/img/logotipo.png" alt="logo"></a>
+                </div>
+
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <!--
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">A Cidade <i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="historico.html">Histórico</a></li>
+                                <li><a href="perfil.html">Dados Gerais</a></li>
+                                <li><a href="localizacao.html">Localização</a></li>
+                                <li><a href="turismo.html">Pontos Turísticos</a></li>
+                                <li><a href="prefeitura.html">A Prefeitura</a></li>
+                                <li><a href="prefeito.html">O Prefeito</a></li>
+                                <li><a href="simbolos.html">Símbolos Oficiais</a></li>
+                            </ul>
+                        </li>
+                        -->
+                        <li><a href="http://www.transparencia.mg.gov.br/municipios/coqueiral" target="_blank">Transparência</a></li>
+                        <li><a href="/legislacao">Legislação</a></li>
+                        <li><a href="/licitacoes">Licitações</a></li>
+                        <li><a href="/noticias">Notícias</a></li>
+                        <li><a href="/fale-conosco">Fale com a Prefeitura</a></li>
+                    </ul>
                 </div>
             </div>
+            <!--/.container-->
         </nav>
-        <ul class="slick-nav">
-            <li><a href="/prefeitura">A PREFEITURA</a></li>
-            <li><a href="/secretarias">SECRETARIAS</a></li>
-            <li><a href="/noticias">NOTÍCIAS</a></li>
-            <li><a href="/sala-de-imprensa">SALA DE IMPRENSA</a></li>
-            <li>
-                <form action="/busca" method="post">
-                    <input type="text" required minlength="3" name="busca" placeholder="Pesquise aqui" />
-                    <button type="submit" name="buscar"></button>
-                </form>
-            </li>
-            <li><a href="/">Página Inicial</a></li>
-            <li><a href="/transparencia">Transparência</a></li>
-            <li><a href="/legislacao">Legislação</a></li>
-            <li><a href="/licitacoes">Licitações</a></li>
-            <li><a href="/fale-conosco">Fale com a Prefeitura</a></li>
-        </ul>
+        <!--/nav-->
+
     </header>
 
     <!-- content -->
-    <div id="container" class="container">
-        {% block content %}{% endblock %}
-    </div>
 
-    <!-- footer -->
-    <footer class="footer">
+    {% block content %}{% endblock %}
 
-        <!--<section id="secretarias">
-			<div class="container">
-
-				<div class="row">
-					<div id="fale-com-secretaria" class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-						<div><img src="{{ siteUrl() }}/public/img/arrow-light-blue.png"><span>FALE COM AS SECRETARIAS</span></div>
-					</div>
-					<div id="fale-com-secretaria" class="col-xs-12 col-sm-8 col-md-8 col-lg-8 visible-sm visible-md visible-lg">
-						<h2>Sugestões, reclamações, reivindicações, opiniões, dúvidas e solicitações.</h2>
-					</div>
-				</div>	
-
-				<div class="row">
-					<div id="lista-secretarias" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						{% if secretarias | length > 0 %}
-							<ul>
-								{% for secretaria in secretarias %}
-									<li><a href="/fale-com-secretaria/{{ gerarSlug(secretaria.getNome()) ~ "/" ~ secretaria.getId() }}"><span>{{ cortarTexto(secretaria.getNome(), 17) }}</span><img src="{{ siteUrl() }}/{{ secretaria.getFoto() }}" alt="{{ secretaria.getNome() }}" title="{{ secretaria.getNome() }}"></a></li>
-								{% endfor %}
-							</ul>
-						{% else %}
-							<h3 class="color-white">Nenhuma secretaria disponível no momento!</h3>
-						{% endif %}
-					</div>
-				</div>
-
-			</div>
-		</section>-->
-
-        <section id="bottom">
-            <div class="container">
-                <div class="row">
-                    <div id="logo" class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
-                        <a id="logo-footer" href="/"><img src="{{ siteUrl() }}/public/img/logo-footer.png" alt="Prefeitura Municipal de Coqueiral MG" title="Prefeitura Municipal de Coqueiral MG" /></a>
+    <section id="bottom">
+        <div class="container wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <a href="/">
+                            <img src="{{ siteUrl() }}/public/img/logo_footer.png" class="img-responsive" />
+                        </a>
                     </div>
+                </div>
+                <div class="col-md-2 col-sm-6">
+                </div>
 
-                    <div id="secretarias" class="col-xs-4 col-sm-4 col-md-3 col-lg-3 visible-sm visible-md visible-lg">
-                        <h2>SECRETARIAS</h2>
+                <div class="col-md-7 col-sm-6">
+                    <div class="widget">
+                        <h3>Secretarias</h3>
 
                         <ul>
                             {% if secretarias | length > 0 %}
@@ -200,31 +146,40 @@
                             <p class="color-white">Nenhuma secretaria disponível!</p>
                             {% endif %}
                         </ul>
-
                     </div>
-
-                    <div id="developer" class="col-xs-6 col-sm-2 col-md-2 col-lg-2 col-md-offset-4 col-lg-offset-4 visible-sm visible-md visible-lg">
-                        <p>Desenvolvido por</p>
-                        <a href="http://www.flymedia.com.br" target="_blank"><img src="{{ siteUrl() }}/public/img/logo-flymedia.png" alt="FlyMedia"></a>
-                    </div>
-
                 </div>
 
-            </div>
-        </section>
 
+            </div>
+        </div>
+    </section>
+    <!--/#bottom-->
+
+    <footer id="footer" class="midnight-blue">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    &copy; 2017 Prefeitura Municipal de Coqueiral. Todos os direitos reservados.
+                </div>
+                <div class="col-sm-6">
+                    <ul class="pull-right">
+                        <li><a href="/">Página Inicial</a></li>
+                        <li><a href="http://www.transparencia.mg.gov.br/municipios/coqueiral" target="_blank">Transparência</a></li>
+                        <li><a href="/legislacao">Legislação</a></li>
+                        <li><a href="/licitacoes">Licitações</a></li>
+                        <li><a href="/fale-conosco">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </footer>
 
-    <!-- [js] jquery e camera slider -->
-    <script type="text/javascript" src="{{ siteUrl() }}/public/js/jquery/jquery-1.7.1.min.js"></script>
-    <script type="text/javascript" src="{{ siteUrl() }}/public/js/plugins/camera/js/jquery.mobile.customized.min.js"></script>
-    <script type="text/javascript" src="{{ siteUrl() }}/public/js/plugins/camera/js/jquery.easing.1.3.js"></script>
-    <script type="text/javascript" src="{{ siteUrl() }}/public/js/plugins/camera/js/camera.min.js"></script>
-    <script type="text/javascript" src="{{ siteUrl() }}/public/js/script/camera-config.js"></script>
-    <script type="text/javascript" src="{{ siteUrl() }}/public/js/plugins/SlickNav/dist/jquery.slicknav.min.js"></script>
-    <script type="text/javascript" src="{{ siteUrl() }}/public/js/script/slick-nav-config.js"></script>
-    <script type="text/javascript" src="{{ siteUrl() }}/public/js/script/config.js"></script>
-    <script type="text/javascript" src="{{ siteUrl() }}/public/js/script/email.js"></script>
+    <script src="{{ siteUrl() }}/public/js/jquery.js"></script>
+    <script src="{{ siteUrl() }}/public/js/bootstrap.min.js"></script>
+    <script src="{{ siteUrl() }}/public/js/jquery.prettyPhoto.js"></script>
+    <script src="{{ siteUrl() }}/public/js/jquery.isotope.min.js"></script>
+    <script src="{{ siteUrl() }}/public/js/main.js"></script>
+    <script src="{{ siteUrl() }}/public/js/wow.min.js"></script>
 
     <!-- [js] optionals js's -->
     {% block js %}{% endblock %}
