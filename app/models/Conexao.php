@@ -4,15 +4,15 @@ namespace app\models;
 use \PDO;
 class Conexao {
 
-	const USERNAME = "root";
-	const PASSWD = "123456";
+	const USERNAME = "coqueiralmg";
+	const PASSWD = "pliniosite";
 	const DBNAME = "coqueiralmg";
 	private static $instance = null;
 
 	private static function criarConexao(){
 		try{
 			if(self::$instance == null){
-				$dsn = "mysql:host=localhost; dbname=" . self::DBNAME;
+				$dsn = "mysql:host=mysql01.coqueiralmg.hospedagemdesites.ws; dbname=" . self::DBNAME;
 				self::$instance = new PDO($dsn, self::USERNAME, self::PASSWD);
 				self::$instance->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 			}
