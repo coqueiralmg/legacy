@@ -12,7 +12,11 @@ $app->get("/", function() use($twig){
 
 	// objeto noticiaDAO
 	$noticiaDAO = new \app\models\NoticiaDAO();
-	$noticia = $noticiaDAO->listar(1, 0)[0];
+	$noticias = $noticiaDAO->listar(3, 0);
+
+	// objeto licitacaoDAO
+	$licitacaoDAO = new \app\models\LicitacaoDAO();
+	$licitacoes = $licitacaoDAO->listar(4, 0);
 
 	// destaques 
 	/*$postDAO = new \app\models\PostDAO();
@@ -24,8 +28,9 @@ $app->get("/", function() use($twig){
 		"title" => "",
 		"banners" => $banners,
 		"secretarias" => $secretarias,
-		"noticia" => $noticia,
-		"destaques" => $destaques
+		"noticias" => $noticias,
+		"destaques" => $destaques,
+		"licitacoes" => $licitacoes
 	);
 
 	$twig->loadTemplate("home.html")->display($dados);
