@@ -47,3 +47,9 @@ $menuAtivo = new \Twig_SimpleFunction("menuAtivo", function($endereco){
 });
 
 $twig->addFunction($menuAtivo);
+
+
+//Funções para BackEnd
+function siteUrl(){
+	return "http://" . $_SERVER["SERVER_NAME"];
+}
