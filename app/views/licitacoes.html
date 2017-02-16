@@ -1,28 +1,37 @@
-{% extends "layout.html" %} {% block content %}
+{% extends "layout.html" %} 
 
-<div id="licitacoes" class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+{% block content %}
 
-        <h1>LICITAÇÕES</h1>
-        <p>Documentos e informações sobre licitações, portarias, contratos e outros.</p>
-        <hr /> {% if licitacoes | length > 0 %}
 
-        <div class="row">
-            {% for licitacao in licitacoes %}
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <a href="/licitacao/{{ gerarSlug(licitacao.getTitulo()) ~" / "~ licitacao.getId() }}">{{ licitacao.getTitulo() | upper }}</a>
-                <p>Início: {{ licitacao.getDataInicio() | date("d/m/Y H:i") }} | Término: {{ licitacao.getDataTermino() | date("d/m/Y H:i") }}</p>
-                <br />
+<section id="legislacao">
+        <div class="container">
+            <div class="center wow fadeInDown">
+                <h2>Publicações</h2>
+                <p class="lead">Documentos e informações sobre licitações, portarias, contratos e outros.</p>
             </div>
-            {% endfor %}
+            <div class="row">
+                {% if licitacoes | length > 0 %}
+                     {% for licitacao in licitacoes %}
+                        <div class="item col-md-12 col-lg-6">
+                            <h3 class="media-heading">{{ licitacao.getTitulo() | upper }}</h3>
+                            <p>Início: {{ licitacao.getDataInicio() | date("d/m/Y H:i") }}</p>
+                            <p>Término: {{ licitacao.getDataTermino() | date("d/m/Y H:i") }}</p>
+                            <a href="/licitacao/{{ gerarSlug(licitacao.getTitulo()) ~" / "~ licitacao.getId() }}" class="btn btn-success">Veja mais</a>
+                        </div>
+                    {% endfor %}
+
+                 {% else %}
+                    <p>Nenhuma licitação disponível!</p>
+                 {% endif %}
+            </div>
+            <div class="row">
+                <center>
+                    <p id="registros">Registros: {{ pagination.getTotalObjects() }}</p>
+                    <div id="paginacao">{{ pagination.getLinks() | raw }}</div>
+                </center>
+            </div>
         </div>
-
-        <p id="registros">Registros: {{ pagination.getTotalObjects() }}</p>
-        {{ pagination.getLinks() | raw }} {% else %}
-        <p>Nenhuma licitação disponível!</p>
-        {% endif %}
-
-    </div>
-</div>
+        <!--/.container-->
+    </section>
 
 {% endblock %}
