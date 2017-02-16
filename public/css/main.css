@@ -190,6 +190,18 @@ body>section {
     line-height: 28px;
 }
 
+@media screen and (max-width: 360px){
+    #header .search {
+        display: none;
+    }
+
+    #header .search {
+        display: none;
+    }
+}
+
+
+
 .top-number {
     color: #fff;
 }
@@ -265,6 +277,7 @@ input.search-form:hover {
 
 .navbar-brand img {
     max-height: 120px;
+    width: 95%;    
 }
 
 .navbar {
@@ -366,10 +379,20 @@ input.search-form:hover {
 }
 
 @media screen and (max-width: 1200px) and (min-width: 768px) {
-    .navbar-header {
+    .navbar-header,
+    .navbar-inverse .navbar-collapse
+    {
         float: inherit;
-        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%
     }
+
+    .navbar-inverse .navbar-collapse {
+        padding-top: 10px;
+    }
+
     .navbar-brand img {
         max-height: 150px;
     }
@@ -2572,6 +2595,17 @@ shortcodes page css
 
 #bottom .widget {
     margin-bottom: 0;
+}
+
+#bottom .widget img{
+    max-height: 450px;
+    
+}
+
+.logo_footer{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 40px;
 }
 
 #footer {

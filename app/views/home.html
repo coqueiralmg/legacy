@@ -105,7 +105,7 @@
     <div class="container">
         <div class="row">
             <div class="features">
-                <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                <div class="col-sm-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                     <a href="#" target="_blank">
                         <a href="/fale-conosco">
                             <div class="feature-wrap">
@@ -118,7 +118,7 @@
                 </div>
                 <!--/.col-md-4-->
 
-                <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                <div class="col-sm-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                     <a href="http://www.transparencia.mg.gov.br/municipios/coqueiral" target="_blank">
                         <div class="feature-wrap">
                             <i class="fa fa-files-o"></i>
@@ -129,7 +129,7 @@
                 </div>
                 <!--/.col-md-4-->
 
-                <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                <div class="col-sm-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                     <a href="/licitacoes">
                         <div class="feature-wrap">
                             <i class="fa fa-archive"></i>
@@ -161,7 +161,7 @@
             {% if noticias | length > 0 %} 
                 {% for noticia in noticias %}
 
-                    <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="col-lg-4 col-md-4 col-sm-4">
                         <div class="fh5co-blog wow fadeInDown">
                             <a href="/noticia/{{ gerarSlug(noticia.getPost().getTitulo()) ~"/"~ noticia.getId() }}"><img class="img-responsive" src="{{ siteUrl()~"/"~noticia.getFoto() | replace({"large ": "small "}) }}" alt="{{ noticia.getPost().getTitulo() }}"></a>
                             <div class="blog-text">
@@ -201,11 +201,11 @@
             <div class="col-sm-12 col-md-12">
                 <div class="media services-wrap wow fadeInDown">
                     <div class="media-body">
-                        <div class="col-md-6">
-                            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprefeituradecoqueiral&tabs=timeline%2C%20events&width=500&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
-                                width="500" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+                        <div class="col-md-5 col-sm-6">
+                            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprefeituradecoqueiral&tabs=timeline%2C%20events&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+                                width="100%" height="600" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-7  col-sm-6">
                             <h3 class="media-heading">Publicações Recentes</h3>
                             <p>Licitações, Portarias, Concursos e Contratos</p>
                             {% if licitacoes | length > 0 %}
