@@ -1,7 +1,7 @@
 $(function(){
 
 	// form pesquisar
-	$('form#pesquisar-legislacao input#btn-pesquisar').on('click', function(e){
+	$('#pesquisar-legislacao #btn-pesquisar').on('click', function(e){
 		e.preventDefault();
 		var busca = $(this).siblings("#pesquisa").val();
 		if(busca !== ''){

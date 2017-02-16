@@ -6,41 +6,43 @@
 
 {% block content %}
 
-	<div id="legislacoes" class="row">
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			
-			<h1>LEGISLAÇÃO</h1>
-			<p>Pesquise e baixe documentos da legislação municipal.</p>
-			<hr />
-
-			<form id="pesquisar-legislacao">
-				<input type="search" name="search" id="pesquisa" placeholder="Digite aqui todo ou parte do nome/número do arquivo que deseja buscar">
-				<input type="submit" name="submit" id="btn-pesquisar" value="">
-			</form>
-
-			{% if legislacoes | length > 0 %}
-
-				<div class="row">
+	<section id="legislacao">
+        <div class="container">
+            <div class="center wow fadeInDown">
+                <h2>Legislação</h2>
+                <p class="lead">Pesquise e baixe documentos da legislação municipal.</p>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <form id="pesquisar-legislacao">
+                        <input id="pesquisa" name="search" type="search" class="form-control busca" placeholder="O que deseja buscar?">
+                        <button type="submit"  id="btn-pesquisar" name="submit" class="btn btn-success"><i class="fa fa-search"></i>&nbsp;Buscar</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+				{% if legislacoes | length > 0 %}
 					{% for legislacao in legislacoes %}
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-							<a href="/legislacao/{{ gerarSlug(legislacao.getTitulo()) ~"/"~ legislacao.getId() }}">{{ legislacao.getTitulo() | upper }}</a>
-							<div class="box">
-								<p>{{ cortarTexto(legislacao.getDescricao(), 350, true, true) }}</p>
-								<p>Data: {{ legislacao.getData() | date("d/m/Y H:i") }} | Número: {{ legislacao.getNumero() }}</p>
-							</div>
-							<br />
+						<div class="item col-md-12 col-lg-6">
+							<h3 class="media-heading">{{ legislacao.getTitulo() | upper }}</h3>
+							<p>{{ cortarTexto(legislacao.getDescricao(), 350, true, true) }}</p>
+							<a href="/legislacao/{{ gerarSlug(legislacao.getTitulo()) ~"/"~ legislacao.getId() }}" class="btn btn-success">Veja mais</a>
 						</div>
+
 					{% endfor %}
-				</div>
-
-				<p id="registros">Registros: {{ pagination.getTotalObjects() }}</p>
-				<div id="paginacao">{{ pagination.getLinks() | raw }}</div>
-
-			{% else %}
-				<p>Nenhuma legislação disponível!</p>
-			{% endif %}
-
-		</div>
-	</div>
+				{% else %}
+					<p>Nenhuma legislação disponível!</p>
+				{% endif %}
+            </div>
+            <div class="row">
+                <center>
+					<p id="registros">Registros: {{ pagination.getTotalObjects() }}</p>
+					<div id="paginacao">{{ pagination.getLinks() | raw }}</div>
+                </center>
+            </div>
+        </div>
+        <!--/.container-->
+    </section>
+    <!--/about-us-->
 
 {% endblock %}

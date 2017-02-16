@@ -724,6 +724,10 @@ input.search-form:hover {
     text-transform: uppercase;
 }
 
+#legislacao .item{
+    min-height: 200px;
+}
+
 @media screen and (max-width: 768px) {
     #secretarias .row div {
         min-height: 150px;
