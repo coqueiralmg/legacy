@@ -42,6 +42,8 @@ $formataData = new \Twig_SimpleFunction("formataData", function($data){
 
 $twig->addFunction($formataData);
 
-function siteUrl(){
-	return "http://" . $_SERVER["SERVER_NAME"];
-}
+$menuAtivo = new \Twig_SimpleFunction("menuAtivo", function($endereco){
+    return ($_SERVER ['REQUEST_URI'] == $endereco) ? "active" : "";
+});
+
+$twig->addFunction($menuAtivo);
