@@ -277,7 +277,7 @@ input.search-form:hover {
 
 .navbar-brand img {
     max-height: 120px;
-    width: 95%;    
+        
 }
 
 .navbar {
@@ -395,6 +395,12 @@ input.search-form:hover {
 
     .navbar-brand img {
         max-height: 150px;
+    }
+}
+
+@media screen and (max-width: 640px){
+    .navbar-brand img {
+        width: 95%;
     }
 }
 
