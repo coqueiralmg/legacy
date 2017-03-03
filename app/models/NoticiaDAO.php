@@ -162,7 +162,7 @@ class NoticiaDAO implements \app\models\interfaces\iPagination {
 			$all = $this->conexao->prepare("SELECT noticia.id, noticia.texto, noticia.foto, noticia.post 
 											FROM {$this->tabela} INNER JOIN post ON {$this->tabela}.post = post.id 
 											WHERE post.ativo=:ativo 
-											ORDER BY noticia.id DESC " . $condition);
+											ORDER BY post.dataPostagem DESC, noticia.id DESC " . $condition);
 			$all->bindValue(":ativo", 1, PDO::PARAM_INT);
 			$all->setFetchMode(PDO::FETCH_CLASS, "\app\models\Noticia");
 			$all->execute();
