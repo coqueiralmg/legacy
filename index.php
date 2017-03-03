@@ -12,6 +12,7 @@ require ROOT . "app/controllers/legislacao.php";
 require ROOT . "app/controllers/busca.php";
 require ROOT . "app/controllers/email.php";
 require ROOT . "app/controllers/jornal.php";
+require ROOT . "app/controllers/especial.php";
 
 // admin
 require ROOT . "app/controllers/admin/login.php";
