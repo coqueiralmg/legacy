@@ -2,41 +2,85 @@
 
 {% block content %}
 
-	<div id="noticias" class="row">
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	 <section id="blog" class="container">
+        <div class="center">
+            <h2>Notícias</h2>
+            <p class="lead">Notícias recentes do município.</p>
+        </div>
+
+        <div class="blog">
+            <div class="row">
 			
-			<h1>NOTÍCIAS</h1>
-			<p>Notícias do legislativo, matérias e de utilidade pública.</p>
-			<hr />
-
-			{% if noticias | length > 0 %}
-
-				<div class="row">
-					{% for noticia in noticias %}
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-							<a href="/noticia/{{ gerarSlug(noticia.getPost().getTitulo()) ~"/"~ noticia.getId() }}">
-								<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-									<img class="img-responsive float-left" src="{{ siteUrl() ~"/"~ noticia.getFoto() | replace({"large": "small"}) }}" alt="{{ noticia.getPost().getTitulo() }}" title="{{ noticia.getPost().getTitulo() }}">
+                <div class="col-md-8">
+					{% if noticias | length > 0 %}
+						{% for noticia in noticias %}
+						<div class="blog-item">
+							<div class="row">
+								<div class="col-xs-12 col-sm-2 text-center">
+									<div class="entry-meta">
+										<span id="publish_date">{{ noticia.getPost().getDataPostagem() | date("d/m/Y") }}</span>
+										<span><i class="fa fa-user"></i> <a href="#">{{ noticia.getPost().getAutor().getPessoa().getNome() }}</a></span>
+									</div>
 								</div>
-								<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
-									<h1>{{ noticia.getPost().getTitulo() | upper }}</h1>
-									<p class="data">Autor: {{ noticia.getPost().getAutor().getPessoa().getNome() }} | Postado: {{ noticia.getPost().getDataPostagem() | date("d/m/Y H:i") }} {{ (noticia.getPost().getDataAlteracao() != null) ? " | Atualizado: " ~ noticia.getPost().getDataAlteracao() | date("d/m/Y H:i") : "" }} | {{ noticia.getPost().getVisualizacoes() }} visualizações</p>
-									<p>{{ cortarTexto(noticia.getTexto(), 450, true, true) | raw }}</p>
+
+								<div class="col-xs-12 col-sm-10 blog-content">
+									<a href="/noticia/{{ gerarSlug(noticia.getPost().getTitulo()) ~"/"~ noticia.getId() }}"><img class="img-responsive img-blog" src="{{ siteUrl() ~"/"~ noticia.getFoto()}}" width="100%" alt="" /></a>
+									<h2><a href="/noticia/{{ gerarSlug(noticia.getPost().getTitulo()) ~"/"~ noticia.getId() }}">{{ noticia.getPost().getTitulo()}}</a></h2>
+									<h3>{{ cortarTexto(noticia.getTexto(), 450, true, true) | raw }}</h3>
+									<a class="btn btn-primary readmore" href="/noticia/{{ gerarSlug(noticia.getPost().getTitulo()) ~"/"~ noticia.getId() }}">Leia mais</a>
 								</div>
-							</a>
-							<hr />
+							</div>
 						</div>
-					{% endfor %}
-				</div>
+						<!--/.blog-item-->
+						{% endfor %}
 
-				<p id="registros">Registros: {{ pagination.getTotalObjects() }}</p>
-				{{ pagination.getLinks() | raw }}
+						{{ pagination.getLinks() | raw }}
+						<!--/.pagination-->
+					{% else %}
+						<p>Nenhuma notícia disponível!</p>
+					{% endif %}
+                </div>
+                <!--/.col-md-8-->
 
-			{% else %}
-				<p>Nenhuma notícia disponível!</p>
-			{% endif %}
 
-		</div>
-	</div>
+                <aside class="col-md-4">
+                    <div class="widget search">
+                        <form role="form">
+                            <input type="text" class="form-control search_box" autocomplete="off" placeholder="Busca aqui">
+                        </form>
+                    </div>
+                    <!--/.search-->
+
+                    <div class="widget categories">
+                        <h3>Facebook</h3>
+                        <div class="row">
+                            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprefeituradecoqueiral&tabs=timeline%2Cevents&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340"
+                                height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+                        </div>
+                    </div>
+                    <!--/.recent comments-->
+
+
+                    <div class="widget categories">
+                        <h3>Categorias</h3>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <ul class="blog_category">
+                                    <li><a href="#">Projetos</a></li>
+                                    <li><a href="#">Saúde</a></li>
+                                    <li><a href="#">Educação</a></li>
+                                    <li><a href="#">Concursos</a></li>
+                                    <li><a href="#">Eventos</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/.categories-->
+
+                </aside>
+            </div>
+            <!--/.row-->
+        </div>
+    </section>
 
 {% endblock %}
