@@ -2,6 +2,36 @@
 
 {% block content %}
 
+	<section id="about-us">
+        <div class="container">
+			{% if legislacao != null %}
+            <div class="center wow fadeInDown">
+                <h2>{{ legislacao.getTitulo() }}</h2>
+                <p class="lead">Data: {{ legislacao.getDataInicio() | date("d/m/Y H:i") }} | Número: {{ legislacao.getNumero() }}</p>
+            </div>
+
+            <div class="wow fadeInDown">
+                <div class="col-md-12">
+                   {{ legislacao.getDescricao() | raw }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-10">
+                </div>
+                <div class="col-md-2">
+                    <a href="{{ siteUrl() ~"/"~ legislacao.getArquivo() }}" target="_blank" class="btn btn-success"><i class="fa fa-download"></i>&nbsp;Download</a>
+                </div>
+            </div>
+
+			{% else %}
+				<p>Legislação não encontrada!</p>
+			{% endif %}
+
+        </div>
+        <!--/.container-->
+    </section>
+	<!--
 	<div id="legislacao" class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
@@ -22,5 +52,5 @@
 
 		</div>
 	</div>
-
+	-->
 {% endblock %}
