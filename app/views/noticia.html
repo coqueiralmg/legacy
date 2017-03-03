@@ -1,7 +1,87 @@
 {% extends "layout.html" %}
 
-{% block content %}
+{% block meta %}
+<link rel="canonical" href="{{ siteUrl() ~"/noticia/"~ gerarSlug(noticia.getPost().getTitulo()) ~"/"~ noticia.getId() }}"/>
+<meta property="og:locale" content="pt_BR"/>
+<meta property="og:type" content="article"/>
+<meta property="article:publisher" content="https://www.facebook.com/prefeituradecoqueiral"/>
+<meta property="og:title" content="{{ noticia.getPost().getTitulo()}} | Prefeitura Municipal de Coqueiral"/>
+<meta property="og:description" content="{{ cortarTexto(noticia.getTexto(), 450, true, true) | raw }}"/>
+<meta property="og:url" content="{{ siteUrl() ~"/noticia/"~ gerarSlug(noticia.getPost().getTitulo()) ~"/"~ noticia.getId() }}"/>
+<meta property="og:site_name" content="Prefeitura Municipal de Coqueiral"/>
+<meta property="og:image" content="{{ siteUrl() ~"/"~ noticia.getFoto() }}"/>
 
+{% endblock %}
+
+{% block content %}
+	<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.8";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+	<section id="blog" class="container">
+        <div class="blog">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="blog-item">
+                        <img class="img-responsive img-blog" src="{{ siteUrl() ~"/"~ noticia.getFoto() }}" width="100%" alt="" />
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-2 text-center">
+                                <div class="entry-meta">
+                                    <span id="publish_date">{{ noticia.getPost().getDataPostagem() | date("d/m/Y") }}</span>
+                                    <span><i class="fa fa-user"></i> <a href="#">{{ noticia.getPost().getAutor().getPessoa().getNome() }}</a></span>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-10 blog-content">
+                                <h2>{{ noticia.getPost().getTitulo()}}</h2>
+                                {{ noticia.getTexto() | raw }}
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--/.blog-item-->
+
+					<!-- Go to www.addthis.com/dashboard to customize your tools --> <div class="addthis_inline_share_toolbox"></div>
+					<br/><br/><br/>
+
+                   <div class="fb-comments" data-href="{{ siteUrl() ~"/noticia/"~ gerarSlug(noticia.getPost().getTitulo()) ~"/"~ noticia.getId() }}" data-numposts="5"></div>
+                </div>
+                <!--/.col-md-8-->
+
+                <aside class="col-md-4">
+                    <div class="widget search">
+                        <form action="/busca" method="post" role="form">
+                            <input type="text" name="busca" class="form-control search_box" autocomplete="off" placeholder="Pesquisar" minlength="3"  onkeypress="this.submit()" required>
+                        </form>
+                    </div>
+                    <!--/.search-->
+
+                    <div class="widget categories">
+                        <h3>Facebook</h3>
+                        <div class="row">
+                            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprefeituradecoqueiral&tabs=timeline%2Cevents&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340"
+                                height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+                        </div>
+                    </div>
+                    <!--/.recent comments-->
+
+
+                </aside>
+
+            </div>
+            <!--/.row-->
+
+        </div>
+        <!--/.blog-->
+
+    </section>
+    <!--/#blog-->
+
+	<!--
 	<div id="noticia" class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
@@ -28,5 +108,5 @@
 
 		</div>
 	</div>
-
+	-->
 {% endblock %}
