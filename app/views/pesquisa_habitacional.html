@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<section id="about-us">
+        <div class="container">
+            <div class="center wow fadeInDown">
+                <h2>Pesquisa de Demanda Habitacional</h2>
+                <p class="lead">A pesquisa acontecerá no período de 03 a 17 de março de 2017 para levantamento de demanda de famílias, com renda máxima R$2.600,00, que desejam participar de programas habitacionais no município de Coqueiral.</p>
+            </div>
+
+            <!-- about us slider -->
+            <div id="about-slider">
+                <div id="carousel-slider" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators visible-xs">
+                        <li data-target="#carousel-slider" data-slide-to="0" class="active"></li>
+                    </ol>
+                    <center>
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <img src="{{ siteUrl() }}/public/img/pesquisa_habitacional.jpg" class="img-responsive" alt="">
+                            </div>
+                        </div>
+                    </center>
+                </div>
+                <!--/#carousel-slider-->
+            </div>
+            <!--/#about-slider-->
+
+
+            <div class="skill-wrap clearfix wow fadeInDown">
+                <div class="col-md-12">
+                    <p>A pesquisa acontecerá no período de 03 a 17 de março de 2017 para levantamento de demanda de famílias, com renda máxima R$2.600,00, que desejam participar de programas habitacionais no município de Coqueiral.</p>
+
+                    <p>Os formulários de pesquisa devem ser impressos, preenchidos e entregues na Prefeitura Municipal (Rua Minas Gerais, 62 – Vila Sônia) no setor de Comunicação, de segunda a sexta, das 7:00h às 16:00h. A proposta é levantar informações que permitam o planejamento de ações por parte da Prefeitura de Coqueiral.</p>
+
+                    <p>Ressaltamos que o preenchimento será gratuito e visa identificar prioritariamente famílias que não sejam proprietárias de imóveis ou que não possuam financiamento de imóveis em qualquer parte do território nacional, bem como residam ou trabalhem no município de Coqueiral há pelos menos 3 anos.</p>
+
+                    <p>É importante dizer que a pesquisa será apenas para levantar demanda habitacional e não representa que o interessado está fazendo alguma inscrição em sorteios ou terá algum privilégio para obter casas.</p>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-10">
+                </div>
+                <div class="col-md-2">
+                    <a href="{{ siteUrl() }}/public/docs/questionario_habitacional.pdf" target="_blank" class="btn btn-success"><i class="fa fa-download"></i>&nbsp;Download</a>
+                </div>
+            </div>
+
+        </div>
+        <!--/.container-->
+   
+
+{% endblock %}
