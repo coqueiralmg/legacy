@@ -31,26 +31,5 @@
         </div>
         <!--/.container-->
     </section>
-	<!--
-	<div id="legislacao" class="row">
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
-			{% if legislacao != null %}
-			
-				<h1>{{ legislacao.getTitulo() }}</h1>
-				<p>Data: {{ legislacao.getDataInicio() | date("d/m/Y H:i") }} | Número: {{ legislacao.getNumero() }}</p>
-				<div class="fb-like" data-href="{{ siteUrl() ~"/legislacao/"~ gerarSlug(legislacao.getTitulo()) ~"/"~ legislacao.getId() }}" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-				<hr />
-
-				<a href="{{ siteUrl() ~"/"~ legislacao.getArquivo() }}" target="_blank">ARQUIVO (BAIXAR)</a>
-				
-				{{ legislacao.getDescricao() | raw }}
-
-			{% else %}
-				<p>Legislação não encontrada!</p>
-			{% endif %}
-
-		</div>
-	</div>
-	-->
+	
 {% endblock %}
