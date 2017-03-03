@@ -4,7 +4,7 @@ $app->get("/noticias(/page/:page(/limit/:limit))", function($page=null, $limit=n
 
 	// pega pagina atual correta e limite
 	$pagina = ($page != null) ? $page : 1;
-	$limite = ($limit != null) ? $limit : 10;
+	$limite = ($limit != null) ? $limit : 5;
 
 	// objeto secretariaDAO
 	$secretariaDAO = new \app\models\SecretariaDAO();
