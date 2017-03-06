@@ -67,8 +67,17 @@ $app->post("/fale-prefeitura/enviar", function() use($app){
 		$email->setAssunto($post["assunto"]);
 		$email->setMensagem($post["mensagem"]);
 
-		echo ($email->enviarContato()) ? json_encode('enviou') : json_encode('nenviou');
+		if($email->enviarContato()){
+			$app->redirect("/fale-sucesso");
+		} else {
+			header('Content-type: application/json');
 
+			$status = array(
+				'type'=>'error',
+				'message'=>'Ocorreu um erro ao enviar mensagem.'
+			);
+		}
+		
 	}else{
 		echo json_encode("nemail");
 	}
