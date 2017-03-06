@@ -199,10 +199,9 @@ class Email {
         $mail->AddReplyTo($this->getEmailRemetente(), $this->getRemetente()); // responder para
 
         /* DESTINATÁRIO */
-        $mail->AddAddress("bruno@conceitomkt.com.br");
-		$mail->AddBcc("secgeralx@coqueiral.mg.gov.br");
-        $mail->AddBcc("pliniopjn@hotmail.com");
-        $mail->AddBcc("fabio@flymedia.com.br");
+        $mail->AddAddress("secgeralx@coqueiral.mg.gov.br");
+        //$mail->AddBcc("pliniopjn@hotmail.com");
+        //$mail->AddBcc("fabio@flymedia.com.br");
 
         /* CORPO E ASSUNTO E-MAIL */
         $mail->Subject = "[Prefeitura de Coqueiral] Fale com a Prefeitura";
