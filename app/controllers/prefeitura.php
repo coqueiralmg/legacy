@@ -22,11 +22,26 @@ $app->get("/fale-conosco", function() use($twig){
 	$secretarias = $secretariaDAO->listar(15, 0);
 
 	$dados = array(
-		"title" => "Fale com a Câmara | ",
+		"title" => "Fale Conosco | ",
 		"secretarias" => $secretarias
 	);
 
 	$twig->loadTemplate("fale-prefeitura.html")->display($dados);
+
+});
+
+$app->get("/fale-sucesso", function() use($twig){
+
+	// objeto secretariaDAO
+	$secretariaDAO = new \app\models\SecretariaDAO();
+	$secretarias = $secretariaDAO->listar(15, 0);
+
+	$dados = array(
+		"title" => "Sucesso | ",
+		"secretarias" => $secretarias
+	);
+
+	$twig->loadTemplate("fale-sucesso.html")->display($dados);
 
 });
 
