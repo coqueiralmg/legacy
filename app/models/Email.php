@@ -199,7 +199,7 @@ class Email {
         $mail->AddReplyTo($this->getEmailRemetente(), $this->getRemetente()); // responder para
 
         /* DESTINATÁRIO */
-        $mail->AddAddress("secgeralx@coqueiral.mg.gov.br");
+        $mail->AddAddress("comunicacao@coqueiral.mg.gov.br");
         //$mail->AddBcc("pliniopjn@hotmail.com");
         //$mail->AddBcc("fabio@flymedia.com.br");
 
