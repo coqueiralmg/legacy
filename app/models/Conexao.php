@@ -4,6 +4,7 @@ namespace app\models;
 use \PDO;
 class Conexao {
 
+	const HOST = "mysql01.coqueiralmg.hospedagemdesites.ws";
 	const USERNAME = "coqueiralmg";
 	const PASSWD = "pliniosite";
 	const DBNAME = "coqueiralmg";
@@ -12,7 +13,7 @@ class Conexao {
 	private static function criarConexao(){
 		try{
 			if(self::$instance == null){
-				$dsn = "mysql:host=mysql01.coqueiralmg.hospedagemdesites.ws; dbname=" . self::DBNAME;
+				$dsn = "mysql:host=" . self::HOST . "; dbname=" . self::DBNAME;
 				self::$instance = new PDO($dsn, self::USERNAME, self::PASSWD);
 				self::$instance->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 			}
