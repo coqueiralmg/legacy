@@ -3,7 +3,7 @@ tinyMCE.init({
     language: "pt_BR",
     height: 350,
     menubar: false,
-    convert_urls: false,
+    
     plugins: [
          "advlist autolink link image lists charmap print preview fullpage hr anchor pagebreak spellchecker",
          "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
