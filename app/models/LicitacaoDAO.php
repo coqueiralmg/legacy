@@ -71,8 +71,10 @@ class LicitacaoDAO implements \app\models\interfaces\iPagination {
 
 	public function buscar($limit=-1, $offset=-1){
 		$condition = ($limit > -1 && $offset > -1) ? " LIMIT " . $limit . " OFFSET " . $offset : "";
+		$query = "SELECT * FROM " . $this->tabela . " ORDER BY ID DESC " . $condition;
+		
 		try {
-			$all = $this->conexao->prepare("SELECT * FROM " . $this->tabela . $condition);
+			$all = $this->conexao->prepare($query);
 			$all->setFetchMode(PDO::FETCH_CLASS, "\app\models\Licitacao");
 			$all->execute();
 			return ($all->rowCount() > 0) ? $all->fetchAll() : null;
@@ -98,7 +100,7 @@ class LicitacaoDAO implements \app\models\interfaces\iPagination {
 	public function totalRegistros($somenteAtivos=false){
 		$condition = ($somenteAtivos) ? "  WHERE ativo=:ativo" : "";
 		try {
-			$find = $this->conexao->prepare("SELECT * FROM " . $this->tabela . $condition . " ORDER BY ID DESC");
+			$find = $this->conexao->prepare("SELECT * FROM " . $this->tabela . $condition);
 			$find->bindValue(":ativo", 1, PDO::PARAM_INT);
 			$find->execute();
 			return $find->rowCount();
