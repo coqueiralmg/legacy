@@ -83,7 +83,7 @@ class File {
 		$this->newName = uniqid() . "." . $this->extension;
 
 		// available extensions
-		$this->availableExtensions = array("pdf", "doc", "docx");
+		$this->availableExtensions = array("pdf", "doc", "docx", "odt", "xls", "xlsx", "ods", "zip");
 	}
 
 	public function validateExtension(){
