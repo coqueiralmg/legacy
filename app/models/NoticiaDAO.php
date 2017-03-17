@@ -99,7 +99,7 @@ class NoticiaDAO implements \app\models\interfaces\iPagination {
 	public function buscar($limit=-1, $offset=-1){
 		$condition = ($limit > -1 && $offset > -1) ? " LIMIT " . $limit . " OFFSET " . $offset : "";
 		try {
-			$all = $this->conexao->prepare("SELECT * FROM " . $this->tabela . $condition);
+			$all = $this->conexao->prepare("SELECT * FROM " . $this->tabela . " ORDER BY ID DESC " . $condition);
 			$all->setFetchMode(PDO::FETCH_CLASS, "\app\models\Noticia");
 			$all->execute();
 
