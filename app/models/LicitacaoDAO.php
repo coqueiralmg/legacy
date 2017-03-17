@@ -98,7 +98,7 @@ class LicitacaoDAO implements \app\models\interfaces\iPagination {
 	public function totalRegistros($somenteAtivos=false){
 		$condition = ($somenteAtivos) ? "  WHERE ativo=:ativo" : "";
 		try {
-			$find = $this->conexao->prepare("SELECT * FROM " . $this->tabela . $condition);
+			$find = $this->conexao->prepare("SELECT * FROM " . $this->tabela . $condition . " ORDER BY ID DESC");
 			$find->bindValue(":ativo", 1, PDO::PARAM_INT);
 			$find->execute();
 			return $find->rowCount();
