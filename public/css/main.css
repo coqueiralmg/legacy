@@ -51,6 +51,16 @@ a {
     transition: color 300ms, background-color 300ms;
 }
 
+video{
+    width: 640px;
+}
+
+@media screen and (max-width: 768px){
+    video{
+        width: 100%;
+    }
+}
+
 a:hover,
 a:focus {
     color: #202213;
