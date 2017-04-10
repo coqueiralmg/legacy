@@ -52,7 +52,7 @@ a {
 }
 
 video{
-    width: 640px;
+    width: 768px;
 }
 
 video::-webkit-media-controls-enclosure{
