@@ -21,7 +21,7 @@
                 <div class="col-md-10">
                 </div>
                 <div class="col-md-2">
-                    <a href="{{ siteUrl() ~"/"~ licitacao.getEdital() }}" class="btn btn-success" target="_blank"><i class="fa fa-download"></i>&nbsp;Download</a>
+                    <a onclick="ga('send', 'event', 'Licitações', 'Download', 'Edital');" href="{{ siteUrl() ~"/"~ licitacao.getEdital() }}" class="btn btn-success" target="_blank"><i class="fa fa-download"></i>&nbsp;Download</a>
                 </div>
             </div>
 
