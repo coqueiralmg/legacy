@@ -20,7 +20,7 @@
                 <div class="col-md-10">
                 </div>
                 <div class="col-md-2">
-                    <a href="{{ siteUrl() ~"/"~ legislacao.getArquivo() }}" target="_blank" class="btn btn-success"><i class="fa fa-download"></i>&nbsp;Download</a>
+                    <a onclick="ga('send', 'event', 'Publicações', 'Download', 'Documento');" href="{{ siteUrl() ~"/"~ legislacao.getArquivo() }}" target="_blank" class="btn btn-success"><i class="fa fa-download"></i>&nbsp;Download</a>
                 </div>
             </div>
 
