@@ -1,6 +1,6 @@
 <?php
 
-$app->get("/legislacao(/page/:page(/limit/:limit(/search/:search)))", function($page=null, $limit=null, $search=null) use($twig){
+$app->get("/publicacoes(/page/:page(/limit/:limit(/search/:search)))", function($page=null, $limit=null, $search=null) use($twig){
 
 	// pega pagina atual correta e limite
 	$pagina = ($page != null) ? $page : 1;
@@ -39,7 +39,7 @@ $app->get("/legislacao(/page/:page(/limit/:limit(/search/:search)))", function($
 
 });
 
-$app->get("/legislacao/:slug/:id", function($slug, $id) use($twig){
+$app->get("/publicacao/:slug/:id", function($slug, $id) use($twig){
 
 	// objeto SecretariaDAO
 	$secretariaDAO = new \app\models\SecretariaDAO();
