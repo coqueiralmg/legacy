@@ -9,8 +9,8 @@
 	<section id="legislacao">
         <div class="container">
             <div class="center wow fadeInDown">
-                <h2>Legislação</h2>
-                <p class="lead">Pesquise e baixe documentos da legislação municipal.</p>
+                <h2>Publicações</h2>
+                <p class="lead">Pesquise documentos, portarias, concursos, publicações e legislação municipal.</p>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -26,12 +26,12 @@
 						<div class="item col-md-12 col-lg-6">
 							<h3 class="media-heading">{{ legislacao.getTitulo() | upper }}</h3>
 							<p>{{ cortarTexto(legislacao.getDescricao(), 350, true, true) }}</p>
-							<a href="/legislacao/{{ gerarSlug(legislacao.getTitulo()) ~"/"~ legislacao.getId() }}" class="btn btn-success">Veja mais</a>
+							<a href="/publicacao/{{ gerarSlug(legislacao.getTitulo()) ~"/"~ legislacao.getId() }}" class="btn btn-success">Veja mais</a>
 						</div>
 
 					{% endfor %}
 				{% else %}
-					<p>Nenhuma legislação disponível!</p>
+					<p>Nenhuma publicação disponível!</p>
 				{% endif %}
             </div>
             <div class="row">
