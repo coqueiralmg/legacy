@@ -168,7 +168,7 @@
 <section id="partner">
         <div class="container">
                 <div class="center wow fadeInDown">
-                    <video poster="{{ siteUrl() }}/public/videos/tour_coqueiral/tour_coqueiral.jpg" controls="controls">
+                    <video onplay="registrarEventoVideo()" poster="{{ siteUrl() }}/public/videos/tour_coqueiral/tour_coqueiral.jpg" controls="controls">
                         <source src="{{ siteUrl() }}/public/videos/tour_coqueiral/tour_coqueiral.webm" type="video/webm">
                         <source src="{{ siteUrl() }}/public/videos/tour_coqueiral/tour_coqueiral.ogv" type="video/ogg">
                         <source src="{{ siteUrl() }}/public/videos/tour_coqueiral/tour_coqueiral.mp4" type="video/mp4">
@@ -267,7 +267,16 @@
         <!--/.container-->
 </section>
 
+{% block js %}
 
+<script type="text/javascript">
+    function registrarEventoVideo(){
+        ga('send', 'event', 'Mídia', 'Vídeo', 'Principal');
+    }
+    
+</script>
+
+{% endblock %}
 
 
 {% endblock %}
