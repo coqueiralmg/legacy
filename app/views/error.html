@@ -12,5 +12,14 @@
 		<p>Linha: {{ line }}</p>
         <a class="btn btn-primary" href="/">Página Inicial</a>
     </section><!--/#error-->
+
+{% block js %}
+
+<script type="text/javascript">
+    $(function(){
+        ga('send', 'event', 'Sistema', 'Erro', 'Erro fatal');
+    });
+    
+</script>
 	
 {% endblock %}
