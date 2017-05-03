@@ -1,6 +1,6 @@
 <?php
 
-$app->get("/licitacoes(/page/:page(/limit/:limit))", function($page=null, $limit=null) use($twig){
+$app->get("/licitacoes(/page/:page(/limit/:limit(/search/:search)))", function($page=null, $limit=null, $search=null) use($twig){
 
 	// pega pagina atual correta e limite
 	$pagina = ($page != null) ? $page : 1;
@@ -13,9 +13,17 @@ $app->get("/licitacoes(/page/:page(/limit/:limit))", function($page=null, $limit
 	// objeto licitacaoDAO
 	$licitacaoDAO = new \app\models\LicitacaoDAO();
 
+	// parametros de pesquisa
+	$metodo = ($search == null) ? "listar" : "pesquisar";
+
 	// objeto pagination
-	$pagination = new \app\models\Pagination($licitacaoDAO, $limite, $pagina, $metodo="listar", $somenteAtivos=true);
+	$pagination = new \app\models\Pagination($licitacaoDAO, $limite, $pagina, $metodo, $somenteAtivos=true, $search);
 	$pagination->setUrl("/licitacoes");
+
+	// total objetos pesquisa
+	if($search != null){
+		$pagination->setTotalObjects(count($licitacaoDAO->pesquisar($search)))->updateLastPage();
+	}
 
 	// listar licitacoes
 	$licitacoes = $pagination->getObjects();

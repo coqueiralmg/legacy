@@ -1,5 +1,9 @@
 {% extends "layout.html" %} 
 
+{% block js %}
+	<script type="text/javascript" src="{{ siteUrl() }}/public/js/script/licitacao.js"></script>
+{% endblock %}
+
 {% block content %}
 
 
@@ -9,6 +13,16 @@
                 <h2>Licitações</h2>
                 <p class="lead">Processos de licitações da prefeitura.</p>
             </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <form id="pesquisar-legislacao">
+                        <input id="pesquisa" name="search" type="search" class="form-control busca" placeholder="O que deseja buscar?">
+                        <button type="submit"  id="btn-pesquisar" name="submit" class="btn btn-success"><i class="fa fa-search"></i>&nbsp;Buscar</button>
+                    </form>
+                </div>
+            </div>
+
             <div class="row">
                 {% if licitacoes | length > 0 %}
                      {% for licitacao in licitacoes %}
