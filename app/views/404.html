@@ -1,13 +1,13 @@
 {% extends "layout.html" %}
 
-{% block title %}Página não encontrada | Câmara Municipal de Pirapora MG{% endblock %}
+{% block title %}Página não encontrada | {% endblock %}
 
 {% block content %}
 	
-	<div id="erro-404" class="row">
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			<h1>Página não encontrada!</h1>
-		</div>
-	</div>
+	<section id="error" class="container text-center">
+        <h1>Erro 404: Página não encontrada</h1>
+        <p>Lamentamos muito, mas esta página não foi encontrada. Caso isto ainda persista, <a href="/fale-conosco">entre em contato conosco</a>.</p>
+        <a class="btn btn-primary" href="/">Página Inicial</a>
+    </section><!--/#error-->
 	
 {% endblock %}

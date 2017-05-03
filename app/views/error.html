@@ -4,13 +4,13 @@
 
 {% block content %}
 	
-	<div id="erro-geral" class="row">
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			<h1>Ocorreu um erro inesperado, tente novamente!</h1>
-			<p>Mensagem: {{ message }}</p>
-			<p>Arquivo: {{ file }}</p>
-			<p>Linha: {{ line }}</p>
-		</div>
-	</div>
+	<section id="error" class="container text-center">
+        <h1>Erro 500: Falha no sistema</h1>
+        <p>Lamentamos muito, mas ocorreu um erro no sistema. Caso isto ainda persista, <a href="/fale-conosco">entre em contato conosco</a>.</p>
+		<p>Mensagem: {{ message }}</p>
+		<p>Arquivo: {{ file }}</p>
+		<p>Linha: {{ line }}</p>
+        <a class="btn btn-primary" href="/">Página Inicial</a>
+    </section><!--/#error-->
 	
 {% endblock %}
