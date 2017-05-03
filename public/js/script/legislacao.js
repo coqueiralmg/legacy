@@ -5,7 +5,7 @@ $(function(){
 		e.preventDefault();
 		var busca = $(this).siblings("#pesquisa").val();
 		if(busca !== ''){
-			window.location.href = "/legislacao/page/1/limit/10/search/" + busca;
+			window.location.href = "/publicacoes/page/1/limit/10/search/" + busca;
 		}else{
 			alert('Digite sua busca!');
 		}

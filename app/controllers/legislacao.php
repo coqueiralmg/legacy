@@ -18,7 +18,7 @@ $app->get("/publicacoes(/page/:page(/limit/:limit(/search/:search)))", function(
 
 	// objeto pagination
 	$pagination = new \app\models\Pagination($legislacaoDAO, $limite, $pagina, $metodo, $somenteAtivos=true, $search);
-	$pagination->setUrl("/legislacao");
+	$pagination->setUrl("/publicacoes");
 
 	// total objetos pesquisa
 	if($search != null){
