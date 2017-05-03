@@ -55,13 +55,6 @@ video{
     width: 768px;
 }
 
-video::-webkit-media-controls-enclosure{
- overflow: hidden;
-}
-video::-webkit-media-controls-panel{
-  width: calc(100% + 32px);
-}
-
 @media screen and (max-width: 768px){
     video{
         width: 100%;
