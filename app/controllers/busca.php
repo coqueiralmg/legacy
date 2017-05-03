@@ -1,9 +1,9 @@
 <?php
 
-$app->post("/busca", function() use($app, $twig) {
+$app->get("/busca", function() use($app, $twig) {
 
 	// busca
-	$busca = $app->request()->post("busca");
+	$busca = $app->request()->get("busca");
 
 	// objeto SecretariaDAO
 	$secretariaDAO = new \app\models\SecretariaDAO();
