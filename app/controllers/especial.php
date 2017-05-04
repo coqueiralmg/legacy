@@ -4,6 +4,7 @@ $app->get("/100dias", function() use($twig){
 
 });
 
+/*
 $app->get("/especial/pesquisa_habitacional", function() use($twig){
     
     // objeto SecretariaDAO
@@ -17,3 +18,4 @@ $app->get("/especial/pesquisa_habitacional", function() use($twig){
 
 	$twig->loadTemplate("pesquisa_habitacional.html")->display($dados);
 });
+*/
