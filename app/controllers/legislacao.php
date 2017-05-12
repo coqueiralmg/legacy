@@ -29,7 +29,7 @@ $app->get("/publicacoes(/page/:page(/limit/:limit(/search/:search)))", function(
 	$legislacoes = $pagination->getObjects();
 
 	$dados = array(
-		"title" => "Legislações | ",
+		"title" => "Publicações | ",
 		"secretarias" => $secretarias,
 		"legislacoes" => $legislacoes,
 		"pagination" => $pagination
