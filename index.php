@@ -8,7 +8,7 @@ require ROOT . "app/controllers/prefeitura.php";
 require ROOT . "app/controllers/noticia.php";
 require ROOT . "app/controllers/video.php";
 require ROOT . "app/controllers/licitacao.php";
-require ROOT . "app/controllers/legislacao.php";
+require ROOT . "app/controllers/publicacao.php";
 require ROOT . "app/controllers/busca.php";
 require ROOT . "app/controllers/email.php";
 require ROOT . "app/controllers/jornal.php";

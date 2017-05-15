@@ -23,12 +23,12 @@
             </div>
             
             <div class="row">
-				{% if legislacoes | length > 0 %}
-					{% for legislacao in legislacoes %}
+				{% if publicacoes | length > 0 %}
+					{% for publicacao in publicacoes %}
 						<div class="item col-md-12 col-lg-6">
-							<h3 class="media-heading">{{ legislacao.getTitulo() | upper }}</h3>
-							<p>{{ cortarTexto(legislacao.getDescricao(), 350, true, true) }}</p>
-							<a href="/publicacao/{{ gerarSlug(legislacao.getTitulo()) ~"/"~ legislacao.getId() }}" class="btn btn-success">Veja mais</a>
+							<h3 class="media-heading">{{ publicacao.getTitulo() | upper }}</h3>
+							<p>{{ cortarTexto(publicacao.getDescricao(), 350, true, true) }}</p>
+							<a href="/publicacao/{{ gerarSlug(publicacao.getTitulo()) ~"/"~ publicacao.getId() }}" class="btn btn-success">Veja mais</a>
 						</div>
 
 					{% endfor %}

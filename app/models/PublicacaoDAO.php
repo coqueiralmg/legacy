@@ -2,26 +2,26 @@
 
 namespace app\models;
 use \PDO;
-class LegislacaoDAO implements \app\models\interfaces\iPagination {
+class PublicacaoDAO implements \app\models\interfaces\iPagination {
 
 	private $conexao;
 	private $tabela;
 
 	public function __construct(){
 		$this->conexao = \app\models\Conexao::getDB();
-		$this->tabela = "legislacao";
+		$this->tabela = "publicacao";
 	}
 
-	public function inserir(\app\models\Legislacao $legislacao){
+	public function inserir(\app\models\Publicacao $publicacao){
 		try{
 			$this->conexao->beginTransaction();
 			$inserir = $this->conexao->prepare("INSERT INTO " . $this->tabela . " (titulo, descricao, data, arquivo, numero, ativo) VALUES (:titulo, :descricao, :data, :arquivo, :numero, :ativo)");
-			$inserir->bindValue(":titulo", $legislacao->getTitulo(), PDO::PARAM_STR);
-			$inserir->bindValue(":descricao", $legislacao->getDescricao(), PDO::PARAM_STR);
-			$inserir->bindValue(":data", $legislacao->getData(), PDO::PARAM_STR);
-			$inserir->bindValue(":arquivo", $legislacao->getArquivo(), PDO::PARAM_STR);
-			$inserir->bindValue(":numero", $legislacao->getNumero(), PDO::PARAM_STR);
-			$inserir->bindValue(":ativo", $legislacao->getAtivo(), PDO::PARAM_STR);
+			$inserir->bindValue(":titulo", $publicacao->getTitulo(), PDO::PARAM_STR);
+			$inserir->bindValue(":descricao", $publicacao->getDescricao(), PDO::PARAM_STR);
+			$inserir->bindValue(":data", $publicacao->getData(), PDO::PARAM_STR);
+			$inserir->bindValue(":arquivo", $publicacao->getArquivo(), PDO::PARAM_STR);
+			$inserir->bindValue(":numero", $publicacao->getNumero(), PDO::PARAM_STR);
+			$inserir->bindValue(":ativo", $publicacao->getAtivo(), PDO::PARAM_STR);
 			$inserir->execute();
 			$lastInsertId = $this->conexao->lastInsertId();
 			$this->conexao->commit();
@@ -33,17 +33,17 @@ class LegislacaoDAO implements \app\models\interfaces\iPagination {
 		}
 	}
 
-	public function alterar(\app\models\Legislacao $legislacao){
+	public function alterar(\app\models\Publicacao $publicacao){
 		try{
 			$this->conexao->beginTransaction();
 			$alterar = $this->conexao->prepare("UPDATE " . $this->tabela . " SET titulo=:titulo, descricao=:descricao, data=:data, arquivo=:arquivo, numero=:numero, ativo=:ativo WHERE id=:id");
-			$alterar->bindValue(":titulo", $legislacao->getTitulo(), PDO::PARAM_STR);
-			$alterar->bindValue(":descricao", $legislacao->getDescricao(), PDO::PARAM_STR);
-			$alterar->bindValue(":data", $legislacao->getData(), PDO::PARAM_STR);
-			$alterar->bindValue(":arquivo", $legislacao->getArquivo(), PDO::PARAM_STR);
-			$alterar->bindValue(":numero", $legislacao->getNumero(), PDO::PARAM_STR);
-			$alterar->bindValue(":ativo", $legislacao->getAtivo(), PDO::PARAM_STR);
-			$alterar->bindValue(":id", $legislacao->getId(), PDO::PARAM_INT);
+			$alterar->bindValue(":titulo", $publicacao->getTitulo(), PDO::PARAM_STR);
+			$alterar->bindValue(":descricao", $publicacao->getDescricao(), PDO::PARAM_STR);
+			$alterar->bindValue(":data", $publicacao->getData(), PDO::PARAM_STR);
+			$alterar->bindValue(":arquivo", $publicacao->getArquivo(), PDO::PARAM_STR);
+			$alterar->bindValue(":numero", $publicacao->getNumero(), PDO::PARAM_STR);
+			$alterar->bindValue(":ativo", $publicacao->getAtivo(), PDO::PARAM_STR);
+			$alterar->bindValue(":id", $publicacao->getId(), PDO::PARAM_INT);
 			$alterar->execute();
 			$this->conexao->commit();
 			return ($alterar->rowCount() >= 0) ? true : false;
@@ -73,7 +73,7 @@ class LegislacaoDAO implements \app\models\interfaces\iPagination {
 		$condition = ($limit > -1 && $offset > -1) ? " LIMIT " . $limit . " OFFSET " . $offset : "";
 		try {
 			$all = $this->conexao->prepare("SELECT * FROM " . $this->tabela . $condition);
-			$all->setFetchMode(PDO::FETCH_CLASS, "\app\models\Legislacao");
+			$all->setFetchMode(PDO::FETCH_CLASS, "\app\models\Publicacao");
 			$all->execute();
 			return ($all->rowCount() > 0) ? $all->fetchAll() : null;
 		} catch (PDOException $e) {
@@ -86,7 +86,7 @@ class LegislacaoDAO implements \app\models\interfaces\iPagination {
 		try {
 			$find = $this->conexao->prepare("SELECT * FROM " . $this->tabela . " WHERE id=:id");
 			$find->bindValue(":id", $id, PDO::PARAM_INT);
-			$find->setFetchMode(PDO::FETCH_CLASS, "\app\models\Legislacao");
+			$find->setFetchMode(PDO::FETCH_CLASS, "\app\models\Publicacao");
 			$find->execute();
 			return ($find->rowCount() == 1) ? $find->fetch() : null;
 		} catch (PDOException $e) {
@@ -113,7 +113,7 @@ class LegislacaoDAO implements \app\models\interfaces\iPagination {
 		try {
 			$all = $this->conexao->prepare("SELECT * FROM {$this->tabela} WHERE ativo=:ativo ORDER BY id DESC " . $condition);
 			$all->bindValue(":ativo", 1, PDO::PARAM_INT);
-			$all->setFetchMode(PDO::FETCH_CLASS, "\app\models\Legislacao");
+			$all->setFetchMode(PDO::FETCH_CLASS, "\app\models\Publicacao");
 			$all->execute();
 			return ($all->rowCount() > 0) ? $all->fetchAll() : null;
 		} catch (PDOException $e) {
@@ -128,7 +128,7 @@ class LegislacaoDAO implements \app\models\interfaces\iPagination {
 			$all = $this->conexao->prepare("SELECT * FROM {$this->tabela} WHERE ativo=:ativo AND (titulo like :busca OR descricao LIKE :busca OR numero LIKE :busca) ORDER BY id DESC " . $condition);
 			$all->bindValue(":ativo", 1, PDO::PARAM_INT);
 			$all->bindValue(":busca", "%".$busca."%", PDO::PARAM_STR);
-			$all->setFetchMode(PDO::FETCH_CLASS, "\app\models\Legislacao");
+			$all->setFetchMode(PDO::FETCH_CLASS, "\app\models\Publicacao");
 			$all->execute();
 			return ($all->rowCount() > 0) ? $all->fetchAll() : null;
 		} catch (PDOException $e) {

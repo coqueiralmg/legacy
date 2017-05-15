@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-class Legislacao {
+class Publicacao {
 
 	private $id;
 	private $titulo;

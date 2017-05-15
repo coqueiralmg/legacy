@@ -11,31 +11,31 @@ $app->get("/publicacoes(/page/:page(/limit/:limit(/search/:search)))", function(
 	$secretarias = $secretariaDAO->listar(15, 0);
 
 	// objeto legislacaoDAO
-	$legislacaoDAO = new \app\models\LegislacaoDAO();
+	$publicacaoDAO = new \app\models\PublicacaoDAO();
 
 	// parametros de pesquisa
 	$metodo = ($search == null) ? "listar" : "pesquisar";
 
 	// objeto pagination
-	$pagination = new \app\models\Pagination($legislacaoDAO, $limite, $pagina, $metodo, $somenteAtivos=true, $search);
+	$pagination = new \app\models\Pagination($publicacaoDAO, $limite, $pagina, $metodo, $somenteAtivos=true, $search);
 	$pagination->setUrl("/publicacoes");
 
 	// total objetos pesquisa
 	if($search != null){
-		$pagination->setTotalObjects(count($legislacaoDAO->pesquisar($search)))->updateLastPage();
+		$pagination->setTotalObjects(count($publicacaoDAO->pesquisar($search)))->updateLastPage();
 	}
 
 	// listar legislacoes
-	$legislacoes = $pagination->getObjects();
+	$publicacoes = $pagination->getObjects();
 
 	$dados = array(
 		"title" => "Publicações | ",
 		"secretarias" => $secretarias,
-		"legislacoes" => $legislacoes,
+		"publicacoes" => $publicacoes,
 		"pagination" => $pagination
 	);
 
-	$twig->loadTemplate("legislacoes.html")->display($dados);
+	$twig->loadTemplate("publicacoes.html")->display($dados);
 
 });
 
@@ -45,16 +45,16 @@ $app->get("/publicacao/:slug/:id", function($slug, $id) use($twig){
 	$secretariaDAO = new \app\models\SecretariaDAO();
 	$secretarias = $secretariaDAO->listar(15, 0);
 
-	// objeto legislacaoDAO
-	$legislacaoDAO = new \app\models\LegislacaoDAO();
-	$legislacao = $legislacaoDAO->buscarPeloId($id);
+	// objeto publicacaoDAO
+	$publicacaoDAO = new \app\models\PublicacaoDAO();
+	$publicacao = $publicacaoDAO->buscarPeloId($id);
 
 	$dados = array(
-		"title" => "{$legislacao->getTitulo()} | ",
+		"title" => "{$publicacao->getTitulo()} | ",
 		"secretarias" => $secretarias,
-		"legislacao" => $legislacao
+		"publicacao" => $publicacao
 	);
 
-	$twig->loadTemplate("legislacao.html")->display($dados);
+	$twig->loadTemplate("publicacao.html")->display($dados);
 
 });
