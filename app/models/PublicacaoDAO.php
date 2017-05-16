@@ -71,8 +71,10 @@ class PublicacaoDAO implements \app\models\interfaces\iPagination {
 
 	public function buscar($limit=-1, $offset=-1){
 		$condition = ($limit > -1 && $offset > -1) ? " LIMIT " . $limit . " OFFSET " . $offset : "";
+		$query = "SELECT * FROM " . $this->tabela . " ORDER BY ID DESC " . $condition;
+
 		try {
-			$all = $this->conexao->prepare("SELECT * FROM " . $this->tabela . $condition);
+			$all = $this->conexao->prepare($query);
 			$all->setFetchMode(PDO::FETCH_CLASS, "\app\models\Publicacao");
 			$all->execute();
 			return ($all->rowCount() > 0) ? $all->fetchAll() : null;
