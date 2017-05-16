@@ -26,7 +26,7 @@ require ROOT . "app/controllers/admin/video.php";
 require ROOT . "app/controllers/admin/noticia.php";
 require ROOT . "app/controllers/admin/banner.php";
 require ROOT . "app/controllers/admin/licitacao.php";
-require ROOT . "app/controllers/admin/legislacao.php";
+require ROOT . "app/controllers/admin/publicacao.php";
 require ROOT . "app/controllers/admin/uploadLegislacoes.php";
 require ROOT . "app/controllers/admin/destaque.php";
 

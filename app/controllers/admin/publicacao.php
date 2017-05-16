@@ -1,6 +1,6 @@
 <?php
 
-$app->group("/admin/painel/legislacao", function() use($app, $twig){
+$app->group("/admin/painel/publicacao", function() use($app, $twig){
 
 	// listar
 	$app->get("(/page/:page(/limit/:limit))", function($page=null, $limit=null) use($app, $twig) {
@@ -11,24 +11,25 @@ $app->group("/admin/painel/legislacao", function() use($app, $twig){
 		$pagina = ($page != null) ? $page : 1;
 		$limite = ($limit != null) ? $limit : 10;
 
-		// objeto legislacaoDAO
-		$legislacaoDAO = new \app\models\LegislacaoDAO();
+		// objeto publicacaoDAO
+		$publicacaoDAO = new \app\models\PublicacaoDAO();
 
 		// objeto pagination
-		$pagination = new \app\models\Pagination($legislacaoDAO, $limite, $pagina);
-		$pagination->setUrl("/admin/painel/legislacao");
+		$pagination = new \app\models\Pagination($publicacaoDAO, $limite, $pagina);
+		$pagination->setUrl("/admin/painel/publicacao");
 
-		// listar legislacoes
-		$legislacoes = $pagination->getObjects();
+		// listar publicacoes
+		$publicacoes = $pagination->getObjects();
 
 		$dados = array(
-			"title" => "Legislações | ",
+			"title" => "Publicações | ",
 			"usuarioNome" => $_SESSION["usuarioNome"],
 			"usuarioNivel" => $_SESSION["usuarioNivel"],
-			"legislacoes" => $legislacoes,
+			"publicacoes" => $publicacoes,
 			"pagination" => $pagination
 		);
-		$twig->loadTemplate("admin/legislacao/listar.html")->display($dados);
+		
+		$twig->loadTemplate("admin/publicacao/listar.html")->display($dados);
 	});
 
 	$app->get("/novo", function() use($app, $twig) {
@@ -37,11 +38,11 @@ $app->group("/admin/painel/legislacao", function() use($app, $twig){
 		\app\models\Sessao::restringirAcesso($twig);
 
 		$dados = array(
-			"title" => "Nova Legislação | ",
+			"title" => "Nova Publicação | ",
 			"usuarioNome" => $_SESSION["usuarioNome"],
 			"usuarioNivel" => $_SESSION["usuarioNivel"]
 		);
-		$twig->loadTemplate("admin/legislacao/novo.html")->display($dados);
+		$twig->loadTemplate("admin/publicacao/novo.html")->display($dados);
 
 	});
 
@@ -50,17 +51,17 @@ $app->group("/admin/painel/legislacao", function() use($app, $twig){
 		\app\models\Sessao::verificarSessao($app);
 		\app\models\Sessao::restringirAcesso($twig);
 
-		// objeto legislacaoDAO
-		$legislacaoDAO = new \app\models\LegislacaoDAO();
-		$legislacao = $legislacaoDAO->buscarpeloId($id);		
+		// objeto publicacaoDAO
+		$publicacaoDAO = new \app\models\PublicacaoDAO();
+		$legislacao = $publicacaoDAO->buscarpeloId($id);		
 
 		$dados = array(
-			"title" => "Alterar Legislação | ",
+			"title" => "Alterar Publicação | ",
 			"usuarioNome" => $_SESSION["usuarioNome"],
 			"usuarioNivel" => $_SESSION["usuarioNivel"],
 			"legislacao" => $legislacao
 		);
-		$twig->loadTemplate("admin/legislacao/alterar.html")->display($dados);
+		$twig->loadTemplate("admin/publicacao/alterar.html")->display($dados);
 	});
 
 	// post novo
@@ -96,7 +97,7 @@ $app->group("/admin/painel/legislacao", function() use($app, $twig){
 				$post = $validation->filtrar($app->request()->post(), $validacoes);
 
 				// objeto legislacao
-				$legislacao = new \app\models\Legislacao();
+				$legislacao = new \app\models\Publicacao();
 				$legislacao->setTitulo($post["legislacao-titulo"]);
 				$legislacao->setDescricao($post["legislacao-descricao"]);
 
@@ -108,14 +109,14 @@ $app->group("/admin/painel/legislacao", function() use($app, $twig){
 				$legislacao->setNumero($post["legislacao-numero"]);
 				$legislacao->setAtivo($post["legislacao-ativo"]);
 
-				// objeto legislacaoDAO
-				$legislacaoDAO = new \app\models\LegislacaoDAO();
-				$lastIdLegislacao = $legislacaoDAO->inserir($legislacao);
+				// objeto publicacaoDAO
+				$publicacaoDAO = new \app\models\PublicacaoDAO();
+				$lastIdLegislacao = $publicacaoDAO->inserir($legislacao);
 
 				if(is_numeric($lastIdLegislacao) && $lastIdLegislacao > 0){
 					// se salvar o arquivo na pasta
 					if($file->saveToFile())
-						$app->redirect("/admin/painel/legislacao");
+						$app->redirect("/admin/painel/publicacao");
 					$mensagem = array("erro" => "Erro ao fazer upload do arquivo!");
 				}else
 					$mensagem = array("erro" => "Erro ao cadastrar legislação!");
@@ -135,7 +136,7 @@ $app->group("/admin/painel/legislacao", function() use($app, $twig){
 			"usuarioNivel" => $_SESSION["usuarioNivel"],
 			"dados" => $app->request()->post() // retorna dados para não ter que digitar novamente
 		);
-		$twig->loadTemplate("admin/legislacao/novo.html")->display(array_merge($dados, $mensagem));
+		$twig->loadTemplate("admin/publicacao/novo.html")->display(array_merge($dados, $mensagem));
 		
 	});
 
@@ -148,9 +149,9 @@ $app->group("/admin/painel/legislacao", function() use($app, $twig){
 		print_r($app->request()->post());
 		echo "</pre>";*/
 
-		// objeto legislacaoDAO
-		$legislacaoDAO = new \app\models\LegislacaoDAO();
-		$legislacaoAntiga = $legislacaoDAO->buscarPeloId($app->request()->put("legislacao-id"));
+		// objeto publicacaoDAO
+		$publicacaoDAO = new \app\models\PublicacaoDAO();
+		$legislacaoAntiga = $publicacaoDAO->buscarPeloId($app->request()->put("legislacao-id"));
 
 		// faz as validações de formulário
 		$validation = new \app\models\Validation();
@@ -190,7 +191,7 @@ $app->group("/admin/painel/legislacao", function() use($app, $twig){
 				$usuarioDAO = new \app\models\UsuarioDAO();
 
 				// objeto licitacao
-				$legislacao = new \app\models\Legislacao();
+				$legislacao = new \app\models\Publicacao();
 				$legislacao->setId($put["legislacao-id"]);
 				$legislacao->setTitulo($put["legislacao-titulo"]);
 				$legislacao->setDescricao($put["legislacao-descricao"]);
@@ -203,16 +204,16 @@ $app->group("/admin/painel/legislacao", function() use($app, $twig){
 				$legislacao->setNumero($put["legislacao-numero"]);
 				$legislacao->setAtivo($put["legislacao-ativo"]);
 
-				if($legislacaoDAO->alterar($legislacao)){
+				if($publicacaoDAO->alterar($legislacao)){
 					if($novoArquivo){
 						// se salvar o arquivo na pasta
 						if($file->saveToFile()){
 							unlink(ROOT . $legislacaoAntiga->getArquivo());
-							$app->redirect("/admin/painel/legislacao");
+							$app->redirect("/admin/painel/publicacao");
 						}
 						$mensagem = array("erro" => "Erro ao fazer upload do arquivo!");
 					}else{
-						$app->redirect("/admin/painel/legislacao");
+						$app->redirect("/admin/painel/publicacao");
 					}
 					
 				}else
@@ -234,15 +235,15 @@ $app->group("/admin/painel/legislacao", function() use($app, $twig){
 			"dados" => $app->request()->put(), // retorna dados para não ter que digitar novamente
 			"legislacao" => $legislacaoAntiga
 		);
-		$twig->loadTemplate("admin/legislacao/alterar.html")->display(array_merge($dados, $mensagem));
+		$twig->loadTemplate("admin/publicacao/alterar.html")->display(array_merge($dados, $mensagem));
 		
 	});
 
 	// deletar
 	$app->delete("/deletar/:id", function($id) use($app) {
-		$legislacaoDAO = new \app\models\LegislacaoDAO();
-		$legislacao = $legislacaoDAO->buscarPeloId($id);
-		if($legislacaoDAO->deletar($id)){
+		$publicacaoDAO = new \app\models\PublicacaoDAO();
+		$legislacao = $publicacaoDAO->buscarPeloId($id);
+		if($publicacaoDAO->deletar($id)){
 			unlink(ROOT . $legislacao->getArquivo());
 			echo json_encode("deletou");
 		}else
