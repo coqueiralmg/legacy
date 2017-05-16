@@ -38,6 +38,10 @@ $app->group("/admin/painel", function() use($app, $twig){
 		$licitacaoDAO = new \app\models\LicitacaoDAO();
 		$licitacoes = $licitacaoDAO->buscar(5, 0);
 
+		//objeto publicacaoDAO
+		$publicacaoDAO = new \app\models\PublicacaoDAO();
+		$publicacoes = $publicacaoDAO->buscar(5, 0);
+
 		// objeto bannerDAO
 		$bannerDAO = new \app\models\BannerDAO();
 		$banners = $bannerDAO->buscar(5, 0);
@@ -54,6 +58,7 @@ $app->group("/admin/painel", function() use($app, $twig){
 			"noticias" => $noticias,
 			"videos" => $videos,
 			"licitacoes" => $licitacoes,
+			"publicacoes" => $publicacoes,
 			"banners" => $banners
 		);
 		$twig->loadTemplate("admin/home.html")->display($dados);

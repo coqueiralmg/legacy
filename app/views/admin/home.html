@@ -88,8 +88,8 @@
 		
 		<div class="row">
 			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-				<h2>Banners</h2>
-				<a href="/admin/painel/banner/novo" class="btn btn-primary"><i class="glyphicon glyphicon-file"></i> Novo</a>
+				<h2>Publicações</h2>
+				<a href="/admin/painel/publicacao/novo" class="btn btn-primary"><i class="glyphicon glyphicon-file"></i> Novo</a>
 				<div id="saida">
 					<div class="saida" id="saida-js-banner" role="alert"></div>
 				</div>
@@ -103,18 +103,18 @@
 						</tr>
 					</thead>
 					<tbody>
-						{% if banners | length > 0 %}
-							{% for banner in banners %}
+						{% if publicacoes | length > 0 %}
+							{% for publicacao in publicacoes %}
 								<tr>
-									<td>{{ banner.getTitulo() }}</td>
-									<td>{{ (banner.getAtivo() == 1) ? "Sim" : "Não" }}</td>
-									<td><a href="/admin/painel/banner/alterar/{{ banner.getId() }}" class="glyphicon glyphicon-pencil"></a></td>
-									<td><a href="/admin/painel/banner/deletar/{{ banner.getId() }}" class="glyphicon glyphicon-remove" id="btn-deletar" data-reference="banner" data-element="#saida-js-banner"></a></td>
+									<td>{{ publicacao.getTitulo() }}</td>
+									<td>{{ (publicacao.getAtivo() == 1) ? "Sim" : "Não" }}</td>
+									<td><a href="/admin/painel/publicacao/alterar/{{ publicacao.getId() }}" class="glyphicon glyphicon-pencil"></a></td>
+									<td><a href="/admin/painel/publicacao/deletar/{{ publicacao.getId() }}" class="glyphicon glyphicon-remove" id="btn-deletar" data-reference="banner" data-element="#saida-js-banner"></a></td>
 								</tr>
 							{% endfor %}
-							<tr><td id="ver-todos" colspan="4" align="center"><a href="/admin/painel/banner">Ver todos</a></td></tr>
+							<tr><td id="ver-todos" colspan="4" align="center"><a href="/admin/painel/publicacao">Ver todos</a></td></tr>
 						{% else %}
-							<tr><td colspan="4" align="center">Nenhum banner cadastrado!</td></tr>
+							<tr><td colspan="4" align="center">Nenhuma publicação cadastrada!</td></tr>
 						{% endif %}
 					</tbody>
 				</table>
