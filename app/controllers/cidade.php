@@ -27,3 +27,18 @@ $app->get("/cidade/localizacao", function() use($twig){
 
 	$twig->loadTemplate("localizacao.html")->display($dados);
 });
+
+$app->get("/cidade/perfil", function() use ($twig){
+
+	// objeto SecretariaDAO
+	$secretariaDAO = new \app\models\SecretariaDAO();
+	$secretarias = $secretariaDAO->listar(14, 0);
+    
+    $dados = array(
+		"title" => "O Perfil do Município | ",
+        "secretarias" => $secretarias
+	);
+
+	$twig->loadTemplate("perfil.html")->display($dados);
+
+});
