@@ -4,9 +4,9 @@ namespace app\models;
 use \PDO;
 class Conexao {
 
-	const HOST = "localhost";
-	const USERNAME = "root";
-	const PASSWD = "123456";
+	const HOST = "mysql01.coqueiralmg.hospedagemdesites.ws";
+	const USERNAME = "coqueiralmg";
+	const PASSWD = "pliniosite";
 	const DBNAME = "coqueiralmg";
 	private static $instance = null;
 
