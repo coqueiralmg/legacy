@@ -6,8 +6,8 @@
 	<atom:link href="{{ siteUrl() }}/feed/licitacoes" rel="self" type="application/rss+xml" />
 	<link>{{ siteUrl() }}</link>
 	<description>Amor por nosa gente</description>
-	<lastBuildDate>Sat, 15 Apr 2017 23:40:37 +0000</lastBuildDate>
-	<language>pt-BR</language>
+	<category>Governo</category>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
+	
 </channel>
