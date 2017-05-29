@@ -18,10 +18,6 @@ $app->group("/admin/painel", function() use($app, $twig){
 		$usuarioDAO = new \app\models\UsuarioDAO();
 		$usuarios = $usuarioDAO->buscar(5, 0);
 
-		// objeto tipoPrefeitoDAO
-		$tipoPrefeitoDAO = new \app\models\TipoPrefeitoDAO();
-		$tiposPrefeito = $tipoPrefeitoDAO->buscar(5, 0);
-
 		// objeto partidoDAO
 		$partidoDAO = new \app\models\PartidoDAO();
 		$partidos = $partidoDAO->buscar(5, 0);
@@ -54,7 +50,6 @@ $app->group("/admin/painel", function() use($app, $twig){
 			"secretarias" => $secretarias,
 			"usuarios" => $usuarios,
 			"partidos" => $partidos,
-			"tiposPrefeito" => $tiposPrefeito,
 			"noticias" => $noticias,
 			"videos" => $videos,
 			"licitacoes" => $licitacoes,
