@@ -1,6 +1,7 @@
 #Folder Ignore
 .vscode/*
 cache/*
+public/cache/*
 public/storage/*
 
 
