@@ -1,5 +1,6 @@
 <?php
 require "config.php";
+require "loggies.php";
 
 // site
 require ROOT . "app/controllers/home.php";
