@@ -1,10 +1,12 @@
 <?php
 
 $app->get("/admin", function() use($twig) {
+	
 	$twig->loadTemplate("login.html")->display(array());
 });
 
 $app->get("/admin/", function() use($twig) {
+	
 	$twig->loadTemplate("login.html")->display(array());
 });
 
