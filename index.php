@@ -1,4 +1,5 @@
 <?php
+require "security.php";
 require "config.php";
 require "loggies.php";
 
