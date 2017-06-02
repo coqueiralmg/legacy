@@ -10,3 +10,32 @@ Options -Indexes
 #Bloqueio de acesso ao site via Proxy ou VPN
 RewriteCond %{HTTP:VIA}  !^$ [OR] RewriteCond %{HTTP:FORWARDED}  !^$ [OR] RewriteCond %{HTTP:USERAGENT_VIA}  !^$ [OR] RewriteCond %{HTTP:X_FORWARDED_FOR}  !^$ [OR] RewriteCond %{HTTP:PROXY_CONNECTION}  !^$ [OR] RewriteCond %{HTTP:XPROXY_CONNECTION}  !^$ [OR] RewriteCond %{HTTP:HTTP_PC_REMOTE_ADDR} !^$ [OR] RewriteCond %{HTTP:HTTP_CLIENT_IP}  !^$RewriteRule ^(.*)$ - [F]
 RewriteCond %{HTTP_USER_AGENT} anonymous [NC]
+
+<Files 403.shtml>
+order allow,deny
+allow from all
+</Files>
+
+deny from 185.186.78.0/24
+deny from 41.0.0.0/8
+deny from 188.80.123.0/24
+deny from 79.169.15.0/24
+deny from 85.240.78.0/24
+deny from 2.83.217.0/24
+deny from 188.80.35.0/24
+deny from 87.196.43.0/24
+deny from 82.132.220.0/24
+deny from 66.249.93.0/24
+deny from 41.227.167.0/24
+deny from 95.95.118.0/24
+deny from 84.91.250.0/24
+deny from 85.139.166.0/24
+deny from 87.196.222.0/24
+deny from 82.155.80.0/24
+deny from 83.132.125.0/24
+deny from 93.108.218.0/24
+deny from 188.37.110.0/24
+deny from 148.69.8.0/24
+deny from 193.176.0.0/24
+deny from 213.22.163.0/24
+deny from 94.132.225.0/24
