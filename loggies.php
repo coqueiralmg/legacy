@@ -33,20 +33,4 @@ if($_SERVER["SERVER_NAME"] == "coqueiral.mg.gov.br" || $_SERVER["SERVER_NAME"] =
 
         $log->Notice(json_encode($data));
 	}
-
-    //Login do Admin
-    if($_SERVER['REQUEST_URI'] == "/admin/logar" && !in_array($_SERVER["REMOTE_ADDR"], $ip_allow)) {
-        
-        $ip = $_SERVER["REMOTE_ADDR"];
-        $agent = $_SERVER['HTTP_USER_AGENT'];
-        $user = $_POST["login"];
-        $message = "O usuário $user acessou o painel administrativo fora da rede da prefeitura.";
-
-        $data = [
-            "ip" => $ip,
-            "agent" => $agent,
-            "user" => $user,
-            "message" => $message
-        ];
-    }
 }
