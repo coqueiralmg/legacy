@@ -17,7 +17,7 @@ REDIRECIONAMENTO DE ACESSO POR DIRETÓRIOS INVÁLIDOS
 */
 
 $path_patterns =[
-    "/log/interspire_6.1.4/",
+    "/log/interspire/",
     "/filter.php"
 ];
 
