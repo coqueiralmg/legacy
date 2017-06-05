@@ -1,9 +1,13 @@
 <?php
+/*
+REDIRECIONAMENTO DE SITES ATRAVÉS DE AGENTS INVÁLIDOS
+*/
 
-$ip_allow = [
-    "187.108.112.168"
+$invalid_agent = [
+    "",
 ];
 
-$ip_deny = [
-
-];
+if(in_array($_SERVER['HTTP_USER_AGENT'], $invalid_agent)){
+    header("Location: http://127.0.0.1");
+    die();
+}
