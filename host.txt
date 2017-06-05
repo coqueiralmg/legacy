@@ -1,9 +1,0 @@
-<VirtualHost *:80>
-     DocumentRoot "D:/wamp/www/camara-pirapora/"
-     ServerName camara-pirapora.localhost.com.br
-	 
-     <Directory  "D:/wamp/www/camara-pirapora/">
-        AllowOverride All
- 		Require local
-     </Directory>
- </VirtualHost>
