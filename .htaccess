@@ -7,7 +7,7 @@ RewriteRule ^ index.php [QSA,L]
 # bloquear listagem dos arquivos nos diretórios
 Options -Indexes
 
-#Bloqueio de acesso ao site via Proxy ou VPN
+#Bloqueio de acesso ao site via Proxy, VPN e Acessos Suspeitos
 RewriteCond %{HTTP:VIA}  !^$ [OR] RewriteCond %{HTTP:FORWARDED}  !^$ [OR] RewriteCond %{HTTP:USERAGENT_VIA}  !^$ [OR] RewriteCond %{HTTP:X_FORWARDED_FOR}  !^$ [OR] RewriteCond %{HTTP:PROXY_CONNECTION}  !^$ [OR] RewriteCond %{HTTP:XPROXY_CONNECTION}  !^$ [OR] RewriteCond %{HTTP:HTTP_PC_REMOTE_ADDR} !^$ [OR] RewriteCond %{HTTP:HTTP_CLIENT_IP}  !^$RewriteRule ^(.*)$ - [F]
 RewriteCond %{HTTP_USER_AGENT} anonymous [NC]
 
