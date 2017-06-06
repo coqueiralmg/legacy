@@ -15,8 +15,8 @@ $app->get("/busca", function() use($app, $twig) {
 	$licitacoes = $licitacaoDAO->pesquisar($busca);
 
 	// objeto legislacaoDAO
-	$legislacaoDAO = new \app\models\LegislacaoDAO();
-	$legislacoes = $legislacaoDAO->pesquisar($busca);
+	$publicacaoDAO = new \app\models\PublicacaoDAO();
+	$publicacoes = $publicacaoDAO->pesquisar($busca);
 
 	// objeto videoDAO
 	$videoDAO = new \app\models\VideoDAO();
@@ -27,7 +27,7 @@ $app->get("/busca", function() use($app, $twig) {
 	$noticias = $noticiaDAO->pesquisar($busca);
 
 	// total de registros
-	$registros = count($secretariasBusca) + count($licitacoes) + count($legislacoes) + count($videos) + count($noticias);
+	$registros = count($secretariasBusca) + count($licitacoes) + count($publicacoes) + count($videos) + count($noticias);
 
 	$dados = array(
 		"title" => "Pesquisar | ",
@@ -36,7 +36,7 @@ $app->get("/busca", function() use($app, $twig) {
 		"registros" => $registros,
 		"secretariasBusca" => $secretariasBusca,
 		"licitacoes" => $licitacoes,
-		"legislacoes" => $legislacoes,
+		"legislacoes" => $publicacoes,
 		"noticias" => $noticias,
 		"videos" => $videos
 	);
