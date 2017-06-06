@@ -4,7 +4,9 @@ $(function(){
 	$('#pesquisar-legislacao #btn-pesquisar').on('click', function(e){
 		e.preventDefault();
 		var busca = $(this).siblings("#pesquisa").val();
+
 		if(busca !== ''){
+			LE.info('O usuário buscou ' + busca + ' entre as publicações no site.');
 			ga('send', 'event', 'Publicações', 'Busca', busca);
 			window.location.href = "/publicacoes/page/1/limit/10/search/" + busca;
 		}else{
