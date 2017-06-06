@@ -1,12 +1,5 @@
 <?php 
 
-$ip_allow = ["187.108.112.168"];
-
-if(!in_array($_SERVER["REMOTE_ADDR"], $ip_allow)) {
-     header("Location: http://127.0.0.1");
-     die();
-}
-
 $indicesServer = array('PHP_SELF',
 'argv',
 'argc',
