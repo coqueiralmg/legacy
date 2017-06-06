@@ -142,5 +142,20 @@
 	<script type="text/javascript" src="{{ siteUrl() }}/public/js/script/admin/configAdmin.js"></script>
 	<script type="text/javascript" src="{{ siteUrl() }}/public/js/script/admin/clock.js"></script>
 
+	<script>
+			var data = {
+					url: window.location.href,
+					navigator: navigator.appName,
+					language: navigator.language,
+					version: navigator.appVersion,
+					codification: navigator.appCodeName,
+					platform: navigator.platform,
+					agent: navigator.userAgent,
+					resolution: screen.width + " x " + screen.height
+			};
+
+			LE.log(JSON.stringify(data));
+	</script>
+
 </body>
 </html>
