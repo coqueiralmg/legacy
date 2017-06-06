@@ -8,6 +8,11 @@
 	<link rel="stylesheet" type="text/css" href="{{ siteUrl() }}/vendor/twitter/bootstrap/dist/css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="{{ siteUrl() }}/vendor/twitter/bootstrap/dist/css/bootstrap-theme.min.css" />
 	<link rel="stylesheet" type="text/css" href="{{ siteUrl() }}/public/css/login.css" />
+
+	<script src="{{ siteUrl() }}/public/js/le.js"></script>
+	<script>
+			LE.init('04c497c0-786e-40ec-b62b-0dcff9b83765');
+	</script>
 </head>
 <body>
 	
@@ -23,7 +28,7 @@
 		            <!--<label class="checkbox">
 		                <input type="checkbox" name="lembrar" value="1"> Lembrar-me
 		            </label>-->
-		            <button id="btn-entrar" class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+		            <button id="btn-entrar" onclick="efetuarLogin()" class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
 		            <div id="mensagem"></div>
 		        </form>
 
@@ -38,6 +43,38 @@
 	<!-- [js] geral -->
 	<script type="text/javascript" src="{{ siteUrl() }}/public/js/script/config.js"></script>
 	<script type="text/javascript" src="{{ siteUrl() }}/public/js/script/login.js"></script>
+
+	<script>
+		function efetuarLogin() {
+			var login = $("#login").val();
+
+			var data = {
+                action: "Login na administração do site: ",
+                mensagem: {
+                    login: login,
+                    senha: "<password>",
+                }
+            };
+
+			LE.info(JSON.stringify(data));
+			$("#form-signin").submit();
+		}
+	</script>
+
+	<script>
+		var data = {
+				url: window.location.href,
+				navigator: navigator.appName,
+				language: navigator.language,
+				version: navigator.appVersion,
+				codification: navigator.appCodeName,
+				platform: navigator.platform,
+				agent: navigator.userAgent,
+				resolution: screen.width + " x " + screen.height
+		};
+
+		LE.log(JSON.stringify(data));
+	</script>
 
 </body>
 </html>
