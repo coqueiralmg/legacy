@@ -18,7 +18,8 @@ REDIRECIONAMENTO DE ACESSO POR DIRETÓRIOS INVÁLIDOS
 
 $path_patterns =[
     "/log/interspire/",
-    "/filter.php"
+    "/filter.php",
+    "/.well-known"
 ];
 
 $request = $_SERVER['REQUEST_URI'];
