@@ -40,10 +40,9 @@
         }(document, 'script', 'facebook-jssdk'));
     </script>
 
-    <script src="/js/le.min.js"></script>
+    <script src="{{ siteUrl() }}/public/js/le.js"></script>
     <script>
         LE.init('04c497c0-786e-40ec-b62b-0dcff9b83765');
-        LE.log("Hello, logger!");
     </script>
 
 </head>
@@ -191,6 +190,10 @@
 
     <!-- [js] optionals js's -->
     {% block js %}{% endblock %}
+
+    <script>
+
+    </script>
 
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
