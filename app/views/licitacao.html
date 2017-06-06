@@ -21,7 +21,7 @@
                 <div class="col-md-10">
                 </div>
                 <div class="col-md-2">
-                    <a onclick="ga('send', 'event', 'Licitações', 'Download', 'Edital');" href="{{ siteUrl() ~"/"~ licitacao.getEdital() }}" class="btn btn-success" target="_blank"><i class="fa fa-download"></i>&nbsp;Download</a>
+                    <a onclick="lerEdital()" href="{{ siteUrl() ~"/"~ licitacao.getEdital() }}" class="btn btn-success" target="_blank"><i class="fa fa-download"></i>&nbsp;Download</a>
                 </div>
             </div>
 
@@ -32,5 +32,17 @@
         </div>
         <!--/.container-->
     </section>
+
+{% block js %}
+	<script>
+        function lerEdital(){
+            var titulo = document.title;
+            var documento = titulo.split("|")[0];
+
+            LE.info("Edital de licitação lida: " + documento);
+            ga('send', 'event', 'Licitações', 'Download', 'Edital');
+        }
+    </script>
+{% endblock %}
 
 {% endblock %}

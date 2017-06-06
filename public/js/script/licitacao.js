@@ -5,6 +5,7 @@ $(function(){
 		e.preventDefault();
 		var busca = $(this).siblings("#pesquisa").val();
 		if(busca !== ''){
+			LE.info('O usuário buscou ' + busca + ' entre as licitações no site.');
             ga('send', 'event', 'Licitações', 'Busca', busca);
 			window.location.href = "/licitacoes/page/1/limit/10/search/" + busca;
 		}else{
