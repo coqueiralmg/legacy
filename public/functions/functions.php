@@ -1,7 +1,15 @@
 <?php
 
 $siteUrl = new \Twig_SimpleFunction("siteUrl", function(){
-	return "http://" . $_SERVER["SERVER_NAME"];
+	 $url = "";
+
+    if($_SERVER["REMOTE_ADDR"] == "127.0.0.1") {
+        $url = "http://" . $_SERVER["SERVER_NAME"];
+    } else {
+        $url = "http://" . $_SERVER["SERVER_NAME"];
+    }
+
+	return $url;
 });
 $twig->addFunction($siteUrl);
 
@@ -51,5 +59,13 @@ $twig->addFunction($menuAtivo);
 
 //Funções para BackEnd
 function siteUrl(){
-	return "http://" . $_SERVER["SERVER_NAME"];
+    $url = "";
+
+    if($_SERVER["REMOTE_ADDR"] == "127.0.0.1") {
+        $url = "http://" . $_SERVER["SERVER_NAME"];
+    } else {
+        $url = "http://" . $_SERVER["SERVER_NAME"];
+    }
+
+	return $url;
 }
