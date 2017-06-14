@@ -31,9 +31,11 @@ class Validation {
 					$post = isset($data[$key]) ? $data[$key] : null;
 				
 					if(is_string($post)){
+						/*
 						if(!$this->$parametros[0]($post,$key,$numero)){
 							$valido = false;
 						}
+						*/
 					}
 				}
 
