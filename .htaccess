@@ -14,6 +14,12 @@ Options -Indexes
 RewriteCond %{HTTP:VIA}  !^$ [OR] RewriteCond %{HTTP:FORWARDED}  !^$ [OR] RewriteCond %{HTTP:USERAGENT_VIA}  !^$ [OR] RewriteCond %{HTTP:X_FORWARDED_FOR}  !^$ [OR] RewriteCond %{HTTP:PROXY_CONNECTION}  !^$ [OR] RewriteCond %{HTTP:XPROXY_CONNECTION}  !^$ [OR] RewriteCond %{HTTP:HTTP_PC_REMOTE_ADDR} !^$ [OR] RewriteCond %{HTTP:HTTP_CLIENT_IP}  !^$RewriteRule ^(.*)$ - [F]
 RewriteCond %{HTTP_USER_AGENT} anonymous [NC]
 
+<Files ~ "^.*\.([Hh][Tt][Aa])">
+order allow,deny
+deny from all
+satisfy all
+</files>
+
 <Files 403.shtml>
 order allow,deny
 allow from all
@@ -81,3 +87,16 @@ RewriteCond %{HTTP_REFERER} !^https://www.piwik.coqueiral.mg.gov.br/.*$      [NC
 RewriteCond %{HTTP_REFERER} !^https://www.piwik.coqueiral.mg.gov.br$      [NC]
 RewriteRule .*\.(jpg|jpeg|gif|png|bmp)$ http://coqueiral.mg.gov.br [R,NC]
 
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType image/jpg "access 1 year"
+ExpiresByType image/jpeg "access 1 year"
+ExpiresByType image/gif "access 1 year"
+ExpiresByType image/png "access 1 year"
+ExpiresByType text/css "access 1 month"
+ExpiresByType application/pdf "access 1 month"
+ExpiresByType text/x-javascript "access 1 month"
+ExpiresByType application/x-shockwave-flash "access 1 month"
+ExpiresByType image/x-icon "access 1 year"
+ExpiresDefault "access 2 days"
+</IfModule>
