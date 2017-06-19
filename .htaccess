@@ -71,6 +71,8 @@ RewriteRule .*\.()$ - [F,NC]
 RewriteCond %{HTTP_REFERER} !^$
 RewriteCond %{HTTP_REFERER} !^http://coqueiral.mg.gov.br/.*$      [NC]
 RewriteCond %{HTTP_REFERER} !^http://coqueiral.mg.gov.br$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://localhost/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://localhost$      [NC]
 RewriteCond %{HTTP_REFERER} !^http://piwik.coqueiral.mg.gov.br/.*$      [NC]
 RewriteCond %{HTTP_REFERER} !^http://piwik.coqueiral.mg.gov.br$      [NC]
 RewriteCond %{HTTP_REFERER} !^http://www.coqueiral.mg.gov.br/.*$      [NC]
