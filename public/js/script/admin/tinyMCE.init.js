@@ -9,7 +9,7 @@ tinyMCE.init({
          "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
          "save table contextmenu directionality emoticons template paste textcolor"
    	],
-   	toolbar: "insertfile undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media table | preview code fullpage | forecolor backcolor emoticons",
+   	toolbar: "styleselect | insertfile undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media table | preview code fullpage | forecolor backcolor emoticons",
 
     //menubar: false,
     /*toolbar: [
