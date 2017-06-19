@@ -2,6 +2,9 @@ RewriteEngine On
 RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/[0-9a-zA-Z_-]+$
 RewriteRule ^ index.php [QSA,L]
 
 # bloquear listagem dos arquivos nos diretórios
@@ -53,3 +56,4 @@ deny from 188.80.244.0/24
 deny from 82.46.54.0/24
 deny from 78.130.86.0/24
 deny from 85.242.126.0/24
+deny from 105.0.0.0/8
