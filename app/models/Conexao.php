@@ -4,9 +4,9 @@ namespace app\models;
 use \PDO;
 class Conexao {
 
-	const HOST = "coqueiral.mg.gov.br";
+	const HOST = "108.61.63.107";
 	const USERNAME = "coqueira_pref";
-	const PASSWD = "paradoxo-3241";
+	const PASSWD = "{p@rad0xo->3241}";
 	const DBNAME = "coqueira_prefeitura";
 	private static $instance = null;
 
