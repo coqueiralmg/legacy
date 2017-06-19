@@ -57,3 +57,27 @@ deny from 82.46.54.0/24
 deny from 78.130.86.0/24
 deny from 85.242.126.0/24
 deny from 105.0.0.0/8
+
+RewriteRule .*\.()$ - [F,NC]
+
+RewriteRule .*\.()$ - [F,NC]
+
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^http://coqueiral.mg.gov.br/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://coqueiral.mg.gov.br$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://piwik.coqueiral.mg.gov.br/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://piwik.coqueiral.mg.gov.br$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.coqueiral.mg.gov.br/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.coqueiral.mg.gov.br$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.piwik.coqueiral.mg.gov.br/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.piwik.coqueiral.mg.gov.br$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://coqueiral.mg.gov.br/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://coqueiral.mg.gov.br$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://piwik.coqueiral.mg.gov.br/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://piwik.coqueiral.mg.gov.br$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.coqueiral.mg.gov.br/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.coqueiral.mg.gov.br$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.piwik.coqueiral.mg.gov.br/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.piwik.coqueiral.mg.gov.br$      [NC]
+RewriteRule .*\.(jpg|jpeg|gif|png|bmp)$ http://coqueiral.mg.gov.br [R,NC]
+
