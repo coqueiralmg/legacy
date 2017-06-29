@@ -1,5 +1,7 @@
 <?php
+session_save_path($_SERVER["DOCUMENT_ROOT"] . "tmp"); 
 session_start();
+
 ini_set("display_errors", 1);
 date_default_timezone_set ('America/Sao_Paulo');
 //define("ROOT", $_SERVER["DOCUMENT_ROOT"] . "/kit-lotofacil/");
