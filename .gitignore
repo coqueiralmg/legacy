@@ -3,6 +3,7 @@
 cache/*
 public/cache/*
 public/storage/*
+tmp/*
 
 
 # Windows image file caches
