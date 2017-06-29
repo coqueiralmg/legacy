@@ -3,9 +3,9 @@
 REDIRECIONAMENTO DE SITES ATRAVÉS DE AGENTS INVÁLIDOS
 */
 
-$invalid_agent = [
+$invalid_agent = array(
     "",
-];
+);
 
 if(in_array($_SERVER['HTTP_USER_AGENT'], $invalid_agent)){
     header("Location: http://127.0.0.1");
@@ -16,11 +16,11 @@ if(in_array($_SERVER['HTTP_USER_AGENT'], $invalid_agent)){
 REDIRECIONAMENTO DE ACESSO POR DIRETÓRIOS INVÁLIDOS
 */
 
-$path_patterns =[
+$path_patterns = array(
     "/log/interspire/",
     "/filter.php",
     "/.well-known"
-];
+);
 
 $request = $_SERVER['REQUEST_URI'];
 
