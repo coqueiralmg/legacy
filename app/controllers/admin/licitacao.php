@@ -222,6 +222,7 @@ $app->group("/admin/painel/licitacao", function() use($app, $twig){
 							unlink(ROOT . $licitacaoAntiga->getEdital());
 							$app->redirect("/admin/painel/licitacao");
 						}
+						
 						$mensagem = array("erro" => "Erro ao fazer upload do edital!");
 					}else{
 						$app->redirect("/admin/painel/licitacao");
