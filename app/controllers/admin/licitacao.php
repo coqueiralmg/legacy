@@ -122,7 +122,10 @@ $app->group("/admin/painel/licitacao", function() use($app, $twig){
 					// se salvar o arquivo na pasta
 					if($file->saveToFile())
 						$app->redirect("/admin/painel/licitacao");
-					$mensagem = array("erro" => "Erro ao fazer upload do edital!");
+
+					//$mensagem = array("erro" => "Erro ao fazer upload do edital!");
+					print_r($_FILES);
+					die();
 				}else
 					$mensagem = array("erro" => "Erro ao cadastrar licitação!");
 

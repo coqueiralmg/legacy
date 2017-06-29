@@ -97,6 +97,7 @@ class File {
 	}
 
 	public function saveToFile(){
+		
 		return move_uploaded_file($this->tmpName, $this->getFullPath());
 	}
 
