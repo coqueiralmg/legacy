@@ -4,7 +4,6 @@ session_start();
 
 ini_set("display_errors", 1);
 ini_set("file_uploads", 1);
-ini_set("upload_tmp_dir", $_SERVER["DOCUMENT_ROOT"] . "/tmp");
 
 /*
 //Extensões
