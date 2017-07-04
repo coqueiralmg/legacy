@@ -1,51 +1,46 @@
-{% extends "layout.html" %} 
-
-{% block js %}
-	<script type="text/javascript" src="{{ siteUrl() }}/public/js/script/licitacao.js"></script>
-{% endblock %}
-
-{% block content %}
+{% extends "layout.html" %} {% block js %}
+<script type="text/javascript" src="{{ siteUrl() }}/public/js/script/licitacao.js"></script>
+{% endblock %} {% block content %}
 
 
 <section id="legislacao">
-        <div class="container">
-            <div class="center wow fadeInDown">
-                <h2>Licitações</h2>
-                <p class="lead">Processos de licitações da prefeitura.</p>
-            </div>
+    <div class="container">
+        <div class="center wow fadeInDown">
+            <h2>Licitações</h2>
+            <p class="lead">Editais e outras informações sobre processos licitatórios do município.</p>
+            <p>Você pode ver mais informações sobre licitações em vigor ou processos antigos, <a href="https://e-gov.betha.com.br/transparencia/01031-002/con_licitacoes.faces"
+                    target="_blank"> clicando aqui</a>.</p>
+        </div>
 
-            <div class="row">
-                <div class="col-md-12">
-                    <form id="pesquisar-legislacao">
-                        <input id="pesquisa" name="search" type="search" class="form-control busca" placeholder="O que deseja buscar?">
-                        <button type="submit"  id="btn-pesquisar" name="submit" class="btn btn-success"><i class="fa fa-search"></i>&nbsp;Buscar</button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="row">
-                {% if licitacoes | length > 0 %}
-                     {% for licitacao in licitacoes %}
-                        <div class="item col-md-12 col-lg-6">
-                            <h3 class="media-heading">{{ licitacao.getTitulo() | upper }}</h3>
-                            <p>Início: {{ licitacao.getDataInicio() | date("d/m/Y H:i") }}</p>
-                            <p>Término: {{ licitacao.getDataTermino() | date("d/m/Y H:i") }}</p>
-                            <a href="/licitacao/{{ gerarSlug(licitacao.getTitulo()) ~" / "~ licitacao.getId() }}" class="btn btn-success">Veja mais</a>
-                        </div>
-                    {% endfor %}
-
-                 {% else %}
-                    <p>Nenhuma licitação disponível!</p>
-                 {% endif %}
-            </div>
-            <div class="row">
-                <center>
-                    <p id="registros">Registros: {{ pagination.getTotalObjects() }}</p>
-                    <div id="paginacao">{{ pagination.getLinks() | raw }}</div>
-                </center>
+        <div class="row">
+            <div class="col-md-12">
+                <form id="pesquisar-legislacao">
+                    <input id="pesquisa" name="search" type="search" class="form-control busca" placeholder="O que deseja buscar?">
+                    <button type="submit" id="btn-pesquisar" name="submit" class="btn btn-success"><i class="fa fa-search"></i>&nbsp;Buscar</button>
+                </form>
             </div>
         </div>
-        <!--/.container-->
-    </section>
+
+        <div class="row">
+            {% if licitacoes | length > 0 %} {% for licitacao in licitacoes %}
+            <div class="item col-md-12 col-lg-6">
+                <h3 class="media-heading">{{ licitacao.getTitulo() | upper }}</h3>
+                <p>Início: {{ licitacao.getDataInicio() | date("d/m/Y H:i") }}</p>
+                <p>Término: {{ licitacao.getDataTermino() | date("d/m/Y H:i") }}</p>
+                <a href="/licitacao/{{ gerarSlug(licitacao.getTitulo()) ~" / "~ licitacao.getId() }}" class="btn btn-success">Veja mais</a>
+            </div>
+            {% endfor %} {% else %}
+            <p>Nenhuma licitação disponível!</p>
+            {% endif %}
+        </div>
+        <div class="row">
+            <center>
+                <p id="registros">Registros: {{ pagination.getTotalObjects() }}</p>
+                <div id="paginacao">{{ pagination.getLinks() | raw }}</div>
+            </center>
+        </div>
+    </div>
+    <!--/.container-->
+</section>
 
 {% endblock %}
