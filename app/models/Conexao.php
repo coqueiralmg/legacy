@@ -4,10 +4,10 @@ namespace app\models;
 use \PDO;
 class Conexao {
 
-	const HOST = "coqueiral.mg.gov.br";
-	const USERNAME = "coqueira_site";
-	const PASSWD = "{p@rad0xo->3241}";
-	const DBNAME = "coqueira_prefeitura";
+	const HOST = "mysql796.umbler.com";
+	const USERNAME = "coqueirinho";
+	const PASSWD = "orochimaru-3841";
+	const DBNAME = "coqueiral";
 	private static $instance = null;
 
 	private static function criarConexao(){
